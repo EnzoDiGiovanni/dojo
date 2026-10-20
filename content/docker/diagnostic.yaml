@@ -1,0 +1,65 @@
+# Positioning questions: no feedback is ever shown. The first module whose question
+# is missed becomes the suggested starting point.
+questions:
+  - id: diag-image-conteneur
+    module: 1
+    type: qcm
+    prompt: Tu lances deux fois `docker run -d nginx:alpine`. Qu'obtiens-tu ?
+    options:
+      - text: Deux conteneurs distincts créés à partir d'une seule image.
+        correct: true
+      - text: Une erreur, car l'image est déjà en cours d'exécution.
+      - text: Deux images nginx:alpine téléchargées, une par conteneur.
+      - text: Un seul conteneur, le second `run` réutilise le premier.
+      - text: Je ne sais pas.
+  - id: diag-cache
+    module: 2
+    type: qcm
+    prompt: |
+      Avec ce Dockerfile, tu modifies une ligne de `app.js` puis tu reconstruis l'image. Que se passe-t-il pour l'étape `RUN npm ci` ?
+    code: |
+      FROM node:22-alpine
+      WORKDIR /app
+      COPY . .
+      RUN npm ci
+      CMD ["node", "app.js"]
+    options:
+      - text: Elle est réexécutée, car une instruction précédente a vu son contenu changer.
+        correct: true
+      - text: Elle est servie par le cache, car package.json n'a pas changé.
+      - text: Elle est servie par le cache, car les instructions RUN sont toujours mises en cache.
+      - text: Le build échoue, car le cache est invalide.
+      - text: Je ne sais pas.
+  - id: diag-volumes
+    module: 3
+    type: qcm
+    prompt: Une base PostgreSQL tourne dans un conteneur sans volume. Tu fais `docker rm -f` puis tu relances un conteneur identique. Où sont tes données ?
+    options:
+      - text: Perdues, elles vivaient dans la couche inscriptible du conteneur supprimé.
+        correct: true
+      - text: Intactes, elles sont stockées dans l'image.
+      - text: Intactes, Docker crée automatiquement un volume pour chaque conteneur.
+      - text: Récupérables avec `docker restore`.
+      - text: Je ne sais pas.
+  - id: diag-reseau
+    module: 4
+    type: qcm
+    prompt: Deux conteneurs `api` et `db` sont lancés sans option réseau particulière. Depuis `api`, la commande `ping db` échoue. Pourquoi ?
+    options:
+      - text: Sur le réseau bridge par défaut, il n'y a pas de résolution DNS par nom de conteneur.
+        correct: true
+      - text: Les conteneurs ne peuvent jamais communiquer entre eux sans publier de port.
+      - text: Il faut d'abord exposer le port de `db` avec EXPOSE.
+      - text: ping est désactivé dans tous les conteneurs.
+      - text: Je ne sais pas.
+  - id: diag-compose
+    module: 5
+    type: qcm
+    prompt: "Dans un fichier compose, `api` a `depends_on: [db]`. Au démarrage, l'api plante car la base refuse les connexions. Qu'est-ce qui l'explique ?"
+    options:
+      - text: depends_on attend seulement que le conteneur db soit démarré, pas que la base soit prête à accepter des connexions.
+        correct: true
+      - text: depends_on n'a aucun effet sur l'ordre de démarrage.
+      - text: Il faut aussi déclarer `links:` pour que l'api trouve la base.
+      - text: Compose démarre toujours les services par ordre alphabétique.
+      - text: Je ne sais pas.

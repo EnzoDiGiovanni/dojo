@@ -1,0 +1,16 @@
+type: application
+title: Publier un serveur web
+summary: Lancer un conteneur nginx en arrière-plan et le rendre joignable depuis ton navigateur.
+competences: [m1-cycle-de-vie, m1-configuration]
+hints:
+  - level: comprehension
+    text: Quand tu ouvres http://127.0.0.1:47101, quel programme, sur quelle machine et sur quel port, doit recevoir ta requête ?
+  - level: demarche
+    text: Quelle commande te montre les conteneurs qui tournent, avec leurs ports ? Que lis-tu dans la colonne PORTS pour dojo-m1-a1 ?
+  - level: zone
+    text: Sur quel port nginx écoute-t-il à l'intérieur de son conteneur ? Où est-ce écrit dans les métadonnées de l'image ?
+  - level: concept
+    text: Dans `-p A:B`, laquelle des deux valeurs désigne le port de l'hôte, et laquelle celui du conteneur ?
+review:
+  - Que se passerait-il si tu relançais exactement la même commande une seconde fois ? Pourquoi ?
+  - Ton serveur est-il joignable depuis un autre ordinateur de ton réseau ? Comment le vérifierais-tu ?

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+npm-debug.log*
+.DS_Store
+
+# Dependencies installed while working on exercises
+formation/**/node_modules/
+
+# IDE
+.idea/
+*.iml
+.vscode/

@@ -1,0 +1,79 @@
+questions:
+  - id: q-run-decompose
+    type: qcm
+    prompt: Parmi ces séquences, laquelle décrit le mieux ce que fait `docker run -d --name w httpd:2.4-alpine` si l'image n'est pas encore présente ?
+    options:
+      - text: pull de l'image, création du conteneur, démarrage du processus principal.
+        correct: true
+      - text: création du conteneur, pull de l'image, démarrage du processus principal.
+        relance: Docker peut-il créer la couche inscriptible d'un conteneur sans disposer des couches de l'image sur lesquelles elle se pose ?
+      - text: pull de l'image, démarrage du processus, puis création du conteneur quand le processus est prêt.
+        relance: Dans quoi le processus s'exécute-t-il s'il est démarré avant que le conteneur existe ?
+      - text: build de l'image, création du conteneur, démarrage.
+        relance: "`docker run` lit-il un Dockerfile ? D'où vient l'image dans ce scénario ?"
+  - id: q-exit-137
+    type: qcm
+    prompt: "`docker inspect -f '{{.State.ExitCode}}' svc` affiche 137. Qu'est-ce que ça t'apprend le plus probablement ?"
+    options:
+      - text: Le processus a été tué par SIGKILL (par `docker kill`, ou par `docker stop` après expiration du délai).
+        correct: true
+      - text: Le processus s'est terminé normalement après 137 secondes.
+        relance: Le code de sortie mesure-t-il une durée ? Que représente 128 + n dans la convention des codes de sortie Unix ?
+      - text: Le conteneur a redémarré 137 fois.
+        relance: Dans quel champ de `.State` ou du conteneur trouverait-on un nombre de redémarrages ? Est-ce ExitCode ?
+      - text: L'image est introuvable.
+        relance: Si l'image était introuvable, le conteneur aurait-il pu démarrer, et donc avoir un processus qui se termine avec un code ?
+  - id: q-stop-kill
+    type: prediction
+    prompt: Une application enregistre ses données en mémoire et ne les écrit sur disque que lorsqu'elle reçoit SIGTERM. Que se passe-t-il pour ces données avec `docker kill app` ?
+    options:
+      - text: Elles sont perdues, car le processus ne reçoit jamais SIGTERM.
+        correct: true
+      - text: Elles sont sauvegardées, car `kill` envoie SIGTERM puis attend.
+        relance: Relis la différence entre stop et kill dans le cours. Lequel des deux laisse un délai au processus ?
+      - text: Elles sont sauvegardées par Docker dans la couche inscriptible.
+        relance: Docker a-t-il accès à la mémoire du processus pour l'écrire à sa place ?
+  - id: q-port-interface
+    type: qcm
+    prompt: Tu lances `docker run -d -p 8080:80 httpd:2.4-alpine` sur ton portable, connecté au wifi d'un café. Qui peut joindre ce serveur ?
+    options:
+      - text: Ta machine, mais aussi les autres appareils du réseau qui peuvent atteindre ton adresse IP.
+        correct: true
+      - text: Uniquement ta machine, via localhost.
+        relance: Sans adresse IP devant le port hôte, sur quelle(s) interface(s) Docker écoute-t-il par défaut ?
+      - text: Personne, il faut aussi ajouter EXPOSE.
+        relance: EXPOSE est-il une option de `docker run` qui ouvre un port, ou une métadonnée d'image ? La commande lancée publie-t-elle déjà un port ?
+  - id: q-exec-arrete
+    type: prediction
+    prompt: Que se passe-t-il ?
+    code: |
+      docker run --name job alpine:3.19 sh -c 'echo ok'
+      docker exec job ls /
+    options:
+      - text: La seconde commande échoue, car le conteneur n'est plus en cours d'exécution.
+        correct: true
+      - text: La seconde commande liste la racine du conteneur.
+        relance: Dans quel état est `job` une fois que `sh -c 'echo ok'` a terminé ? exec peut-il s'attacher à un processus qui n'existe plus ?
+      - text: La seconde commande redémarre le conteneur puis liste la racine.
+        relance: Quelle commande relance un conteneur arrêté ? Est-ce le rôle d'exec ?
+  - id: q-restart-policy
+    type: qcm
+    prompt: Tu veux qu'un service redémarre s'il plante (code de sortie non nul), mais reste arrêté s'il se termine normalement avec le code 0. Quelle politique choisir ?
+    options:
+      - text: on-failure
+        correct: true
+      - text: always
+        relance: Avec always, que se passe-t-il quand le processus se termine avec le code 0 ?
+      - text: unless-stopped
+        relance: unless-stopped distingue-t-il un code 0 d'un code non nul, ou un arrêt manuel d'un arrêt spontané ?
+      - text: "no"
+        relance: Avec no, le service redémarre-t-il quand il plante ?
+  - id: q-nom-conflit
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : si un conteneur nommé `api` est arrêté, `docker run --name api …` réussit en réutilisant ce nom."
+    options:
+      - text: Vrai
+        relance: Un conteneur arrêté existe-t-il encore pour Docker ? Que montre `docker ps -a` ?
+      - text: Faux
+        correct: true

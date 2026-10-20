@@ -1,0 +1,10 @@
+title: Sécurité et distribution
+competences:
+  - id: m8-secrets
+    text: Je sais passer des secrets au build et à l'exécution sans les graver dans l'image.
+  - id: m8-durcissement
+    text: Je sais réduire les privilèges d'un conteneur (capabilities, système de fichiers en lecture seule).
+  - id: m8-distribution
+    text: Je sais publier une image sur un registry et la référencer de façon reproductible (tags vs digests).
+  - id: m8-scan
+    text: Je sais scanner une image et interpréter les vulnérabilités remontées.

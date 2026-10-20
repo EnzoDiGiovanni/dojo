@@ -1,0 +1,11 @@
+title: Premiers conteneurs
+competences:
+  - id: m1-image-conteneur
+    text: Je sais expliquer la différence entre une image et un conteneur, et ce que fait réellement `docker run`.
+  - id: m1-cycle-de-vie
+    text: Je sais piloter le cycle de vie d'un conteneur (run, ps, stop, kill, rm, --rm) et lire ses logs ou y exécuter une commande.
+  - id: m1-configuration
+    text: Je sais publier un port et passer une configuration (variables d'environnement, arguments, politique de redémarrage) à un conteneur.
+  - id: m1-inspect
+    text: Je sais interroger Docker avec `inspect` et `--format` pour obtenir une information précise sur une image ou un conteneur.
+exercises: [a1, a2, a3, i1, i2, d1, v1]

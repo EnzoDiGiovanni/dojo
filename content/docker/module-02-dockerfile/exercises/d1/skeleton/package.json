@@ -1,0 +1,8 @@
+{
+  "name": "dojo-notes",
+  "version": "1.4.0",
+  "private": true,
+  "dependencies": {
+    "dayjs": "1.11.23"
+  }
+}

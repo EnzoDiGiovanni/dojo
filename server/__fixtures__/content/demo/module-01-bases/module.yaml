@@ -1,0 +1,5 @@
+title: Bases
+competences:
+  - { id: c1, text: Je sais A. }
+  - { id: c2, text: Je sais B. }
+exercises: [a1, v1]

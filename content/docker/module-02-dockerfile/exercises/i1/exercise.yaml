@@ -1,0 +1,16 @@
+type: intermediaire
+title: Ce qui n'a rien à faire dans l'image
+summary: Empaqueter une application dont le dossier contient des secrets, des logs et des tests, sans rien laisser fuiter.
+competences: [m2-contexte, m2-dockerfile, m2-cache]
+hints:
+  - level: comprehension
+    text: Liste tous les fichiers et dossiers présents dans ce dossier (y compris ceux qui commencent par un point). Lesquels l'application utilise-t-elle réellement à l'exécution ?
+  - level: demarche
+    text: Que lis-tu sur la ligne `transferring context` de ton build ? Comment pourrais-tu lister le contenu de ton image pour voir ce qui y est arrivé ?
+  - level: zone
+    text: Tous ces fichiers arrivent par la même instruction de ton Dockerfile. À quel moment, avant même que cette instruction s'exécute, pourraient-ils être écartés ?
+  - level: concept
+    text: Quel fichier, à la racine du contexte, contrôle ce qui est envoyé au builder ? Et quelles instructions documentent un port et fixent une variable d'environnement par défaut ?
+review:
+  - Si tu avais lancé `npm install` sur ton hôte avant le build, qu'est-ce qui aurait changé dans le contexte ? Ton .dockerignore le gère-t-il ?
+  - Pourquoi supprimer .env dans une instruction RUN ne suffirait-il pas ?

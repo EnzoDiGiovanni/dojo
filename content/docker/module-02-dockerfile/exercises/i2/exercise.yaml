@@ -1,0 +1,16 @@
+type: intermediaire
+title: Script de démarrage, version et arguments
+summary: Brancher un script de démarrage, fixer une version au build, transmettre les arguments et s'arrêter proprement.
+competences: [m2-entrypoint, m2-dockerfile]
+hints:
+  - level: comprehension
+    text: Quand un conteneur démarre, quelle chaîne de programmes s'exécute, dans quel ordre, et lequel reçoit les arguments de docker run ?
+  - level: demarche
+    text: Pour chaque critère en échec, quelle expérience simple pourrais-tu faire dans ton terminal pour l'observer toi-même ? As-tu mesuré la durée de `docker stop` avec `time` ?
+  - level: zone
+    text: Pendant que le conteneur tourne, lance `docker exec <conteneur> ps`. Quel processus a le PID 1 ? Est-ce celui qui doit recevoir le signal d'arrêt ?
+  - level: concept
+    text: Quelle instruction rend une valeur réglable au build, et laquelle la rend visible à l'exécution ? Dans un script shell, que font `exec` et `"$@"` ?
+review:
+  - Que se passerait-il si le message passé à `--motd` contenait des espaces ? Ton script les préserve-t-il ? Comment l'as-tu vérifié ?
+  - Pourquoi le serveur doit-il lui-même gérer SIGTERM, même quand il est PID 1 ?

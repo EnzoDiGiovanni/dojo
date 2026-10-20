@@ -1,0 +1,16 @@
+type: defi
+title: La vitrine de la boulangerie
+summary: Un script de démarrage « qui marche chez moi ». Rien ne fonctionne comme prévu. À toi de trouver pourquoi.
+competences: [m1-cycle-de-vie, m1-configuration, m1-inspect]
+hints:
+  - level: comprehension
+    text: Pour chacun des deux services, qu'est-ce qui devrait se passer quand le script s'exécute, et qu'est-ce que tu observes réellement ?
+  - level: demarche
+    text: Le script affiche « Stack démarrée ». Quelles commandes te permettent de vérifier, conteneur par conteneur, que c'est vrai ? Qu'est-ce qu'un conteneur arrêté a laissé comme trace pour t'expliquer son arrêt ?
+  - level: zone
+    text: Pour chaque argument de chaque ligne `docker` du script, qui va l'interpréter — Docker, ou le programme dans le conteneur — et quelle valeur attend-il ?
+  - level: concept
+    text: Que se passe-t-il quand on lance deux fois `docker run --name x …` ? Comment un script peut-il partir d'un état propre à chaque exécution ?
+review:
+  - Lequel des problèmes aurait été le plus difficile à repérer sans regarder les logs ? Pourquoi ?
+  - Comment rendrais-tu ce script plus bavard pour qu'il signale lui-même un service qui ne démarre pas ?

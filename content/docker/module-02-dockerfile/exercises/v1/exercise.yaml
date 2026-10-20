@@ -1,0 +1,7 @@
+type: validation
+title: Validation — empaqueter un service Python
+summary: Un exercice inédit dans un autre langage, sans indice. Tout le module est mobilisé.
+competences: [m2-dockerfile, m2-cache, m2-entrypoint, m2-contexte]
+justifications:
+  - Pourquoi as-tu ordonné tes instructions COPY et RUN de cette façon ? Que se passerait-il avec un unique `COPY . .` placé avant l'installation ?
+  - Pourquoi as-tu utilisé ENTRYPOINT et/ou CMD comme tu l'as fait, et sous cette forme ? Que deviendrait `docker run <image> --greeting Salut` avec un autre choix ?

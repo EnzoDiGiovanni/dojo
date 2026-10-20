@@ -1,0 +1,37 @@
+questions:
+  - id: c-run-vs-cmd
+    type: qcm
+    prompt: Dans un Dockerfile, quelle est la différence essentielle entre `RUN composer install` et `CMD ["php", "-S", "0.0.0.0:8000"]` ?
+    options:
+      - text: RUN s'exécute une fois pendant le build et son résultat est figé dans une couche ; CMD s'exécute à chaque démarrage d'un conteneur.
+        correct: true
+      - text: Les deux s'exécutent au démarrage du conteneur, RUN en premier.
+        relance: Si RUN s'exécutait au démarrage, à quoi servirait la couche qu'il produit dans l'image ? Quand une image est-elle construite ?
+      - text: RUN lance une commande en arrière-plan, CMD au premier plan.
+        relance: Le cours parle-t-il d'arrière-plan pour RUN ? À quel moment du cycle de vie de l'image chacun intervient-il ?
+  - id: c-cache-cascade
+    type: prediction
+    prompt: Tu modifies uniquement `src/Controller.php` et tu reconstruis. Quelles étapes sont rejouées ?
+    code: |
+      FROM php:8.3-cli-alpine
+      WORKDIR /srv/app
+      COPY src/ src/
+      RUN apk add --no-cache git
+      COPY composer.json composer.lock ./
+      CMD ["php", "src/main.php"]
+    options:
+      - text: "`COPY src/ src/` et toutes les étapes suivantes."
+        correct: true
+      - text: Seulement `COPY src/ src/`, les autres sont en cache.
+        relance: Quand une étape change, sur quelle base les étapes suivantes sont-elles construites ? Cette base est-elle identique à la fois précédente ?
+      - text: Aucune, le cache ne regarde que le texte des instructions.
+        relance: Pour COPY, d'après la section sur le cache, le builder compare-t-il uniquement le texte de l'instruction ?
+  - id: c-exec-form
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : avec `ENTRYPOINT php bin/console` (forme shell), `docker run img cache:clear` exécute `php bin/console cache:clear`."
+    options:
+      - text: Vrai
+        relance: Avec la forme shell, quel programme Docker lance-t-il réellement ? Que deviennent les arguments passés à docker run dans ce cas, d'après le tableau du cours ?
+      - text: Faux
+        correct: true

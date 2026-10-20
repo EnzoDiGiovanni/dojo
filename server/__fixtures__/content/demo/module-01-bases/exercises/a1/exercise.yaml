@@ -1,0 +1,7 @@
+type: application
+title: Exercice A
+summary: Résumé A.
+competences: [c1]
+hints:
+  - { level: comprehension, text: Indice 1 ? }
+  - { level: demarche, text: Indice 2 ? }

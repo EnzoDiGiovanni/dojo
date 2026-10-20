@@ -1,0 +1,11 @@
+title: Écrire un Dockerfile
+competences:
+  - id: m2-dockerfile
+    text: Je sais écrire un Dockerfile (FROM, WORKDIR, COPY, RUN, ENV, ARG, EXPOSE, CMD) et construire une image taguée.
+  - id: m2-cache
+    text: Je sais ordonner les instructions d'un Dockerfile pour tirer parti du cache de build.
+  - id: m2-entrypoint
+    text: Je sais combiner ENTRYPOINT et CMD, choisir entre forme exec et forme shell, et j'en connais l'impact sur les arguments et les signaux.
+  - id: m2-contexte
+    text: Je sais contrôler le contexte de build pour que rien d'indésirable ne finisse dans l'image (.dockerignore).
+exercises: [a1, a2, a3, i1, i2, d1, v1]

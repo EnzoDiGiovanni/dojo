@@ -1,0 +1,15 @@
+questions:
+  - id: d1
+    module: 1
+    type: qcm
+    prompt: Question 1
+    options:
+      - { text: bonne, correct: true }
+      - { text: mauvaise }
+  - id: d2
+    module: 2
+    type: qcm
+    prompt: Question 2
+    options:
+      - { text: bonne, correct: true }
+      - { text: mauvaise }

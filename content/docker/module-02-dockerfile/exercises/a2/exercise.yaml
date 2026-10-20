@@ -1,0 +1,16 @@
+type: application
+title: Faire travailler le cache
+summary: Un Dockerfile qui fonctionne, mais réinstalle toutes les dépendances à chaque modification du code.
+competences: [m2-cache]
+hints:
+  - level: comprehension
+    text: Lance deux builds de suite en modifiant `server.js` entre les deux, avec `--progress=plain`. Quelles étapes affichent CACHED, et lesquelles non ?
+  - level: demarche
+    text: Pour la première étape qui n'est pas CACHED, de quels fichiers dépend-elle ? Lequel a changé ?
+  - level: zone
+    text: De quels fichiers `npm ci` a-t-il réellement besoin pour installer les dépendances ? Sont-ils dans l'image au moment où il s'exécute ?
+  - level: concept
+    text: Selon le cours, que devient le cache des étapes qui suivent une étape rejouée ? Que faudrait-il placer avant l'installation, et que faudrait-il placer après ?
+review:
+  - Que se passe-t-il maintenant si tu ajoutes une dépendance dans package.json ? Est-ce le comportement souhaité ?
+  - Ton image contient-elle toujours tous les fichiers nécessaires à l'exécution ? Comment l'as-tu vérifié ?

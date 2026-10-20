@@ -1,0 +1,10 @@
+title: Docker Compose
+competences:
+  - id: m5-declaratif
+    text: Je sais décrire services, réseaux et volumes dans un fichier compose et piloter la stack.
+  - id: m5-config
+    text: Je sais gérer la configuration (environment, fichier .env, interpolation) sans fuiter de secrets.
+  - id: m5-demarrage
+    text: Je sais ordonner le démarrage avec depends_on et des healthchecks.
+  - id: m5-variantes
+    text: Je sais gérer des variantes d'environnement avec des fichiers d'override et des profils.

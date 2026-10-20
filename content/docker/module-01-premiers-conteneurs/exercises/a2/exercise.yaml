@@ -1,0 +1,16 @@
+type: application
+title: Fouiller un conteneur
+summary: Retrouver trois informations cachées dans un conteneur en marche, sans jamais l'arrêter.
+competences: [m1-cycle-de-vie, m1-inspect]
+hints:
+  - level: comprehension
+    text: "Pour chacune des trois informations, où vit-elle : dans le système de fichiers du conteneur, dans ce que son processus a écrit, ou dans ce que Docker sait de lui ?"
+  - level: demarche
+    text: Quelle commande te permet de lancer un programme supplémentaire à l'intérieur d'un conteneur qui tourne déjà ? Quel programme te servirait à afficher un fichier ?
+  - level: zone
+    text: Le code secret n'apparaît qu'une fois parmi des centaines de lignes. Comment filtrerais-tu la sortie d'une commande pour ne garder que la ligne qui t'intéresse ?
+  - level: concept
+    text: Dans le JSON de `docker inspect`, quelle grande section décrit la connectivité réseau du conteneur ? Comment n'afficher qu'un seul champ avec `-f` ?
+review:
+  - Si tu supprimes puis relances le conteneur avec start.sh, tes trois fichiers sont-ils encore justes ? Lesquels, et pourquoi ?
+  - Que verrais-tu dans `docker logs` si le processus écrivait le code secret dans un fichier au lieu de l'afficher ?

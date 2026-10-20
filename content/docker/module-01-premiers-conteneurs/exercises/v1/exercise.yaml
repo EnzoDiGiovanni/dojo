@@ -1,0 +1,7 @@
+type: validation
+title: Validation — un service d'écho
+summary: Un exercice inédit, sans indice. Tout ce que tu as appris dans ce module est mobilisé.
+competences: [m1-image-conteneur, m1-cycle-de-vie, m1-configuration, m1-inspect]
+justifications:
+  - Pourquoi as-tu placé les réglages du serveur d'écho (texte, port d'écoute) à cet endroit de ta commande, et pas avec les options -p, --name, etc. ?
+  - Pourquoi cette politique de redémarrage plutôt que unless-stopped ? Décris une situation concrète où les deux se comporteraient différemment.

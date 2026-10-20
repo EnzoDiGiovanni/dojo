@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "subjects": {
+    "docker": {
+      "startedAt": "2026-10-20T14:36:55.990Z",
+      "modules": {},
+      "results": [
+        {
+          "date": "2026-10-20T14:36:55.991Z",
+          "module": 1,
+          "activity": "Diagnostic",
+          "result": "1/5 — départ suggéré : module 1"
+        }
+      ],
+      "journal": [],
+      "profile": {
+        "objective": "Devenir meilleur et pourquoi pas postuler en tant que devops",
+        "rhythm": "3 soirs par semaine",
+        "selfLevel": "Débutant : quelques commandes copiées-collées",
+        "diagnostic": {
+          "diag-image-conteneur": 3,
+          "diag-cache": 4,
+          "diag-volumes": 3,
+          "diag-reseau": 1,
+          "diag-compose": 0
+        },
+        "diagnosticScore": "1/5",
+        "suggestedModule": 1
+      },
+      "session": {
+        "startedAt": "2026-10-20T14:37:24.867Z"
+      }
+    }
+  }
+}

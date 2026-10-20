@@ -1,0 +1,16 @@
+type: application
+title: Premier Dockerfile
+summary: Empaqueter une petite application Node dans une image, puis la lancer.
+competences: [m2-dockerfile]
+hints:
+  - level: comprehension
+    text: De quoi l'application a-t-elle besoin pour tourner — quel programme, quels fichiers, quelle commande de démarrage ? Où chacun de ces besoins va-t-il apparaître dans ton Dockerfile ?
+  - level: demarche
+    text: Ton image se construit-elle ? Si tu lances `docker run --rm -it --entrypoint sh` sur ton image, trouves-tu tes fichiers là où tu les attends ?
+  - level: zone
+    text: Que fait l'image quand tu la lances sans rien préciser après son nom ? Où est défini ce comportement par défaut ?
+  - level: concept
+    text: Quelle instruction choisit le répertoire courant dans l'image, et pourquoi est-ce préférable à copier les fichiers à la racine ?
+review:
+  - Ton image contient-elle des fichiers dont elle n'a pas besoin ? Comment le vérifierais-tu ?
+  - Que se passerait-il si tu lançais ton conteneur avec `-e PORT=4000` sans changer ta publication de port ?

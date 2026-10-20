@@ -1,0 +1,16 @@
+type: application
+title: Cycle de vie
+summary: Lancer une tâche ponctuelle sans laisser de traces, et arrêter proprement un service.
+competences: [m1-cycle-de-vie, m1-image-conteneur]
+hints:
+  - level: comprehension
+    text: Combien de temps vit un conteneur dont la commande est `cat` ? Et que devient-il ensuite, si personne ne le supprime ?
+  - level: demarche
+    text: Quelle commande liste aussi les conteneurs arrêtés ? Lesquels, parmi ceux qu'elle affiche, viennent de tes essais avec alpine:3.20 ?
+  - level: zone
+    text: Pour dojo-m1-a3-web, regarde le code de sortie avec `docker inspect`. Quelle commande d'arrêt as-tu utilisée, et quel signal envoie-t-elle ?
+  - level: concept
+    text: Dans le cours, quelle option de `docker run` supprime le conteneur dès que son processus se termine ? Et que signifie un code de sortie 137 ?
+review:
+  - Quelle différence concrète vois-tu entre `docker run --rm` et un `docker rm` lancé après coup ? Dans quel cas l'un est-il impossible ?
+  - Que deviennent les fichiers écrits dans dojo-m1-a3-web si tu le redémarres avec `docker start` ? Et si tu le supprimes ?

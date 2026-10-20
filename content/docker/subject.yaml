@@ -1,0 +1,11 @@
+title: Docker
+description: Des premiers conteneurs jusqu'à des images prêtes pour la production — exercices réels sur ta machine, vérifiés automatiquement.
+modules:
+  - module-01-premiers-conteneurs
+  - module-02-dockerfile
+  - module-03-donnees
+  - module-04-reseau
+  - module-05-compose
+  - module-06-images-optimisees
+  - module-07-production
+  - module-08-securite

@@ -1,0 +1,10 @@
+title: Images optimisées
+competences:
+  - id: m6-multistage
+    text: Je sais écrire un build multi-stage qui sépare outillage de build et image finale.
+  - id: m6-base
+    text: Je sais choisir une image de base (alpine, slim, distroless) et mesurer l'impact sur la taille.
+  - id: m6-buildkit
+    text: Je sais accélérer les builds avec les cache mounts BuildKit.
+  - id: m6-nonroot
+    text: Je sais faire tourner l'application avec un utilisateur non-root.

@@ -1,0 +1,16 @@
+type: defi
+title: dojo-notes ne passe pas en production
+summary: L'image du service de notes « marche » en local. L'équipe ops la refuse. À toi de comprendre pourquoi et de la corriger.
+competences: [m2-dockerfile, m2-cache, m2-entrypoint, m2-contexte]
+hints:
+  - level: comprehension
+    text: Reprends chaque critère de la consigne. Pour chacun, quelle commande te permettrait d'observer toi-même le problème, avant de chercher sa cause ?
+  - level: demarche
+    text: Le README décrit le comportement attendu. Compare-le, point par point, à ce que fait réellement l'image (port, réponse, durée d'arrêt). Où les deux divergent-ils ?
+  - level: zone
+    text: Pour chaque ligne du Dockerfile et du script de démarrage, quelle notion du module touche-t-elle — contexte, cache, configuration, démarrage — et respecte-t-elle ce que dit le cours ?
+  - level: concept
+    text: Quand un conteneur démarre via un script, quel processus a le PID 1 ? Et quels fichiers du dossier sont copiés dans l'image par `COPY . .` en l'absence de filtre ?
+review:
+  - Classe les quatre problèmes du plus grave au moins grave pour une mise en production. Lequel aurait pu passer inaperçu longtemps ?
+  - Quelles vérifications automatiques ajouterais-tu dans une CI pour qu'ils ne reviennent pas ?

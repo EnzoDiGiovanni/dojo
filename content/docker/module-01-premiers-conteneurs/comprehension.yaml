@@ -1,0 +1,31 @@
+questions:
+  - id: c-couche-inscriptible
+    type: qcm
+    prompt: Tu lances deux conteneurs A et B depuis `httpd:2.4-alpine`. Dans A, tu supprimes `/usr/local/apache2/htdocs/index.html`. Que voit B ?
+    options:
+      - text: Le fichier est toujours là dans B.
+        correct: true
+      - text: Le fichier a aussi disparu dans B.
+        relance: "Où la suppression faite dans A est-elle enregistrée : dans l'image partagée, ou dans une couche qui n'appartient qu'à A ?"
+      - text: B plante, car son image est maintenant incomplète.
+        relance: Une image peut-elle être modifiée par un conteneur ? Que dit le cours du caractère « lecture seule » de ses couches ?
+  - id: c-processus-principal
+    type: prediction
+    prompt: Que montre `docker ps` (sans -a) juste après cette commande ?
+    code: docker run -d --name essai alpine:3.19 echo "fini"
+    options:
+      - text: Rien concernant `essai` — le conteneur est déjà arrêté.
+        correct: true
+      - text: "`essai` en cours d'exécution, puisqu'il est lancé en arrière-plan avec -d."
+        relance: L'option -d change-t-elle la durée de vie du processus, ou seulement le fait que ton terminal y soit attaché ? Combien de temps dure `echo` ?
+      - text: Une erreur, car alpine n'a pas de commande par défaut.
+        relance: Ici, une commande est-elle fournie après le nom de l'image ? Qu'arrive-t-il à la commande par défaut dans ce cas ?
+  - id: c-ordre-options
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : `docker run redis:7-alpine -p 6379:6379` publie le port 6379 sur l'hôte."
+    options:
+      - text: Vrai
+        relance: Que devient tout ce qui est écrit après le nom de l'image ? À qui `-p` est-il transmis ici ?
+      - text: Faux
+        correct: true

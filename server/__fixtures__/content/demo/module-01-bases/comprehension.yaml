@@ -1,0 +1,7 @@
+questions:
+  - id: cq
+    type: qcm
+    prompt: Compréhension
+    options:
+      - { text: oui, correct: true }
+      - { text: non, relance: Vraiment ? }

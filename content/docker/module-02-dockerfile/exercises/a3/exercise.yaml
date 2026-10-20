@@ -1,0 +1,16 @@
+type: application
+title: Une image qui se comporte comme une commande
+summary: Construire une image qu'on utilise comme un outil en ligne de commande, avec un argument par défaut.
+competences: [m2-entrypoint, m2-dockerfile]
+hints:
+  - level: comprehension
+    text: Écris les trois commandes `docker run` de la consigne, et à côté, la commande `node …` exacte que chacune doit exécuter dans le conteneur. Qu'est-ce qui est fixe, qu'est-ce qui varie ?
+  - level: demarche
+    text: Pour chacun des trois cas, qu'affiche ton image aujourd'hui ? Lequel échoue, et qu'affiche-t-il à la place ?
+  - level: zone
+    text: Quand tu passes `Alice` après le nom de l'image, qu'est-ce qui est remplacé, et qu'est-ce qui est conservé, d'après le tableau du cours ?
+  - level: concept
+    text: Quelle instruction fixe le programme, quelle instruction fournit un argument remplaçable ? Et sous quelle forme faut-il les écrire pour que les arguments de docker run soient transmis ?
+review:
+  - Comment exécuterais-tu un shell dans cette image pour la déboguer, alors que son point d'entrée est fixé ?
+  - Que se passerait-il si greet.js avait besoin d'une option avant le nom, toujours la même ? Où la mettrais-tu ?

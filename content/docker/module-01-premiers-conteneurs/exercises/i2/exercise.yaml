@@ -1,0 +1,16 @@
+type: intermediaire
+title: Une image, deux conteneurs
+summary: Interroger les métadonnées d'une image, puis prouver que modifier un conteneur ne modifie pas son image.
+competences: [m1-image-conteneur, m1-inspect, m1-cycle-de-vie]
+hints:
+  - level: comprehension
+    text: Les trois valeurs de reponses.env décrivent-elles un conteneur ou une image ? Quelle variante de la commande inspect vise ce type d'objet ?
+  - level: demarche
+    text: Pour LAYERS, as-tu comparé deux façons de compter les couches ? Donnent-elles le même nombre ? Laquelle correspond aux couches de système de fichiers ?
+  - level: zone
+    text: Pour modifier la page servie sans montage, de quoi as-tu besoin — un conteneur arrêté ou en marche ? Quel fichier nginx sert-il, et où se trouve-t-il dans l'image ?
+  - level: concept
+    text: Où se retrouve une modification faite dans un conteneur, selon le cours ? Qu'est-ce que ça implique pour un second conteneur lancé depuis la même image ?
+review:
+  - Que montre `docker diff dojo-m1-i2` ? Qu'est-ce que ça te dit sur la couche inscriptible ?
+  - Pourquoi nginx utilise-t-il un signal d'arrêt différent de SIGTERM ? Qu'est-ce qui change pour `docker stop` ?

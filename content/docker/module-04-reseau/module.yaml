@@ -1,0 +1,8 @@
+title: Réseau
+competences:
+  - id: m4-bridge
+    text: Je sais expliquer la différence entre le bridge par défaut et un réseau utilisateur.
+  - id: m4-dns
+    text: Je sais faire communiquer des conteneurs par leur nom grâce au DNS intégré.
+  - id: m4-ports
+    text: Je sais distinguer un port exposé d'un port publié, et choisir l'interface d'écoute.

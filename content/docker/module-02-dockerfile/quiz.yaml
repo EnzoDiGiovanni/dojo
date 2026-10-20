@@ -1,0 +1,81 @@
+questions:
+  - id: q-expose
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : une image avec `EXPOSE 8000`, lancée par `docker run -d img`, est joignable sur le port 8000 de l'hôte."
+    options:
+      - text: Vrai
+        relance: Qu'est-ce qui, au module 1, rendait un port du conteneur joignable depuis l'hôte ? EXPOSE fait-il partie de docker run ?
+      - text: Faux
+        correct: true
+  - id: q-secret-layer
+    type: qcm
+    prompt: |
+      Un Dockerfile contient `COPY . .` puis, plus bas, `RUN rm -f .env`. Le fichier .env contenait une clé d'API. Est-elle dans l'image ?
+    options:
+      - text: Oui, elle reste dans la couche créée par COPY, extractible par quiconque a l'image.
+        correct: true
+      - text: Non, RUN rm l'a supprimée de l'image.
+        relance: Une couche déjà créée peut-elle être modifiée par une instruction suivante ? Qu'ajoute réellement RUN rm à l'image ?
+      - text: Non, Docker ignore automatiquement les fichiers .env.
+        relance: Quel mécanisme exclut des fichiers du contexte de build ? Est-il automatique ?
+  - id: q-arg-env
+    type: prediction
+    prompt: Que renvoie `docker run --rm img sh -c 'echo "[$REV]"'` pour une image construite avec `--build-arg REV=42` ?
+    code: |
+      FROM alpine:3.19
+      ARG REV
+      RUN echo "build $REV" > /build.txt
+      CMD ["sh"]
+    options:
+      - text: "[]"
+        correct: true
+      - text: "[42]"
+        relance: Quelle est la durée de vie d'un ARG ? Quelle instruction rend une valeur visible dans les conteneurs ?
+      - text: Une erreur, car REV n'est pas défini.
+        relance: Que fait `echo` d'une variable non définie dans un shell ? Est-ce une erreur ?
+  - id: q-entrypoint-cmd
+    type: prediction
+    prompt: Qu'exécute `docker run img --dry-run` ?
+    code: |
+      ENTRYPOINT ["php", "bin/migrate"]
+      CMD ["--all"]
+    options:
+      - text: php bin/migrate --dry-run
+        correct: true
+      - text: php bin/migrate --all --dry-run
+        relance: D'après la troisième ligne du tableau, les arguments de docker run s'ajoutent-ils au CMD, ou le remplacent-ils ?
+      - text: --dry-run
+        relance: Que devient l'ENTRYPOINT quand on passe des arguments à docker run ? Est-il remplacé comme CMD ?
+      - text: php bin/migrate --all
+        relance: Les arguments passés à docker run sont-ils ignorés avec la forme exec ?
+  - id: q-pid1
+    type: qcm
+    prompt: Un conteneur met systématiquement 10 secondes à s'arrêter avec `docker stop` et finit avec le code 137. Quelle est l'explication la plus probable ?
+    options:
+      - text: Le processus qui reçoit le signal d'arrêt (PID 1) ne termine pas l'application, qui est tuée par SIGKILL après le délai.
+        correct: true
+      - text: L'application met 10 secondes à fermer ses connexions proprement.
+        relance: Si l'application s'arrêtait proprement, même lentement, avec quel code de sortie se terminerait-elle ? Que signifie 137 ?
+      - text: Docker attend toujours 10 secondes avant d'arrêter un conteneur.
+        relance: Docker attend-il 10 secondes si le processus se termine dès réception du signal ? Que se passe-t-il au bout du délai ?
+  - id: q-cache-order
+    type: qcm
+    prompt: Quel ordre minimise le temps de rebuild quand tu modifies souvent le code et rarement les dépendances ?
+    options:
+      - text: copier le fichier de dépendances et son lockfile → installer les dépendances → copier le reste du code
+        correct: true
+      - text: copier tout le code → installer les dépendances
+        relance: Quand tu modifies un fichier de code, quelle étape voit son cache invalidé en premier, et qu'arrive-t-il aux étapes suivantes ?
+      - text: installer les dépendances → copier le fichier de dépendances → copier le code
+        relance: L'installation peut-elle fonctionner si le fichier qui liste les dépendances n'est pas encore dans l'image ?
+  - id: q-entrypoint-exec
+    type: qcm
+    prompt: Dans un script d'entrée, à quoi sert `exec "$@"` en dernière ligne ?
+    options:
+      - text: À remplacer le shell par la commande reçue en arguments, qui devient PID 1 et reçoit les signaux.
+        correct: true
+      - text: À exécuter la commande en arrière-plan pour que le script se termine.
+        relance: Si la commande tournait en arrière-plan et que le script se terminait, que deviendrait le conteneur ?
+      - text: À rendre le script exécutable.
+        relance: Qu'est-ce qui rend un fichier exécutable sous Unix ? Est-ce une instruction à l'intérieur du script ?

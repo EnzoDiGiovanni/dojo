@@ -1,0 +1,10 @@
+title: Prêt pour la production
+competences:
+  - id: m7-pid1
+    text: Je sais expliquer le rôle du PID 1 et garantir un arrêt propre (signaux, init).
+  - id: m7-healthcheck
+    text: Je sais écrire un healthcheck pertinent et l'exploiter.
+  - id: m7-ressources
+    text: Je sais limiter les ressources (mémoire, CPU) et choisir une politique de redémarrage.
+  - id: m7-logs
+    text: Je sais configurer et exploiter les logs d'un conteneur.

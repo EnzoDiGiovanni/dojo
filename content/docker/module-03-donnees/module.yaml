@@ -1,0 +1,8 @@
+title: Persister les données
+competences:
+  - id: m3-volumes
+    text: Je sais choisir entre volume nommé, bind mount et tmpfs selon le besoin.
+  - id: m3-cycle-donnees
+    text: Je sais ce qui survit (ou non) à la suppression d'un conteneur, et sauvegarder/restaurer un volume.
+  - id: m3-permissions
+    text: Je sais diagnostiquer et résoudre un problème de permissions UID/GID entre l'hôte et le conteneur.

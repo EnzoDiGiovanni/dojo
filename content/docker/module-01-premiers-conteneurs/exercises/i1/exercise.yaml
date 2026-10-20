@@ -1,0 +1,16 @@
+type: intermediaire
+title: Configurer un service
+summary: Lancer un service configuré par variables d'environnement, publié en local uniquement, avec la bonne politique de redémarrage.
+competences: [m1-configuration, m1-inspect]
+hints:
+  - level: comprehension
+    text: Reformule chaque exigence de la consigne avec tes mots. Laquelle concerne Docker, laquelle concerne le programme qui tourne dans le conteneur ?
+  - level: demarche
+    text: La documentation de l'image indique comment changer le nom affiché et le port d'écoute. Où l'as-tu cherchée, et qu'y as-tu trouvé ?
+  - level: zone
+    text: Si le service écoute désormais sur un autre port à l'intérieur du conteneur, que doit-il changer dans ta publication de port ?
+  - level: concept
+    text: Parmi les politiques de redémarrage du cours, laquelle fait la différence entre un arrêt que tu as demandé et un redémarrage du daemon ? Et comment restreindre une publication à une seule interface ?
+review:
+  - Comment vérifierais-tu, sans le site, que ta politique de redémarrage fonctionne vraiment quand le processus plante ?
+  - Pourquoi changer une variable d'environnement oblige-t-il à recréer le conteneur plutôt qu'à le redémarrer ?

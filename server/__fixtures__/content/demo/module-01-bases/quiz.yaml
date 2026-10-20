@@ -1,0 +1,14 @@
+questions:
+  - id: q1
+    type: qcm
+    prompt: Quiz 1
+    options:
+      - { text: faux, relance: Pourquoi ? }
+      - { text: vrai, correct: true }
+  - id: q2
+    type: vrai-faux
+    justify: true
+    prompt: Quiz 2
+    options:
+      - { text: Vrai, correct: true }
+      - { text: Faux, relance: Sûr ? }
