@@ -3,13 +3,232 @@
   "subjects": {
     "docker": {
       "startedAt": "2026-10-20T14:36:55.990Z",
-      "modules": {},
+      "modules": {
+        "1": {
+          "comprehension": {
+            "c-couche-inscriptible": {
+              "attempts": 1,
+              "firstTry": true,
+              "solved": true
+            },
+            "c-processus-principal": {
+              "attempts": 3,
+              "firstTry": false,
+              "solved": true
+            },
+            "c-ordre-options": {
+              "attempts": 4,
+              "firstTry": false,
+              "solved": true,
+              "justification": "la commande publie le port sur la partie gauche à l'hote"
+            }
+          },
+          "quiz": {
+            "q-run-decompose": {
+              "attempts": 1,
+              "firstTry": true,
+              "solved": true
+            },
+            "q-exit-137": {
+              "attempts": 2,
+              "firstTry": false,
+              "solved": true
+            },
+            "q-stop-kill": {
+              "attempts": 2,
+              "firstTry": false,
+              "solved": true
+            },
+            "q-port-interface": {
+              "attempts": 2,
+              "firstTry": false,
+              "solved": true
+            },
+            "q-exec-arrete": {
+              "attempts": 2,
+              "firstTry": false,
+              "solved": true
+            },
+            "q-restart-policy": {
+              "attempts": 1,
+              "firstTry": true,
+              "solved": true
+            },
+            "q-nom-conflit": {
+              "attempts": 1,
+              "firstTry": true,
+              "solved": true,
+              "justification": "il faudrait supprimé le conteneur avant"
+            }
+          },
+          "exercises": {
+            "a1": {
+              "checkRuns": 2,
+              "hintsRevealed": 0,
+              "checksSinceHint": 2,
+              "tried": [],
+              "startedAt": "2026-10-27T17:45:01.785Z",
+              "lastCheck": {
+                "at": "2026-10-27T18:03:33.568Z",
+                "results": [
+                  {
+                    "id": "running",
+                    "label": "Un conteneur nommé `dojo-m1-a1`, créé depuis l'image `nginx:alpine`, est en cours d'exécution",
+                    "ok": true
+                  },
+                  {
+                    "id": "http",
+                    "label": "http://127.0.0.1:47101 répond avec un code 200",
+                    "ok": true
+                  }
+                ]
+              },
+              "passedAt": "2026-10-27T18:03:33.568Z"
+            },
+            "a2": {
+              "checkRuns": 3,
+              "hintsRevealed": 0,
+              "checksSinceHint": 3,
+              "tried": [],
+              "startedAt": "2026-10-27T18:05:17.928Z",
+              "lastCheck": {
+                "at": "2026-10-27T18:21:25.607Z",
+                "results": [
+                  {
+                    "id": "token",
+                    "label": "`token.txt` contient le jeton stocké dans `/srv/dojo/token` du conteneur",
+                    "ok": true
+                  },
+                  {
+                    "id": "code",
+                    "label": "`code.txt` contient le code secret affiché une seule fois dans les logs",
+                    "ok": true
+                  },
+                  {
+                    "id": "ip",
+                    "label": "`ip.txt` contient l'adresse IP du conteneur",
+                    "ok": true
+                  }
+                ]
+              },
+              "passedAt": "2026-10-27T18:21:25.609Z"
+            },
+            "a3": {
+              "checkRuns": 2,
+              "hintsRevealed": 0,
+              "checksSinceHint": 2,
+              "tried": [],
+              "startedAt": "2026-10-27T18:27:07.289Z",
+              "lastCheck": {
+                "at": "2026-10-27T18:54:03.374Z",
+                "results": [
+                  {
+                    "id": "release",
+                    "label": "`release.txt` contient la version d'Alpine de l'image `alpine:3.20`",
+                    "ok": true
+                  },
+                  {
+                    "id": "no-leftover",
+                    "label": "Aucun conteneur arrêté issu de `alpine:3.20` ne traîne sur ta machine",
+                    "ok": true
+                  },
+                  {
+                    "id": "web-stopped",
+                    "label": "Le conteneur `dojo-m1-a3-web` existe et est arrêté",
+                    "ok": true
+                  },
+                  {
+                    "id": "web-exit-code",
+                    "label": "`dojo-m1-a3-web` s'est terminé avec le code de sortie 0",
+                    "ok": true
+                  }
+                ]
+              },
+              "passedAt": "2026-10-27T18:54:03.376Z"
+            },
+            "i1": {
+              "checkRuns": 3,
+              "hintsRevealed": 0,
+              "checksSinceHint": 3,
+              "tried": [],
+              "startedAt": "2026-10-28T07:41:57.923Z",
+              "lastCheck": {
+                "at": "2026-10-28T08:02:01.635Z",
+                "results": [
+                  {
+                    "id": "running",
+                    "label": "`dojo-m1-i1` tourne depuis l'image `traefik/whoami:v1.10`",
+                    "ok": true
+                  },
+                  {
+                    "id": "http",
+                    "label": "http://127.0.0.1:47102 répond et la page contient `Name: dojo`",
+                    "ok": true
+                  },
+                  {
+                    "id": "inner-port",
+                    "label": "Le serveur écoute sur le port 9000 à l'intérieur du conteneur",
+                    "ok": true
+                  },
+                  {
+                    "id": "loopback",
+                    "label": "Le port n'est publié que sur l'interface locale 127.0.0.1",
+                    "ok": true
+                  },
+                  {
+                    "id": "restart",
+                    "label": "La politique de redémarrage correspond au besoin exprimé",
+                    "ok": true
+                  }
+                ]
+              },
+              "passedAt": "2026-10-28T08:02:01.636Z"
+            }
+          }
+        }
+      },
       "results": [
         {
           "date": "2026-10-20T14:36:55.991Z",
           "module": 1,
           "activity": "Diagnostic",
           "result": "1/5 — départ suggéré : module 1"
+        },
+        {
+          "date": "2026-10-27T17:44:20.749Z",
+          "module": 1,
+          "activity": "Questions de compréhension",
+          "result": "1/3 au premier essai"
+        },
+        {
+          "date": "2026-10-27T18:03:33.568Z",
+          "module": 1,
+          "activity": "application a1 — Publier un serveur web",
+          "result": "réussi (2 vérification(s), 0 indice(s))"
+        },
+        {
+          "date": "2026-10-27T18:21:25.609Z",
+          "module": 1,
+          "activity": "application a2 — Fouiller un conteneur",
+          "result": "réussi (3 vérification(s), 0 indice(s))"
+        },
+        {
+          "date": "2026-10-27T18:54:03.376Z",
+          "module": 1,
+          "activity": "application a3 — Cycle de vie",
+          "result": "réussi (2 vérification(s), 0 indice(s))"
+        },
+        {
+          "date": "2026-10-27T19:02:34.345Z",
+          "module": 1,
+          "activity": "Quiz",
+          "result": "3/7 au premier essai"
+        },
+        {
+          "date": "2026-10-28T08:02:01.636Z",
+          "module": 1,
+          "activity": "intermediaire i1 — Configurer un service",
+          "result": "réussi (3 vérification(s), 0 indice(s))"
         }
       ],
       "journal": [],
