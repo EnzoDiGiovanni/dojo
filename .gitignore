@@ -10,3 +10,6 @@ formation/**/node_modules/
 .idea/
 *.iml
 .vscode/
+
+# Claude Code personal settings
+.claude/settings.local.json

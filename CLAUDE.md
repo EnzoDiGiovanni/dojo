@@ -25,6 +25,8 @@ Hono server on 127.0.0.1 that runs real `docker` commands to verify the learner'
 
 ## Writing content
 
+- Load the `coach-formation` skill (shipped in `.claude/skills/coach-formation/`) before writing or extending
+  a subject, module, course, quiz or exercise: its progression and exercise types are the reference.
 - Course examples must differ from exercise material (module 2: PHP in the course, Node/Python in exercises).
 - Each `check.ts` criterion label must match a bullet of "## Critères de réussite" in CONSIGNE.md, verbatim.
 - Exercises name their resources (`dojo-m<N>-<id>`, images `dojo/m<N>-<id>:1.0`) and use host ports 47NXX.
