@@ -1,0 +1,12 @@
+{
+  "name": "dojo-m2-i1",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "dayjs": "1.11.23"
+  }
+}

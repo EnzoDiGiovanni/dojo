@@ -12,8 +12,8 @@
 
 | Module | Compétences (« Je sais… ») | Statut |
 |---|---|---|
-| 1. Premiers conteneurs | 🔄 Je sais expliquer la différence entre une image et un conteneur, et ce que fait réellement `docker run`.<br>🔄 Je sais piloter le cycle de vie d'un conteneur (run, ps, stop, kill, rm, --rm) et lire ses logs ou y exécuter une commande.<br>🔄 Je sais publier un port et passer une configuration (variables d'environnement, arguments, politique de redémarrage) à un conteneur.<br>🔄 Je sais interroger Docker avec `inspect` et `--format` pour obtenir une information précise sur une image ou un conteneur. | 🔄 en cours |
-| 2. Écrire un Dockerfile | ⏳ Je sais écrire un Dockerfile (FROM, WORKDIR, COPY, RUN, ENV, ARG, EXPOSE, CMD) et construire une image taguée.<br>⏳ Je sais ordonner les instructions d'un Dockerfile pour tirer parti du cache de build.<br>⏳ Je sais combiner ENTRYPOINT et CMD, choisir entre forme exec et forme shell, et j'en connais l'impact sur les arguments et les signaux.<br>⏳ Je sais contrôler le contexte de build pour que rien d'indésirable ne finisse dans l'image (.dockerignore). | ⏳ à venir |
+| 1. Premiers conteneurs | ✅ Je sais expliquer la différence entre une image et un conteneur, et ce que fait réellement `docker run`.<br>✅ Je sais piloter le cycle de vie d'un conteneur (run, ps, stop, kill, rm, --rm) et lire ses logs ou y exécuter une commande.<br>✅ Je sais publier un port et passer une configuration (variables d'environnement, arguments, politique de redémarrage) à un conteneur.<br>✅ Je sais interroger Docker avec `inspect` et `--format` pour obtenir une information précise sur une image ou un conteneur. | ✅ validé |
+| 2. Écrire un Dockerfile | 🔄 Je sais écrire un Dockerfile (FROM, WORKDIR, COPY, RUN, ENV, ARG, EXPOSE, CMD) et construire une image taguée.<br>🔄 Je sais ordonner les instructions d'un Dockerfile pour tirer parti du cache de build.<br>🔄 Je sais combiner ENTRYPOINT et CMD, choisir entre forme exec et forme shell, et j'en connais l'impact sur les arguments et les signaux.<br>🔄 Je sais contrôler le contexte de build pour que rien d'indésirable ne finisse dans l'image (.dockerignore). | 🔄 en cours |
 | 3. Persister les données | ⏳ Je sais choisir entre volume nommé, bind mount et tmpfs selon le besoin.<br>⏳ Je sais ce qui survit (ou non) à la suppression d'un conteneur, et sauvegarder/restaurer un volume.<br>⏳ Je sais diagnostiquer et résoudre un problème de permissions UID/GID entre l'hôte et le conteneur. | 📝 à rédiger |
 | 4. Réseau | ⏳ Je sais expliquer la différence entre le bridge par défaut et un réseau utilisateur.<br>⏳ Je sais faire communiquer des conteneurs par leur nom grâce au DNS intégré.<br>⏳ Je sais distinguer un port exposé d'un port publié, et choisir l'interface d'écoute. | 📝 à rédiger |
 | 5. Docker Compose | ⏳ Je sais décrire services, réseaux et volumes dans un fichier compose et piloter la stack.<br>⏳ Je sais gérer la configuration (environment, fichier .env, interpolation) sans fuiter de secrets.<br>⏳ Je sais ordonner le démarrage avec depends_on et des healthchecks.<br>⏳ Je sais gérer des variantes d'environnement avec des fichiers d'override et des profils. | 📝 à rédiger |
@@ -25,8 +25,8 @@ Statuts des compétences : ✅ validée seul · 🟠 réussie seul, explication 
 
 ## Où on en est
 
-- **Module actuel :** 1 (Premiers conteneurs) — étape : intermédiaire (étapes terminées : Cours, Application, Quiz)
-- **Prochain exercice :** `formation/docker/module-1/exercice-i2/CONSIGNE.md` — Intermédiaire — Une image, deux conteneurs
+- **Module actuel :** 2 (Écrire un Dockerfile) — étape : intermédiaire (étapes terminées : Cours, Application, Quiz)
+- **Prochain exercice :** `formation/docker/module-2/exercice-i2/CONSIGNE.md` — Intermédiaire — Script de démarrage, version et arguments
 
 ## Résultats
 
@@ -39,6 +39,17 @@ Statuts des compétences : ✅ validée seul · 🟠 réussie seul, explication 
 | 2026-10-27 | 1 | application a3 — Cycle de vie | réussi (2 vérification(s), 0 indice(s)) |
 | 2026-10-27 | 1 | Quiz | 3/7 au premier essai |
 | 2026-10-28 | 1 | intermediaire i1 — Configurer un service | réussi (3 vérification(s), 0 indice(s)) |
+| 2026-10-28 | 1 | intermediaire i2 — Une image, deux conteneurs | réussi (5 vérification(s), 0 indice(s)) |
+| 2026-10-29 | 1 | defi d1 — La vitrine de la boulangerie | réussi (2 vérification(s), 0 indice(s)) |
+| 2026-10-29 | 1 | validation v1 — Validation — un service d'écho | réussi (2 vérification(s), sans aide) |
+| 2026-10-29 | 1 | Validation v1 | critères réussis seul, explications à défendre en séance coach |
+| 2026-10-30 | 1 | Validation v1 (coach) | explications défendues : compétences validées |
+| 2026-10-30 | 2 | Questions de compréhension | 2/3 au premier essai |
+| 2026-10-30 | 2 | application a1 — Premier Dockerfile | réussi (1 vérification(s), 0 indice(s)) |
+| 2026-10-30 | 2 | application a2 — Faire travailler le cache | réussi (1 vérification(s), 0 indice(s)) |
+| 2026-10-30 | 2 | application a3 — Une image qui se comporte comme une commande | réussi (1 vérification(s), 0 indice(s)) |
+| 2026-10-30 | 2 | Quiz | 3/7 au premier essai |
+| 2026-11-04 | 2 | intermediaire i1 — Ce qui n'a rien à faire dans l'image | réussi (8 vérification(s), 0 indice(s)) |
 
 ## Points de vigilance
 
@@ -48,6 +59,11 @@ Statuts des compétences : ✅ validée seul · 🟠 réussie seul, explication 
 - M1 quiz « Une application enregistre ses données en mémoire et ne les écrit sur disque que lorsqu'elle reçoit SIGTERM. Que se passe-t-il pour ces données avec `docker kill app` ? » : raté au premier essai (2 essais)
 - M1 quiz « Tu lances `docker run -d -p 8080:80 httpd:2.4-alpine` sur ton portable, connecté au wifi d'un café. Qui peut joindre ce serveur ? » : raté au premier essai (2 essais)
 - M1 quiz « Que se passe-t-il ? » : raté au premier essai (2 essais)
+- M2 compréhension « Vrai ou faux : avec `ENTRYPOINT php bin/console` (forme shell), `docker run img cache:clear` exécute `php bin/console cache:clear`. » : raté au premier essai (2 essais)
+- M2 quiz « Que renvoie `docker run --rm img sh -c 'echo "[$REV]"'` pour une image construite avec `--build-arg REV=42` ? » : raté au premier essai (2 essais)
+- M2 quiz « Qu'exécute `docker run img --dry-run` ? » : raté au premier essai (3 essais)
+- M2 quiz « Un conteneur met systématiquement 10 secondes à s'arrêter avec `docker stop` et finit avec le code 137. Quelle est l'explication la plus probable ? » : raté au premier essai (2 essais)
+- M2 quiz « Quel ordre minimise le temps de rebuild quand tu modifies souvent le code et rarement les dépendances ? » : raté au premier essai (2 essais)
 
 ## Explications à défendre
 
@@ -55,11 +71,19 @@ Aucune pour l'instant.
 
 ## Journal des séances
 
-- Aucune séance terminée.
+- **2026-10-30** (coach) — Module 1 — explications défendues : compétences validées : Défendu en séance : rôle des options avant/après l'image (Docker vs programme) ; on-failure:3 vs unless-stopped compris après expérimentation (code 0 relancé en boucle avec unless-stopped). Vocabulaire encore approximatif.
+- **2026-10-30** (coach) — Séance coach : défense de la validation M1 réussie. Unless-stopped mal compris au départ, clarifié par l'expérience docker ps -a. À surveiller : précision du vocabulaire (arguments transmis au programme, pas exécutés). Prochaine étape : cours du module 2.
 
 ## Notes formateur
 
 <!-- Réservé au formateur : bugs volontaires des défis, cas limites attendus. Ne jamais les révéler à l'apprenant. -->
+
+### M1 · d1 — La vitrine de la boulangerie
+
+1. Publication vers le mauvais port conteneur : `-p 127.0.0.1:47110:8080` alors que nginx écoute sur 80. Symptôme : connexion réinitialisée sur 47110.
+2. `docker cp` vers `/usr/share/nginx/index.html` au lieu de `/usr/share/nginx/html/index.html`. Symptôme : la page par défaut de nginx s'affiche une fois le bug 1 corrigé.
+3. `-e WHOAMI_NAME=api` placé après le nom de l'image : transmis à whoami comme argument. Symptôme : le conteneur API s'arrête aussitôt (code 2), `docker logs` montre « flag provided but not defined: -e ».
+4. Script non idempotent : la seconde exécution échoue sur le conflit de nom (`set -e` arrête le script). Correction attendue : supprimer les conteneurs existants en début de script (ex. `docker rm -f … 2>/dev/null || true`).
 
 ## Consignes pour le coach
 

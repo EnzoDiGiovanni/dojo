@@ -183,6 +183,328 @@
                 ]
               },
               "passedAt": "2026-10-28T08:02:01.636Z"
+            },
+            "i2": {
+              "checkRuns": 5,
+              "hintsRevealed": 0,
+              "checksSinceHint": 5,
+              "tried": [],
+              "startedAt": "2026-10-28T13:38:59.727Z",
+              "lastCheck": {
+                "at": "2026-10-28T14:14:00.771Z",
+                "results": [
+                  {
+                    "id": "layers",
+                    "label": "`LAYERS` correspond au nombre de couches de `nginx:alpine`",
+                    "ok": true
+                  },
+                  {
+                    "id": "cmd",
+                    "label": "`CMD` correspond à la commande par défaut de `nginx:alpine`",
+                    "ok": true
+                  },
+                  {
+                    "id": "stop-signal",
+                    "label": "`STOP_SIGNAL` correspond au signal d'arrêt de `nginx:alpine`",
+                    "ok": true
+                  },
+                  {
+                    "id": "custom",
+                    "label": "`dojo-m1-i2` sert sur le port 47103 une page contenant `dojo`, sans aucun montage",
+                    "ok": true
+                  },
+                  {
+                    "id": "original",
+                    "label": "`dojo-m1-i2-b` sert sur le port 47104 la page d'accueil d'origine de nginx",
+                    "ok": true
+                  }
+                ]
+              },
+              "passedAt": "2026-10-28T14:14:00.773Z"
+            },
+            "d1": {
+              "checkRuns": 2,
+              "hintsRevealed": 0,
+              "checksSinceHint": 2,
+              "tried": [],
+              "startedAt": "2026-10-28T14:26:34.071Z",
+              "lastCheck": {
+                "at": "2026-10-29T08:05:15.840Z",
+                "results": [
+                  {
+                    "id": "site",
+                    "label": "http://127.0.0.1:47110 sert la page de la boulangerie (contient « Boulangerie Dojo »)",
+                    "ok": true
+                  },
+                  {
+                    "id": "api",
+                    "label": "http://127.0.0.1:47111 répond et affiche `Name: api`",
+                    "ok": true
+                  },
+                  {
+                    "id": "running",
+                    "label": "Les conteneurs `dojo-m1-d1-web` et `dojo-m1-d1-api` sont tous les deux en cours d'exécution",
+                    "ok": true
+                  },
+                  {
+                    "id": "idempotent",
+                    "label": "Relancer `sh run.sh` alors que la stack tourne se termine sans erreur, et les deux services répondent ensuite",
+                    "ok": true
+                  }
+                ]
+              },
+              "passedAt": "2026-10-29T08:05:15.841Z"
+            },
+            "v1": {
+              "checkRuns": 2,
+              "hintsRevealed": 0,
+              "checksSinceHint": 2,
+              "tried": [],
+              "startedAt": "2026-10-29T10:35:21.044Z",
+              "lastCheck": {
+                "at": "2026-10-29T11:05:24.470Z",
+                "results": [
+                  {
+                    "id": "running",
+                    "label": "`dojo-m1-v1` tourne depuis l'image `hashicorp/http-echo:1.0`",
+                    "ok": true
+                  },
+                  {
+                    "id": "http",
+                    "label": "http://127.0.0.1:47120 renvoie exactement `dojo-validation`",
+                    "ok": true
+                  },
+                  {
+                    "id": "inner-port",
+                    "label": "Le serveur écoute sur le port 5000 à l'intérieur du conteneur",
+                    "ok": true
+                  },
+                  {
+                    "id": "loopback",
+                    "label": "Le port n'est publié que sur l'interface locale 127.0.0.1",
+                    "ok": true
+                  },
+                  {
+                    "id": "restart",
+                    "label": "Le conteneur redémarre en cas d'échec, au plus 3 fois, et jamais après une sortie normale",
+                    "ok": true
+                  },
+                  {
+                    "id": "infos",
+                    "label": "`infos.env` contient l'adresse IP du conteneur et l'identifiant court de son image",
+                    "ok": true
+                  },
+                  {
+                    "id": "no-leftover",
+                    "label": "Aucun conteneur arrêté issu de `hashicorp/http-echo:1.0` ne traîne",
+                    "ok": true
+                  }
+                ]
+              },
+              "passedAt": "2026-10-29T11:05:24.472Z",
+              "justifications": [
+                "car il faut préciser que les réglages sont pour le serveur et non pas le container",
+                "On failure empêche un restart au bon du nombre de fois dicté \n\nUnless stopped restart tout le temps sauf si des daemon restart"
+              ],
+              "explanation": {
+                "verdict": "ok",
+                "at": "2026-10-30T14:17:06.543Z",
+                "note": "Défendu en séance : rôle des options avant/après l'image (Docker vs programme) ; on-failure:3 vs unless-stopped compris après expérimentation (code 0 relancé en boucle avec unless-stopped). Vocabulaire encore approximatif."
+              }
+            }
+          }
+        },
+        "2": {
+          "comprehension": {
+            "c-run-vs-cmd": {
+              "attempts": 1,
+              "firstTry": true,
+              "solved": true
+            },
+            "c-cache-cascade": {
+              "attempts": 1,
+              "firstTry": true,
+              "solved": true
+            },
+            "c-exec-form": {
+              "attempts": 2,
+              "firstTry": false,
+              "solved": true,
+              "justification": "Docker ajoute les arguments de docker run à la commande ENTRYPOINT."
+            }
+          },
+          "quiz": {
+            "q-expose": {
+              "attempts": 1,
+              "firstTry": true,
+              "solved": true,
+              "justification": "il document seulement le port d'écoute il ne publie rien"
+            },
+            "q-secret-layer": {
+              "attempts": 1,
+              "firstTry": true,
+              "solved": true
+            },
+            "q-arg-env": {
+              "attempts": 2,
+              "firstTry": false,
+              "solved": true
+            },
+            "q-entrypoint-cmd": {
+              "attempts": 3,
+              "firstTry": false,
+              "solved": true
+            },
+            "q-pid1": {
+              "attempts": 2,
+              "firstTry": false,
+              "solved": true
+            },
+            "q-cache-order": {
+              "attempts": 2,
+              "firstTry": false,
+              "solved": true
+            },
+            "q-entrypoint-exec": {
+              "attempts": 1,
+              "firstTry": true,
+              "solved": true
+            }
+          },
+          "exercises": {
+            "a1": {
+              "checkRuns": 1,
+              "hintsRevealed": 0,
+              "checksSinceHint": 1,
+              "tried": [],
+              "startedAt": "2026-10-30T14:23:09.004Z",
+              "lastCheck": {
+                "at": "2026-10-30T14:52:34.363Z",
+                "results": [
+                  {
+                    "id": "image",
+                    "label": "L'image `dojo/m2-a1:1.0` existe et est construite sur `node:22-alpine`",
+                    "ok": true
+                  },
+                  {
+                    "id": "workdir",
+                    "label": "L'application est installée dans un répertoire de travail dédié, pas à la racine",
+                    "ok": true,
+                    "observed": "Répertoire de travail : /app"
+                  },
+                  {
+                    "id": "default-cmd",
+                    "label": "L'image démarre le serveur sans commande explicite",
+                    "ok": true
+                  },
+                  {
+                    "id": "container",
+                    "label": "Le conteneur `dojo-m2-a1`, lancé depuis `dojo/m2-a1:1.0`, répond « Bonjour depuis dojo-m2 » sur http://127.0.0.1:47201",
+                    "ok": true
+                  }
+                ]
+              },
+              "passedAt": "2026-10-30T14:52:34.364Z"
+            },
+            "a2": {
+              "checkRuns": 1,
+              "hintsRevealed": 0,
+              "checksSinceHint": 1,
+              "tried": [],
+              "startedAt": "2026-10-30T15:10:21.308Z",
+              "lastCheck": {
+                "at": "2026-10-30T15:20:43.053Z",
+                "results": [
+                  {
+                    "id": "build",
+                    "label": "Le Dockerfile du dossier se construit sans erreur",
+                    "ok": true
+                  },
+                  {
+                    "id": "cache",
+                    "label": "Après une modification de `server.js` seul, l'étape `npm ci` est servie par le cache",
+                    "ok": true
+                  },
+                  {
+                    "id": "serve",
+                    "label": "L'image construite démarre et répond sur le port 3000 du conteneur",
+                    "ok": true
+                  }
+                ]
+              },
+              "passedAt": "2026-10-30T15:20:43.054Z"
+            },
+            "a3": {
+              "checkRuns": 1,
+              "hintsRevealed": 0,
+              "checksSinceHint": 1,
+              "tried": [],
+              "startedAt": "2026-10-30T15:23:44.686Z",
+              "lastCheck": {
+                "at": "2026-10-30T15:43:28.043Z",
+                "results": [
+                  {
+                    "id": "default",
+                    "label": "Sans argument, l'image affiche `Bonjour, monde !`",
+                    "ok": true
+                  },
+                  {
+                    "id": "name",
+                    "label": "Avec l'argument `Alice`, l'image affiche `Bonjour, Alice !`",
+                    "ok": true
+                  },
+                  {
+                    "id": "shout",
+                    "label": "Avec les arguments `--shout Alice`, l'image affiche `BONJOUR, ALICE !`",
+                    "ok": true
+                  }
+                ]
+              },
+              "passedAt": "2026-10-30T15:43:28.045Z"
+            },
+            "i1": {
+              "checkRuns": 9,
+              "hintsRevealed": 0,
+              "checksSinceHint": 9,
+              "tried": [],
+              "startedAt": "2026-11-02T12:14:14.064Z",
+              "lastCheck": {
+                "at": "2026-11-04T12:39:25.523Z",
+                "results": [
+                  {
+                    "id": "serve",
+                    "label": "Un conteneur lancé depuis `dojo/m2-i1:1.0` sans argument répond sur son port 3000",
+                    "ok": true
+                  },
+                  {
+                    "id": "expose",
+                    "label": "L'image documente le port 3000",
+                    "ok": true
+                  },
+                  {
+                    "id": "node-env",
+                    "label": "L'image définit `NODE_ENV=production` par défaut",
+                    "ok": true
+                  },
+                  {
+                    "id": "no-env",
+                    "label": "L'image ne contient aucun fichier `.env`",
+                    "ok": true
+                  },
+                  {
+                    "id": "no-logs-tests",
+                    "label": "L'image ne contient ni les logs (`app.log`) ni les tests (`server.test.js`)",
+                    "ok": true
+                  },
+                  {
+                    "id": "context",
+                    "label": "Le contexte de build fait moins de 50 ko",
+                    "ok": true,
+                    "observed": "Contexte mesuré : 1.5 ko."
+                  }
+                ]
+              },
+              "passedAt": "2026-11-04T12:33:47.671Z"
             }
           }
         }
@@ -229,9 +551,86 @@
           "module": 1,
           "activity": "intermediaire i1 — Configurer un service",
           "result": "réussi (3 vérification(s), 0 indice(s))"
+        },
+        {
+          "date": "2026-10-28T14:14:00.773Z",
+          "module": 1,
+          "activity": "intermediaire i2 — Une image, deux conteneurs",
+          "result": "réussi (5 vérification(s), 0 indice(s))"
+        },
+        {
+          "date": "2026-10-29T08:05:15.841Z",
+          "module": 1,
+          "activity": "defi d1 — La vitrine de la boulangerie",
+          "result": "réussi (2 vérification(s), 0 indice(s))"
+        },
+        {
+          "date": "2026-10-29T11:05:24.472Z",
+          "module": 1,
+          "activity": "validation v1 — Validation — un service d'écho",
+          "result": "réussi (2 vérification(s), sans aide)"
+        },
+        {
+          "date": "2026-10-29T11:11:44.157Z",
+          "module": 1,
+          "activity": "Validation v1",
+          "result": "critères réussis seul, explications à défendre en séance coach"
+        },
+        {
+          "date": "2026-10-30T14:17:06.544Z",
+          "module": 1,
+          "activity": "Validation v1 (coach)",
+          "result": "explications défendues : compétences validées"
+        },
+        {
+          "date": "2026-10-30T14:22:33.291Z",
+          "module": 2,
+          "activity": "Questions de compréhension",
+          "result": "2/3 au premier essai"
+        },
+        {
+          "date": "2026-10-30T14:52:34.364Z",
+          "module": 2,
+          "activity": "application a1 — Premier Dockerfile",
+          "result": "réussi (1 vérification(s), 0 indice(s))"
+        },
+        {
+          "date": "2026-10-30T15:20:43.054Z",
+          "module": 2,
+          "activity": "application a2 — Faire travailler le cache",
+          "result": "réussi (1 vérification(s), 0 indice(s))"
+        },
+        {
+          "date": "2026-10-30T15:43:28.045Z",
+          "module": 2,
+          "activity": "application a3 — Une image qui se comporte comme une commande",
+          "result": "réussi (1 vérification(s), 0 indice(s))"
+        },
+        {
+          "date": "2026-10-30T15:51:30.572Z",
+          "module": 2,
+          "activity": "Quiz",
+          "result": "3/7 au premier essai"
+        },
+        {
+          "date": "2026-11-04T12:33:47.671Z",
+          "module": 2,
+          "activity": "intermediaire i1 — Ce qui n'a rien à faire dans l'image",
+          "result": "réussi (8 vérification(s), 0 indice(s))"
         }
       ],
-      "journal": [],
+      "journal": [
+        {
+          "date": "2026-10-30T14:17:06.544Z",
+          "source": "coach",
+          "text": "Module 1 — explications défendues : compétences validées : Défendu en séance : rôle des options avant/après l'image (Docker vs programme) ; on-failure:3 vs unless-stopped compris après expérimentation (code 0 relancé en boucle avec unless-stopped). Vocabulaire encore approximatif."
+        },
+        {
+          "date": "2026-10-30T14:17:06.905Z",
+          "source": "coach",
+          "text": "Séance coach : défense de la validation M1 réussie. Unless-stopped mal compris au départ, clarifié par l'expérience docker ps -a. À surveiller : précision du vocabulaire (arguments transmis au programme, pas exécutés). Prochaine étape : cours du module 2."
+        }
+      ],
       "profile": {
         "objective": "Devenir meilleur et pourquoi pas postuler en tant que devops",
         "rhythm": "3 soirs par semaine",
