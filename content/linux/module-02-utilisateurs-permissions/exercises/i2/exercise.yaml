@@ -1,0 +1,16 @@
+type: intermediaire
+title: Une arrivée, un départ
+summary: Faire partir un développeur sans laisser de trace dangereuse, et accueillir une stagiaire avec un compte aux règles précises.
+competences: [l2-comptes, l2-droits]
+hints:
+  - level: comprehension
+    text: "Quand marc aura disparu, que restera-t-il de lui sur le disque, et comment ces restes seront-ils affichés par `ls -l` ? Pour sami, quelles sont les quatre exigences de son compte ?"
+  - level: demarche
+    text: "Avant de supprimer quoi que ce soit, quelle commande te donne la liste de tout ce que marc possède sur le serveur ? Et dans ton archive, `tar -tzvf` montre-t-il les droits et propriétaires d'origine ?"
+  - level: zone
+    text: "Dans quel ordre as-tu fait : archiver, transférer les fichiers, supprimer le compte ? Que donne `find / -xdev -nouser` maintenant ? Pour sami, que montre `sudo chage -l sami` ?"
+  - level: concept
+    text: "Quelles options de useradd fixent l'UID et la date d'expiration ? Quelle commande force un changement de mot de passe à la prochaine connexion ?"
+review:
+  - "Pourquoi archiver le dossier de marc avec les droits d'origine ? Dans quel cas en aurais-tu besoin ?"
+  - "La clé SSH de marc a disparu avec son dossier. Où d'autre une clé à lui pourrait-elle encore ouvrir une porte sur ce serveur ?"

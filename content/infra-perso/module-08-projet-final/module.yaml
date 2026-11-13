@@ -1,0 +1,8 @@
+title: Projet final — ton infrastructure
+competences:
+  - id: p8-infrastructure
+    text: Je sais livrer une infrastructure qui héberge plusieurs applications Laravel en HTTPS, déployées par GitLab CI/CD, sauvegardées, supervisées et sécurisées.
+  - id: p8-exploitation
+    text: Je sais exploiter cette infrastructure dans la durée (mises à jour, restauration testée, réponse à incident) en m'appuyant sur ma documentation.
+  - id: p8-defense
+    text: Je sais présenter et défendre mes choix d'architecture, de sécurité et d'exploitation face à un relecteur exigeant.

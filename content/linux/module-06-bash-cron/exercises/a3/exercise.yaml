@@ -1,0 +1,16 @@
+type: application
+title: Une sonde pour la supervision
+summary: Écrire une sonde de remplissage des disques qui parle le langage des outils de supervision, fonctions et codes de retour compris.
+competences: [l6-bash]
+hints:
+  - level: comprehension
+    text: "Pour un seul point de montage, quelles sont les quatre issues possibles, et à quel code chacune correspond-elle ? Pour plusieurs, quel code faut-il garder au final ?"
+  - level: demarche
+    text: "As-tu essayé ta sonde avec des seuils choisis pour obtenir chaque état sur `/`, en regardant d'abord `df -P /` ? Que vaut `echo $?` après chaque essai ?"
+  - level: zone
+    text: "Comment extrais-tu le pourcentage de `df` : reste-t-il un `%` collé au nombre au moment de comparer ? Et quand `df` échoue sur un chemin inexistant, ta sonde s'en aperçoit-elle ?"
+  - level: concept
+    text: "Comment une fonction renvoie-t-elle un code à l'appelant, et comment l'appelant le récupère-t-il sans que `set -e` arrête tout ? Quel test compare deux nombres entiers ?"
+review:
+  - "Que renvoie ta sonde si le seuil d'avertissement est supérieur au seuil critique ? Devrait-elle l'accepter ?"
+  - "Pourquoi une sonde doit-elle répondre vite et ne jamais rester bloquée ? Que se passerait-il sur un partage réseau qui ne répond plus ?"

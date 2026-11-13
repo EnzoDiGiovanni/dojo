@@ -1,0 +1,8 @@
+title: Nginx, server blocks et virtual hosts
+competences:
+  - id: r5-installation
+    text: Je sais installer Nginx, lire l'organisation de sa configuration et la valider avant de recharger (nginx -t, reload).
+  - id: r5-server-blocks
+    text: Je sais servir plusieurs sites sur un même serveur avec des server blocks (listen, server_name, root, index, default_server).
+  - id: r5-locations
+    text: Je sais écrire des blocs location (préfixe, exact, regex, try_files) et prédire lequel traitera une requête.

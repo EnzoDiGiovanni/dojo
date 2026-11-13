@@ -1,0 +1,11 @@
+title: Paquets APT et journaux système
+competences:
+  - id: l4-apt
+    text: Je sais installer, mettre à jour, retenir et purger des paquets avec APT, et savoir quel paquet fournit quel fichier.
+  - id: l4-depots
+    text: Je sais ajouter un dépôt tiers signé proprement (keyring dédié, signed-by) et réparer un APT cassé.
+  - id: l4-journal
+    text: Je sais interroger le journal avec journalctl (unité, période, priorité, démarrage) pour reconstituer un incident.
+  - id: l4-rotation
+    text: Je sais maîtriser la place prise par les journaux (logrotate, rétention de journald).
+exercises: [a1, a2, a3, i1, i2, d1, v1]

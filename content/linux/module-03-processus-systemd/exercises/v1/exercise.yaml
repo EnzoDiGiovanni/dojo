@@ -1,0 +1,8 @@
+type: validation
+title: Validation — la facturation
+summary: Un exercice inédit, sans indice. Tout ce que tu as appris dans ce module est mobilisé.
+competences: [l3-processus, l3-systemctl, l3-units]
+justifications:
+  - "Comment as-tu identifié ce qui occupait le port 8300, et comment l'as-tu arrêté ? Pourquoi es-tu sûr qu'il ne reviendra pas au prochain démarrage ?"
+  - "Montre ton unit `facturation.service` et justifie chaque directive de la section [Service]. Laquelle aurait manqué si le service avait échoué à écrire son journal de consultations ?"
+  - "Pourquoi un timer plutôt qu'un service qui tourne en boucle avec un `sleep` ? Comment as-tu vérifié que ton expression OnCalendar tombe bien à 08:00 chaque jour ?"

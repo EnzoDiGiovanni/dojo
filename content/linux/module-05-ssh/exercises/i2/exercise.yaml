@@ -1,0 +1,16 @@
+type: intermediaire
+title: Ceux qui frappent à la porte
+summary: Mesurer les attaques dans le journal d'authentification, puis bannir automatiquement les adresses qui insistent, sans jamais bannir le bureau.
+competences: [l5-surveillance]
+hints:
+  - level: comprehension
+    text: "Dans `/var/log/auth.log.1`, combien de lignes une seule tentative échouée produit-elle ? Laquelle compter, pour ne compter chaque échec qu'une fois ?"
+  - level: demarche
+    text: "As-tu vérifié ton classement en comptant à la main les échecs d'une seule adresse avec `grep -c` ? Pour fail2ban, que montrent `fail2ban-client status sshd` et `fail2ban-client get sshd maxretry` ?"
+  - level: zone
+    text: "Tes réglages sont-ils lus ? Dans quel fichier les as-tu écrits, et fail2ban a-t-il été redémarré depuis ? Que dit `journalctl -u fail2ban` ?"
+  - level: concept
+    text: "Quelles options d'une prison fail2ban fixent le nombre d'échecs, la fenêtre de temps, la durée du bannissement et les adresses jamais bannies ? Et quel fichier ne faut-il jamais modifier ?"
+review:
+  - "Avec les mots de passe désactivés, à quoi sert encore fail2ban ? Et à quoi ne sert-il pas ?"
+  - "Si l'agence change de fournisseur Internet, que se passe-t-il le premier jour ? Comment l'éviter ?"

@@ -1,0 +1,30 @@
+questions:
+  - id: c-inodes
+    type: qcm
+    prompt: "Une application échoue avec « No space left on device », mais `df -h` montre 60 % d'utilisation sur la partition. Que vérifies-tu en premier ?"
+    options:
+      - text: "`df -i` : la partition n'a peut-être plus d'inodes."
+        correct: true
+      - text: "La mémoire avec `free -h`."
+        relance: "Le message parle-t-il de mémoire ou d'un périphérique de stockage ? Qu'est-ce qui, sur un disque, peut manquer en dehors de la place ?"
+      - text: "Rien, df se trompe parfois : il suffit de redémarrer."
+        relance: "df mesure-t-il la même chose que la ressource qui manque à l'application ? Quelle autre ressource d'un système de fichiers peut s'épuiser ?"
+  - id: c-supprime-ouvert
+    type: prediction
+    prompt: "Tu supprimes un journal de 4 Go (`rm /var/log/app/app.log`) pendant que l'application tourne et l'écrit. Que montre `df -h` juste après ?"
+    options:
+      - text: "La même occupation qu'avant : l'espace n'est libéré que quand l'application ferme le fichier."
+        correct: true
+      - text: "4 Go de moins, rm libère la place immédiatement."
+        relance: "rm supprime-t-il le contenu du fichier, ou seulement son nom dans le dossier ? Que se passe-t-il pour un contenu encore ouvert par un processus ?"
+      - text: "Une erreur, on ne peut pas supprimer un fichier ouvert."
+        relance: "Linux interdit-il de supprimer un fichier ouvert ? Que montre `lsof +L1` après ce rm ?"
+  - id: c-load
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : une charge moyenne de 3,0 signifie que le serveur est surchargé."
+    options:
+      - text: Vrai
+        relance: "À quoi faut-il comparer la charge pour savoir si elle est élevée ? Que donnerait la même charge sur un serveur à 8 cœurs ?"
+      - text: Faux
+        correct: true

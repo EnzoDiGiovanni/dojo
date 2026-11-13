@@ -1,0 +1,83 @@
+questions:
+  - id: q-categorie
+    type: qcm
+    prompt: "`rapport.txt` a les droits `----rw-r-- alice compta`. Alice, qui est aussi membre de `compta`, veut lire le fichier. Que se passe-t-il ?"
+    options:
+      - text: "Refusé : seule la catégorie propriétaire s'applique à alice, et elle n'a aucun droit."
+        correct: true
+      - text: "Elle le lit grâce aux droits du groupe."
+        relance: "Le système cumule-t-il les catégories, ou s'arrête-t-il à la première qui correspond ? Dans quel ordre les teste-t-il ?"
+      - text: "Elle le lit grâce aux droits des autres."
+        relance: "Alice fait-elle partie des « autres » pour un fichier dont elle est propriétaire ?"
+      - text: "Elle le lit, car un propriétaire peut toujours lire ses fichiers."
+        relance: "Qui, sur un système Linux, ignore réellement les droits de lecture ? Est-ce le propriétaire ?"
+  - id: q-octal
+    type: qcm
+    prompt: "Quelle commande donne à un dossier d'équipe les droits `rwxrws---` ?"
+    options:
+      - text: "chmod 2770"
+        correct: true
+      - text: "chmod 770"
+        relance: "Dans `rws`, que signifie le `s` à la place du `x` du groupe ? Quel chiffre supplémentaire l'exprime en octal ?"
+      - text: "chmod 1770"
+        relance: "Le droit 1000 concerne-t-il le groupe ? Comment s'afficherait-il dans `ls -ld` ?"
+      - text: "chmod 4770"
+        relance: "Le droit 4000 modifie-t-il le triplet du propriétaire ou celui du groupe ?"
+  - id: q-umask
+    type: prediction
+    prompt: "Avec quels droits ce fichier est-il créé ?"
+    code: |
+      umask 027
+      touch note.txt
+    options:
+      - text: "-rw-r-----"
+        correct: true
+      - text: "-rwxr-x---"
+        relance: "Un fichier ordinaire reçoit-il `x` à sa création, quel que soit le umask ? De quelle valeur de départ le umask retire-t-il des droits ?"
+      - text: "----w-rwx"
+        relance: "Le umask donne-t-il des droits, ou en retire-t-il ? Que donne-t-il, appliqué bit par bit à 666 ?"
+      - text: "-rw-rw-r--"
+        relance: "Quels droits le chiffre 2 du umask retire-t-il au groupe, et le 7 aux autres ?"
+  - id: q-setgid
+    type: prediction
+    prompt: "Le dossier `/srv/web` appartient à `root:web` avec les droits `drwxrwsr-x`. Alice (groupe principal `alice`, membre de `web`) y crée `index.html`. Quel est le groupe du fichier ?"
+    options:
+      - text: "web"
+        correct: true
+      - text: "alice"
+        relance: "Que signifie le `s` à la place du `x` dans les droits du groupe du dossier ? Que change-t-il pour ce qui est créé dedans ?"
+      - text: "root"
+        relance: "Le setgid fait-il hériter du propriétaire ou du groupe du dossier ?"
+  - id: q-sudo-joker
+    type: qcm
+    prompt: "Pourquoi la règle `support ALL=(root) NOPASSWD: /usr/bin/systemctl * nginx` est-elle dangereuse ?"
+    options:
+      - text: "Elle autorise aussi des actions comme `systemctl edit nginx`, qui ouvre un éditeur en root."
+        correct: true
+      - text: "Elle n'est pas dangereuse, elle se limite au service nginx."
+        relance: "Quelles sous-commandes de systemctl peuvent précéder `nginx` ? L'une d'elles lance-t-elle un autre programme ?"
+      - text: "Parce que NOPASSWD désactive les journaux de sudo."
+        relance: "Que change NOPASSWD exactement : la traçabilité, ou la demande de mot de passe ?"
+      - text: "Parce que le chemin /usr/bin/systemctl devrait être relatif."
+        relance: "Dans le cours, sous quelle forme les commandes doivent-elles être écrites dans une règle sudo, et pourquoi ?"
+  - id: q-nouser
+    type: qcm
+    prompt: "Après `userdel paul`, `ls -l /srv/projets` affiche `-rw-r--r-- 1004 devs plan.md`. Quel est le risque ?"
+    options:
+      - text: "Le prochain compte créé avec l'UID 1004 deviendra propriétaire de ce fichier."
+        correct: true
+      - text: "Aucun, le fichier est verrouillé tant que l'UID n'existe pas."
+        relance: "Pour le noyau, le propriétaire d'un fichier est-il un nom ou un numéro ? Que se passe-t-il si ce numéro est réattribué ?"
+      - text: "Le fichier sera supprimé au prochain redémarrage."
+        relance: "Quel mécanisme du système supprimerait automatiquement les fichiers orphelins ?"
+      - text: "Le groupe devs perd ses droits sur le fichier."
+        relance: "La suppression de paul a-t-elle modifié le groupe du fichier, ou ses droits ?"
+  - id: q-session
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : après `sudo usermod -aG docker alice`, la session SSH déjà ouverte d'alice peut immédiatement utiliser les droits du groupe docker."
+    options:
+      - text: Vrai
+        relance: "Quand les groupes d'un processus sont-ils déterminés ? Que montre `id` dans la session déjà ouverte, comparé à `id alice` ?"
+      - text: Faux
+        correct: true

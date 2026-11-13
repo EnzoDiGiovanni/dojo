@@ -1,0 +1,80 @@
+# Positioning questions: no feedback is ever shown. The first module whose question
+# is missed becomes the suggested starting point.
+questions:
+  - id: diag-chemins
+    module: 1
+    type: qcm
+    prompt: Tu es dans `/var/log/nginx`. Tu tapes `cd ../../www/html`. Où arrives-tu ?
+    options:
+      - text: Dans /var/www/html.
+        correct: true
+      - text: Dans /www/html.
+      - text: Dans /var/log/www/html.
+      - text: Nulle part, `..` ne peut pas être enchaîné.
+      - text: Je ne sais pas.
+  - id: diag-droits
+    module: 2
+    type: qcm
+    prompt: "Le dossier `/srv/data` a les droits `drwxr-x--- root equipe` et contient `rapport.txt` en `-rw-rw-rw- root root`. L'utilisatrice `lea` ne fait pas partie du groupe `equipe`. Peut-elle lire `rapport.txt` ?"
+    options:
+      - text: Non, elle ne peut pas traverser /srv/data.
+        correct: true
+      - text: Oui, le fichier est lisible par tout le monde.
+      - text: Oui, mais seulement en lecture, pas en écriture.
+      - text: Seulement si elle connaît le nom exact du fichier.
+      - text: Je ne sais pas.
+  - id: diag-enable
+    module: 3
+    type: qcm
+    prompt: Tu lances `sudo systemctl start monapp`. Le service tourne. Tu redémarres le serveur. Que devient monapp ?
+    options:
+      - text: Il ne redémarre pas tout seul, `start` ne l'a pas activé au démarrage.
+        correct: true
+      - text: Il redémarre, systemd se souvient des services qui tournaient.
+      - text: Il redémarre seulement si son unit contient `Restart=always`.
+      - text: Il est supprimé, il faut réinstaller le paquet.
+      - text: Je ne sais pas.
+  - id: diag-apt
+    module: 4
+    type: qcm
+    prompt: Quelle est la différence entre `apt remove` et `apt purge` ?
+    options:
+      - text: purge supprime aussi les fichiers de configuration du paquet.
+        correct: true
+      - text: purge supprime aussi les dépendances installées automatiquement.
+      - text: remove ne fait que désactiver le service, purge désinstalle.
+      - text: Aucune, ce sont deux alias.
+      - text: Je ne sais pas.
+  - id: diag-ssh
+    module: 5
+    type: qcm
+    prompt: Pour te connecter à un serveur par clé SSH, quel fichier dois-tu déposer sur le serveur ?
+    options:
+      - text: Ta clé publique, ajoutée au fichier ~/.ssh/authorized_keys du compte cible.
+        correct: true
+      - text: Ta clé privée, dans ~/.ssh/ du compte cible.
+      - text: Les deux clés, dans /etc/ssh/.
+      - text: La clé publique du serveur, dans ton ~/.ssh/known_hosts.
+      - text: Je ne sais pas.
+  - id: diag-cron
+    module: 6
+    type: qcm
+    prompt: "Un script fonctionne quand tu le lances à la main, mais pas depuis cron. Quelle est la cause la plus fréquente ?"
+    options:
+      - text: Cron l'exécute avec un environnement minimal (PATH réduit, autre répertoire courant).
+        correct: true
+      - text: Cron ne sait exécuter que des scripts écrits en sh.
+      - text: Cron exige que le script soit dans /etc/cron.d.
+      - text: Cron n'exécute rien tant que le serveur n'a pas redémarré.
+      - text: Je ne sais pas.
+  - id: diag-disque
+    module: 7
+    type: qcm
+    prompt: "`df -h` indique 100 % sur `/`, mais `du -sh /*` totalise beaucoup moins. Quelle explication est plausible ?"
+    options:
+      - text: Un processus garde ouvert un gros fichier qui a été supprimé.
+        correct: true
+      - text: du ne compte pas les fichiers de root.
+      - text: df compte deux fois les liens symboliques.
+      - text: Le disque est défectueux, il faut le remplacer.
+      - text: Je ne sais pas.

@@ -1,0 +1,11 @@
+title: Terminal et système de fichiers
+competences:
+  - id: l1-arborescence
+    text: Je sais où Linux range quoi (/etc, /var, /srv, /home, /usr, /tmp, /proc) et je m'y déplace avec des chemins absolus et relatifs.
+  - id: l1-fichiers
+    text: Je sais créer, copier, déplacer, archiver et lier des fichiers (mkdir -p, cp -a, mv, tar, ln -s) sans perdre de contenu.
+  - id: l1-recherche
+    text: Je sais retrouver des fichiers selon leur nom, leur âge, leur taille ou leur type avec find, et agir sur le résultat en toute sécurité.
+  - id: l1-texte
+    text: Je sais extraire une information d'un fichier texte en chaînant des commandes (grep, cut, awk, sort, uniq, wc, redirections, pipes).
+exercises: [a1, a2, a3, i1, i2, d1, v1]

@@ -1,0 +1,16 @@
+type: intermediaire
+title: Le rapport d'incident
+summary: Écrire un script qui résume un journal web en trois chiffres fiables, pièges de format compris.
+competences: [l1-texte]
+hints:
+  - level: comprehension
+    text: "Pour chacune des trois lignes du rapport, quel champ de la ligne de journal contient l'information, et quelle opération faut-il faire dessus (compter, filtrer, regrouper) ?"
+  - level: demarche
+    text: "As-tu vérifié ton compte d'erreurs 5xx autrement, par exemple en regardant une dizaine des lignes que ton filtre retient ? Sont-elles toutes de vraies erreurs ?"
+  - level: zone
+    text: "Dans les lignes retenues par ton filtre 5xx, où se trouve le nombre qui a déclenché la correspondance ? Est-ce toujours le code de statut ? Et pour l'URL, `/panier?id=3` et `/panier` sont-ils comptés ensemble ?"
+  - level: concept
+    text: "Avec awk, comment tester la valeur d'une colonne précise plutôt que toute la ligne ? Comment découper un champ sur le caractère `?` ?"
+review:
+  - "Combien de fois ton script lit-il le journal ? Sur un journal de 5 Go, est-ce que ça compte ?"
+  - "Que devrait afficher la troisième ligne si le journal ne contient aucune erreur 5xx ? Que fait ton script dans ce cas ?"

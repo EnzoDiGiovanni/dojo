@@ -1,0 +1,8 @@
+title: Concevoir et documenter l'architecture
+competences:
+  - id: p1-conception
+    text: Je sais concevoir l'architecture d'un VPS multi-applications (flux, ports, domaines, données, points uniques de défaillance) et justifier mes choix.
+  - id: p1-organisation
+    text: Je sais organiser le serveur pour plusieurs applications (arborescence, comptes, conventions de nommage) de façon prévisible.
+  - id: p1-documentation
+    text: Je sais rédiger une documentation d'exploitation (schéma, inventaire, procédures) qu'un autre administrateur peut suivre seul.

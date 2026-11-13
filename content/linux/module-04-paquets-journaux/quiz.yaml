@@ -1,0 +1,81 @@
+questions:
+  - id: q-purge
+    type: prediction
+    prompt: "Tu as modifié `/etc/redis/redis.conf`, puis tapé `sudo apt remove redis-server`, puis `sudo apt install redis-server`. Quelle configuration utilise le Redis réinstallé ?"
+    options:
+      - text: "Ta configuration modifiée, restée sur le disque."
+        correct: true
+      - text: "La configuration d'origine du paquet."
+        relance: "Que fait remove des fichiers de configuration d'un paquet ? Quelle commande les aurait supprimés ?"
+      - text: "Aucune, Redis refuse de démarrer sans configuration."
+        relance: "Que montrerait `dpkg -l redis-server` entre le remove et l'install ? Que signifie l'état rc ?"
+  - id: q-dpkg-s
+    type: qcm
+    prompt: "Une commande `pg_dump` est présente sur le serveur, tu veux savoir quel paquet l'a installée. Que tapes-tu ?"
+    options:
+      - text: "dpkg -S $(command -v pg_dump)"
+        correct: true
+      - text: "dpkg -L pg_dump"
+        relance: "dpkg -L attend-il un nom de paquet ou un nom de fichier ? Que fait-il dans le sens inverse ?"
+      - text: "apt show pg_dump"
+        relance: "pg_dump est-il le nom d'un paquet ? Que cherche apt show ?"
+      - text: "apt search pg_dump"
+        relance: "apt search cherche-t-il dans les fichiers des paquets installés, ou dans les noms et descriptions des paquets disponibles ?"
+  - id: q-trusted
+    type: qcm
+    prompt: "La documentation d'un éditeur propose `deb [trusted=yes] https://depot.editeur.example stable main`. Quel est le risque ?"
+    options:
+      - text: "APT installera depuis ce dépôt des paquets dont personne n'a vérifié la signature."
+        correct: true
+      - text: "Aucun, le dépôt utilise HTTPS."
+        relance: "HTTPS prouve-t-il que le contenu du dépôt a été produit par l'éditeur, ou seulement que la connexion vers ce serveur est chiffrée ? Que se passe-t-il si le serveur de l'éditeur est compromis ?"
+      - text: "Les paquets des autres dépôts ne seront plus vérifiés."
+        relance: "L'option entre crochets s'applique-t-elle à une ligne, ou à toute la configuration d'APT ?"
+      - text: "Le dépôt sera ignoré lors des mises à jour."
+        relance: "Que signifie trusted, littéralement ? APT ignore-t-il un dépôt qu'on lui dit de croire sur parole ?"
+  - id: q-held
+    type: qcm
+    prompt: "`sudo apt install jq` échoue avec « you have held broken packages ». Quelle est la première chose à vérifier ?"
+    options:
+      - text: "`apt-mark showhold` : un paquet retenu empêche peut-être de satisfaire une dépendance."
+        correct: true
+      - text: "Relancer la commande avec --force-yes."
+        relance: "Forcer règle-t-il la cause, ou passe-t-il outre ? Que dit le message sur l'origine du blocage ?"
+      - text: "Supprimer /var/lib/dpkg/status."
+        relance: "Que contient ce fichier ? Que deviendrait le serveur sans lui ?"
+      - text: "Redémarrer le serveur."
+        relance: "Un redémarrage modifie-t-il les dépendances d'un paquet ou la liste des paquets retenus ?"
+  - id: q-journal-volatile
+    type: qcm
+    prompt: "Après un redémarrage, `journalctl -b -1` répond « Specified boot ID not found » / « No journal boot entry found ». Que faut-il comprendre ?"
+    options:
+      - text: "Le journal n'est pas conservé sur disque : il a disparu avec le redémarrage."
+        correct: true
+      - text: "Le démarrage précédent n'a produit aucun message."
+        relance: "Un démarrage sans aucun message du noyau ni de systemd est-il plausible ? Où le journal est-il stocké quand Storage vaut volatile ?"
+      - text: "Il faut être root pour lire les démarrages précédents."
+        relance: "Le message parle-t-il d'un droit refusé, ou d'une entrée introuvable ?"
+      - text: "-b -1 désigne le démarrage en cours."
+        relance: "Que désigne -b sans argument, et -b -1 ? Que liste `journalctl --list-boots` ?"
+  - id: q-rotation-ouvert
+    type: prediction
+    prompt: "Une application garde `/var/log/app/app.log` ouvert. logrotate le renomme en `app.log.1` et crée un `app.log` vide, sans postrotate ni copytruncate. Où l'application écrit-elle ensuite ?"
+    options:
+      - text: "Dans app.log.1, qu'elle a toujours ouvert."
+        correct: true
+      - text: "Dans le nouvel app.log vide."
+        relance: "Un programme qui a ouvert un fichier le désigne-t-il ensuite par son nom, ou par le descripteur obtenu à l'ouverture ? Le renommage change-t-il ce descripteur ?"
+      - text: "Nulle part, l'application plante."
+        relance: "Le fichier ouvert a-t-il été supprimé, ou seulement renommé ? Le programme reçoit-il une erreur en écrivant ?"
+  - id: q-journal-code
+    type: qcm
+    prompt: "Où trouver le code de sortie d'un service qui vient de s'arrêter en erreur ?"
+    options:
+      - text: "Dans `systemctl status` ou dans le journal de l'unité, sur la ligne « Main process exited, code=exited, status=… »."
+        correct: true
+      - text: "Dans /var/log/dpkg.log."
+        relance: "Que journalise dpkg : l'exécution des services, ou les installations de paquets ?"
+      - text: "Dans `echo $?` juste après `systemctl status`."
+        relance: "$? contient le code de quelle commande ? Est-ce le service, ou systemctl ?"
+      - text: "Nulle part, systemd ne conserve pas cette information."
+        relance: "Qui a lancé le processus du service, et qui reçoit donc son code de sortie quand il se termine ?"

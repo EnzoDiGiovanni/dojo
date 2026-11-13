@@ -1,0 +1,8 @@
+title: GitLab CI/CD et déploiement automatisé
+competences:
+  - id: p5-pipeline
+    text: Je sais écrire un pipeline GitLab CI (stages, jobs, rules, artefacts, cache) qui teste et construit une application Laravel.
+  - id: p5-deploiement
+    text: Je sais déployer automatiquement sur le VPS depuis la CI (clé de déploiement, variables protégées, environnements) sans interruption de service.
+  - id: p5-retour-arriere
+    text: Je sais revenir à la version précédente en une commande quand un déploiement échoue.

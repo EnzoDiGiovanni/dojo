@@ -1,0 +1,80 @@
+# Positioning questions: no feedback is ever shown. The first module whose question
+# is missed becomes the suggested starting point.
+questions:
+  - id: diag-spof
+    module: 1
+    type: qcm
+    prompt: Trois applications Laravel partagent un seul conteneur MySQL sur ton VPS. Quel est le principal risque de cette architecture ?
+    options:
+      - text: Une panne ou une saturation de MySQL arrête les trois applications à la fois.
+        correct: true
+      - text: MySQL ne sait pas héberger plusieurs bases dans une même instance.
+      - text: Les applications pourront lire les sessions des autres via Redis.
+      - text: Aucun, c'est l'architecture recommandée en production.
+      - text: Je ne sais pas.
+  - id: diag-surface
+    module: 2
+    type: qcm
+    prompt: Sur un VPS fraîchement durci, quels ports devraient être joignables depuis Internet pour héberger des sites web ?
+    options:
+      - text: 22 (ou le port SSH choisi), 80 et 443.
+        correct: true
+      - text: 22, 80, 443 et 3306 pour administrer MySQL à distance.
+      - text: Tous les ports, le pare-feu est géré par Docker.
+      - text: Uniquement 443, SSH passe par HTTPS.
+      - text: Je ne sais pas.
+  - id: diag-compose-ports
+    module: 3
+    type: qcm
+    prompt: "Dans un compose de production, `mysql` déclare `ports: [\"3306:3306\"]` alors que seule l'application l'utilise. Qu'en penses-tu ?"
+    options:
+      - text: C'est inutile et dangereux, la base devient joignable depuis l'extérieur en contournant souvent UFW.
+        correct: true
+      - text: C'est obligatoire pour que l'application trouve la base.
+      - text: C'est sans risque, UFW bloque toujours les ports publiés par Docker.
+      - text: C'est nécessaire pour que les sauvegardes fonctionnent.
+      - text: Je ne sais pas.
+  - id: diag-secret-git
+    module: 4
+    type: qcm
+    prompt: Un mot de passe de base de données a été commité puis supprimé dans le commit suivant. Est-il encore exposé ?
+    options:
+      - text: Oui, il reste dans l'historique, il faut donc le changer.
+        correct: true
+      - text: Non, le commit de suppression l'efface du dépôt.
+      - text: Seulement si le dépôt est public.
+      - text: Non, GitLab masque automatiquement les mots de passe.
+      - text: Je ne sais pas.
+  - id: diag-ci-variable
+    module: 5
+    type: qcm
+    prompt: Dans GitLab CI, que signifie qu'une variable est « protected » ?
+    options:
+      - text: Elle n'est injectée que dans les pipelines des branches et tags protégés.
+        correct: true
+      - text: Sa valeur est masquée dans les logs des jobs.
+      - text: Elle est chiffrée dans le dépôt Git.
+      - text: Seul l'administrateur de l'instance peut la lire.
+      - text: Je ne sais pas.
+  - id: diag-sauvegarde
+    module: 6
+    type: qcm
+    prompt: Une tâche cron fait `mysqldump` chaque nuit depuis un an et n'a jamais signalé d'erreur. Que sais-tu de tes sauvegardes ?
+    options:
+      - text: Rien de certain tant qu'une restauration n'a pas été testée.
+        correct: true
+      - text: Qu'elles sont fiables, cron aurait signalé une erreur.
+      - text: Qu'elles sont complètes, mysqldump vérifie l'intégrité.
+      - text: Qu'elles sont restaurables, puisque le fichier n'est pas vide.
+      - text: Je ne sais pas.
+  - id: diag-supervision
+    module: 7
+    type: qcm
+    prompt: Une sonde vérifie toutes les minutes que le port 443 de ton VPS est ouvert. Quel incident peut-elle laisser passer ?
+    options:
+      - text: Une application qui renvoie des erreurs 500 alors que Nginx répond.
+        correct: true
+      - text: Un arrêt complet du serveur.
+      - text: Un pare-feu qui ferme le port 443.
+      - text: Un Nginx arrêté.
+      - text: Je ne sais pas.

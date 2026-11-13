@@ -1,0 +1,33 @@
+questions:
+  - id: c-joker-cache
+    type: prediction
+    prompt: "Le dossier `modele/` contient `index.php`, `.htaccess` et `css/`. Que contient `site/` après cette commande ?"
+    code: |
+      mkdir site
+      cp -r modele/* site/
+    options:
+      - text: "`index.php` et `css/`, mais pas `.htaccess`."
+        correct: true
+      - text: "`index.php`, `.htaccess` et `css/`."
+        relance: "Qui transforme `*` en liste de noms, `cp` ou le shell ? Quels noms le shell met-il dans cette liste ?"
+      - text: "Un dossier `modele/` contenant les trois éléments."
+        relance: "Que désigne `modele/*` : le dossier lui-même, ou ce qu'il contient ?"
+  - id: c-lien-relatif
+    type: qcm
+    prompt: "Dans `/home/ubuntu`, tu tapes `ln -s data/v2 /srv/app/courant`. Vers quel chemin `/srv/app/courant` mène-t-il ?"
+    options:
+      - text: "/srv/app/data/v2"
+        correct: true
+      - text: "/home/ubuntu/data/v2"
+        relance: "Un lien relatif est-il interprété depuis l'endroit où tu as tapé `ln`, ou depuis le dossier qui contient le lien ?"
+      - text: "/data/v2"
+        relance: "Le chemin `data/v2` commence-t-il par `/` ? Qu'est-ce que ça change à la façon dont il est résolu ?"
+  - id: c-uniq
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : `cut -d' ' -f1 acces.log | uniq -c` donne le nombre total de requêtes de chaque adresse IP."
+    options:
+      - text: Vrai
+        relance: "Si une même adresse apparaît aux lignes 1 et 3 avec une autre adresse entre les deux, combien de groupes `uniq` forme-t-il ?"
+      - text: Faux
+        correct: true

@@ -1,0 +1,16 @@
+type: application
+title: Planifier avec cron
+summary: Planifier deux tâches, l'une dans un fichier système, l'autre dans la crontab d'un utilisateur, et vérifier qu'elles tourneront vraiment.
+competences: [l6-cron]
+hints:
+  - level: comprehension
+    text: "Pour chaque tâche : quel compte l'exécute, à quels instants, et où va ce qu'elle affiche ? Lequel des deux emplacements de cron demande un champ de plus ?"
+  - level: demarche
+    text: "As-tu lancé ta commande exactement comme cron le ferait (compte, environnement vide, /bin/sh), comme le montre le cours ? Qu'est-il apparu dans le journal de la purge ?"
+  - level: zone
+    text: "Le compte qui exécute la purge a-t-il le droit d'écrire dans `/var/log/vitrine` ? Et les messages d'erreur de la commande arrivent-ils dans le journal, ou ailleurs ?"
+  - level: concept
+    text: "Que dit le cours des droits et du nom d'un fichier de /etc/cron.d, de sa dernière ligne, et de la redirection de la sortie d'erreur ?"
+review:
+  - "Comment saurais-tu, demain matin, que la purge a bien tourné cette nuit ? Où regarderais-tu ?"
+  - "Pourquoi la tâche de lea dans sa propre crontab plutôt que dans /etc/cron.d ? Qu'est-ce que ça change pour la maintenance ?"

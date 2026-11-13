@@ -1,0 +1,16 @@
+type: intermediaire
+title: Les accès de l'équipe
+summary: Ouvrir SSH aux personnes qui en ont besoin, le fermer aux autres, et révoquer une clé sans toucher aux autres.
+competences: [l5-sshd, l5-cles]
+hints:
+  - level: comprehension
+    text: "Pour chaque compte (lea, hugo, deploy, nina, ubuntu), doit-il pouvoir se connecter ? Avec quelle clé ? Qu'est-ce qui, dans le cours, permet de dire « seulement ceux-là » ?"
+  - level: demarche
+    text: "Depuis ta machine, as-tu essayé une connexion par compte après chaque changement ? Que dit `sudo journalctl -t sshd -n 10` quand une connexion est refusée, et pour quelle raison ?"
+  - level: zone
+    text: "La connexion de lea échoue alors que sa clé est en place : quels droits et quel propriétaire ont son `.ssh` et son `authorized_keys` ? La règle d'accès est-elle bien appliquée à des groupes, et ton groupe contient-il tout le monde qu'il faut ?"
+  - level: concept
+    text: "Où est rangée chaque clé autorisée d'un compte, et comment en retirer une seule ? Quelle directive de sshd fait une liste blanche de groupes ?"
+review:
+  - "Si demain un nouveau développeur arrive, quelles étapes suis-tu ? Combien touchent à la configuration de sshd ?"
+  - "Comment aurais-tu identifié la clé de l'ancien prestataire si son commentaire avait été effacé ?"

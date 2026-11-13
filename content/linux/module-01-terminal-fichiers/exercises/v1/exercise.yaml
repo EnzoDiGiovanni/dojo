@@ -1,0 +1,8 @@
+type: validation
+title: Validation — le serveur du traiteur
+summary: Un exercice inédit, sans indice. Tout ce que tu as appris dans ce module est mobilisé.
+competences: [l1-arborescence, l1-fichiers, l1-recherche, l1-texte]
+justifications:
+  - "Avant d'extraire l'archive de la version 3.0, qu'as-tu regardé, et qu'est-ce que ça t'a fait choisir comme commande d'extraction ? Qu'aurait donné la commande de l'exercice de la vitrine ?"
+  - "Ta commande de nettoyage de `media/` : pourquoi chacun de ses tests est-il nécessaire ? Donne un fichier ou un dossier du serveur qui aurait été traité à tort sans l'un d'eux."
+  - "Dans `commandes.sh`, pourquoi ne peux-tu pas obtenir le classement avec `sort | uniq -c` ? Qu'est-ce que ta commande additionne, et comment as-tu vérifié un des totaux ?"

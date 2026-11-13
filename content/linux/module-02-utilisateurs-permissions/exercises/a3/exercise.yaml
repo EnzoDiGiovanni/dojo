@@ -1,0 +1,16 @@
+type: application
+title: Un sudo sur mesure
+summary: Donner à la personne du support le droit de relancer un service et de lire les journaux, et rien de plus.
+competences: [l2-sudo]
+hints:
+  - level: comprehension
+    text: "Des deux besoins de nina, lequel exige vraiment d'agir en root ? Pour l'autre, existe-t-il un moyen qui ne passe pas par sudo ?"
+  - level: demarche
+    text: "Connecte-toi en tant que nina (`sudo -iu nina`) : qu'affiche `sudo -l` ? Et que répond `sudo -l /usr/bin/systemctl stop cron`, qu'elle ne devrait pas pouvoir faire ?"
+  - level: zone
+    text: "Ta règle autorise-t-elle des arguments précis, ou laisse-t-elle de la place (joker, commande sans argument) pour d'autres actions que `restart cron` ?"
+  - level: concept
+    text: "Dans le cours, que se passe-t-il quand une règle sudo nomme une commande sans arguments ? Et quel groupe d'Ubuntu lit les fichiers de /var/log ?"
+review:
+  - "Pourquoi éditer la règle avec `visudo -f` plutôt qu'avec `nano` ? Que se serait-il passé avec une faute de frappe ?"
+  - "Si demain nina doit aussi relancer nginx, modifieras-tu la règle de nina ou créeras-tu un groupe ? Pourquoi ?"

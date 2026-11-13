@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+# partenaire-mailer 2.1 : envoie les newsletters par le relais SMTP du partenaire.
+import datetime, os, signal, sys, time
+
+ETAT = "/var/lib/partenaire-mailer/initialise"
+JOURNAL = "/var/log/mailer/mailer.log"
+RELAIS = "smtp.partenaire.test:587"
+
+if not os.path.exists(ETAT):
+    open(ETAT, "w").close()
+    print(f"<4>relais {RELAIS} : délai dépassé, nouvelle tentative", flush=True)
+    print(f"<3>relais SMTP injoignable : {RELAIS}", file=sys.stderr, flush=True)
+    sys.exit(75)
+
+journal = None
+def ouvrir(*_):
+    global journal
+    if journal:
+        journal.close()
+    journal = open(JOURNAL, "a", buffering=1)
+
+signal.signal(signal.SIGHUP, ouvrir)
+ouvrir()
+print(f"<6>connecté au relais {RELAIS} par la route de secours", flush=True)
+n = 0
+while True:
+    n += 1
+    journal.write(f"{datetime.datetime.now().isoformat(timespec='seconds')} lot {n} : 25 courriels envoyés\n")
+    time.sleep(0.25)

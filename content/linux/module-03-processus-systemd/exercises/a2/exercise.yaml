@@ -1,0 +1,16 @@
+type: application
+title: Remettre de l'ordre dans les services
+summary: Démarrer, arrêter, activer, désactiver et interdire des services, et que l'état tienne après un redémarrage.
+competences: [l3-systemctl]
+hints:
+  - level: comprehension
+    text: "Pour chaque service, deux questions séparées : doit-il tourner maintenant ? Doit-il démarrer au prochain boot ? Que répond `systemctl` à chacune aujourd'hui ?"
+  - level: demarche
+    text: "Qu'affichent `systemctl is-active` et `systemctl is-enabled` pour chaque service, avant et après tes commandes ? Et si tu attends une minute, `vitrine-sync` est-il toujours arrêté ?"
+  - level: zone
+    text: "Quelque chose redémarre `vitrine-sync` alors qu'il est désactivé. Quelle commande liste les tâches planifiées par systemd ? Laquelle montre ce qui dépend d'une unit ?"
+  - level: concept
+    text: "Que fait `disable` au processus en cours ? Quelle commande combine activation et démarrage ? Laquelle empêche une unit de démarrer, même à la main ?"
+review:
+  - "Pourquoi masquer `ancien-ftp` plutôt que le désinstaller ou supprimer son fichier ? Dans quel cas préférerais-tu supprimer ?"
+  - "Comment as-tu vérifié l'état après redémarrage sans redémarrer le serveur ? Est-ce suffisant ?"

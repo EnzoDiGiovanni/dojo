@@ -1,0 +1,11 @@
+title: Utilisateurs, groupes et permissions
+competences:
+  - id: l2-comptes
+    text: Je sais créer, modifier, verrouiller et supprimer des comptes et des groupes, et lire /etc/passwd, /etc/group et /etc/shadow.
+  - id: l2-droits
+    text: Je sais lire et poser des droits (chmod symbolique et octal, chown, umask) et prédire qui peut lire, écrire ou traverser un chemin.
+  - id: l2-partage
+    text: Je sais monter un répertoire partagé par une équipe (groupe, setgid, sticky bit) où chacun garde la main sur les fichiers des autres.
+  - id: l2-sudo
+    text: Je sais déléguer des droits d'administration limités avec sudo, sans ouvrir un shell root détourné.
+exercises: [a1, a2, a3, i1, i2, d1, v1]

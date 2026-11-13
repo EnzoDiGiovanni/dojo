@@ -1,0 +1,10 @@
+title: T1 · Linux et administration système
+description: Administrer un serveur Ubuntu sans interface graphique — fichiers, comptes, droits, services, paquets, SSH, scripts et dépannage — sur un VPS de labo vérifié automatiquement.
+modules:
+  - module-01-terminal-fichiers
+  - module-02-utilisateurs-permissions
+  - module-03-processus-systemd
+  - module-04-paquets-journaux
+  - module-05-ssh
+  - module-06-bash-cron
+  - module-07-ressources-depannage

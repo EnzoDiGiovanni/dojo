@@ -1,0 +1,8 @@
+title: Let's Encrypt, logs Nginx et diagnostic HTTP
+competences:
+  - id: r8-certbot
+    text: Je sais obtenir et renouveler automatiquement des certificats Let's Encrypt avec Certbot pour plusieurs domaines, et rediriger HTTP vers HTTPS.
+  - id: r8-logs
+    text: Je sais lire et configurer les logs Nginx (access, error, format personnalisé) pour retrouver une requête précise.
+  - id: r8-diagnostic
+    text: Je sais remonter la cause d'une erreur 403, 404, 413, 502 ou 504 en suivant la chaîne client → Nginx → application.

@@ -1,0 +1,16 @@
+type: intermediaire
+title: La sauvegarde des sites
+summary: Écrire un script de sauvegarde qu'on peut laisser tourner seul chaque nuit, avec rotation, verrou, journal et gestion des échecs.
+competences: [l6-exploitation, l6-bash, l6-cron]
+hints:
+  - level: comprehension
+    text: "Pour chaque exigence (archive datée, 7 gardées, verrou, échec propre, journal), que doit-il se passer, et à quel moment de l'exécution du script ?"
+  - level: demarche
+    text: "As-tu lancé ton script dix fois de suite en comptant les archives ? Et deux fois en même temps, en tenant le verrou dans un autre terminal avec `flock /run/lock/sauvegarde-sites.lock sleep 30` ?"
+  - level: zone
+    text: "Quand `/srv/sites` est introuvable, que reste-t-il dans `/var/backups/sites` après l'échec de ton script ? À quel moment l'archive finale est-elle créée par rapport au moment où tar a fini ?"
+  - level: concept
+    text: "Que dit le cours sur l'écriture dans un fichier temporaire puis `mv`, sur `trap`, sur `flock -n`, et sur `logger` ?"
+review:
+  - "Que deviennent les archives si l'horloge du serveur recule d'une heure ? Ta rotation repose-t-elle sur le nom ou sur la date des fichiers ?"
+  - "Une sauvegarde qui reste sur le même disque que les données protège-t-elle de quoi ? De quoi ne protège-t-elle pas ?"

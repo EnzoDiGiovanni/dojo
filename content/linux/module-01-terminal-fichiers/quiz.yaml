@@ -1,0 +1,84 @@
+questions:
+  - id: q-fhs-logs
+    type: qcm
+    prompt: "Un service maison `facturo` vient d'être installé. Où chercher en premier sa configuration, puis ses journaux ?"
+    options:
+      - text: "Dans /etc/facturo*, puis dans /var/log/facturo*."
+        correct: true
+      - text: "Dans /usr/bin/facturo, puis dans /tmp."
+        relance: "Que range-t-on dans /usr/bin : des fichiers modifiés par l'administrateur, ou des programmes ? Et que devient /tmp au redémarrage ?"
+      - text: "Dans /var/lib/facturo, puis dans /etc/facturo."
+        relance: "Dans le FHS, quel dossier contient ce qui varie pendant que le service tourne, et lequel contient ce que l'administrateur règle ?"
+      - text: "Dans /home/facturo, puis dans /proc/facturo."
+        relance: "Qu'y a-t-il réellement dans /proc : des fichiers stockés sur disque, ou une vue exposée par le noyau ?"
+  - id: q-chemin-relatif
+    type: prediction
+    prompt: "Où es-tu après ces commandes ?"
+    code: |
+      cd /etc/nginx/sites-available
+      cd ../../ssh/./
+      cd ..
+    options:
+      - text: "/etc"
+        correct: true
+      - text: "/etc/ssh"
+        relance: "Après la deuxième commande, dans quel dossier es-tu exactement ? Que fait la troisième ?"
+      - text: "/etc/nginx"
+        relance: "Combien de niveaux `../..` fait-il remonter depuis /etc/nginx/sites-available ?"
+      - text: "Une erreur, `./` ne peut pas suivre un nom de dossier."
+        relance: "Que désigne `.` dans un chemin, où qu'il se trouve ?"
+  - id: q-tar-chemins
+    type: qcm
+    prompt: "Tu crées une archive avec `tar -czf save.tgz /srv/wiki/data`, puis tu l'extrais avec `tar -xzf save.tgz -C /tmp/r`. Où se trouve le fichier `/srv/wiki/data/pages/a.md` restauré ?"
+    options:
+      - text: "/tmp/r/srv/wiki/data/pages/a.md"
+        correct: true
+      - text: "/srv/wiki/data/pages/a.md, tar restaure toujours à l'emplacement d'origine."
+        relance: "À quoi sert `-C /tmp/r` à l'extraction ? Comment le vérifierais-tu avec `tar -tzf` avant d'extraire ?"
+      - text: "/tmp/r/data/pages/a.md"
+        relance: "Lors de la création, quel chemin as-tu donné à tar ? Est-ce le même que si tu avais utilisé `-C /srv/wiki data` ?"
+      - text: "/tmp/r/pages/a.md"
+        relance: "Quels niveaux de dossiers tar a-t-il enregistrés dans l'archive ? Lequel aurait-il fallu retirer, et avec quelle option ?"
+  - id: q-find-dossier
+    type: prediction
+    prompt: "`/var/cache/app` contient le fichier `vieux.tmp` (60 jours) et le dossier `export.tmp/` (modifié il y a 60 jours) qui contient `rapport.csv` (créé hier). Que supprime cette commande ?"
+    code: "find /var/cache/app -name '*.tmp' -mtime +30 -exec rm -rf {} +"
+    options:
+      - text: "`vieux.tmp`, mais aussi `export.tmp/` et le `rapport.csv` d'hier qu'il contient."
+        correct: true
+      - text: "Seulement `vieux.tmp`."
+        relance: "Le test `-name '*.tmp'` regarde-t-il si l'entrée est un fichier ou un dossier ? Que fait `rm -rf` sur un dossier ?"
+      - text: "Seulement `vieux.tmp` et le dossier vide, `rapport.csv` est protégé car il est récent."
+        relance: "Le test `-mtime` est-il appliqué à `rapport.csv` avant que `rm -rf` ne supprime le dossier qui le contient ?"
+  - id: q-grep-colonne
+    type: qcm
+    prompt: "Pour compter les réponses 404 d'un journal au format combined, pourquoi `grep -c ' 404 ' acces.log` est-il fragile ?"
+    options:
+      - text: "Une ligne peut contenir ` 404 ` dans un autre champ, la taille de la réponse par exemple."
+        correct: true
+      - text: "grep -c compte les mots, pas les lignes."
+        relance: "Que dit `man grep` de l'option -c ? Compte-t-elle des occurrences ou des lignes ?"
+      - text: "grep ne sait pas chercher des nombres."
+        relance: "Pour grep, y a-t-il une différence entre les caractères `404` et n'importe quel autre texte ?"
+      - text: "Les codes de statut sont toujours entre guillemets dans ce format."
+        relance: "Regarde l'exemple de ligne du cours : quels champs sont entre guillemets ?"
+  - id: q-sort-version
+    type: prediction
+    prompt: "Que renvoie cette commande ?"
+    code: "printf '2.9\\n2.10\\n2.8\\n' | sort | tail -n 1"
+    options:
+      - text: "2.9"
+        correct: true
+      - text: "2.10"
+        relance: "Sans option, sort compare-t-il des nombres, ou des chaînes de caractères caractère par caractère ? Lequel de `1` et `9` vient en premier ?"
+      - text: "2.8"
+        relance: "Dans quel ordre sort range-t-il ces trois lignes ? Laquelle se retrouve à la fin ?"
+  - id: q-redirections
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : `commande > sortie.txt 2>&1` place dans sortie.txt à la fois la sortie normale et les erreurs."
+    options:
+      - text: Vrai
+        correct: true
+      - text: Faux
+        relance: "Que signifie `2>&1` : vers où les erreurs sont-elles envoyées, et où pointe déjà la sortie normale à ce moment-là ?"

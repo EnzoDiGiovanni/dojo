@@ -1,0 +1,8 @@
+title: Ressources et dépannage
+competences:
+  - id: l7-mesure
+    text: Je sais mesurer l'usage CPU, mémoire, disque et inodes (top, free, df, du, lsof) et identifier ce qui consomme.
+  - id: l7-limites
+    text: Je sais limiter les ressources d'un service avec systemd (MemoryMax, CPUQuota) et reconnaître l'intervention de l'OOM killer.
+  - id: l7-diagnostic
+    text: Je sais mener un diagnostic méthodique sur un serveur en panne (symptôme, mesure, hypothèse, correction, vérification) sans aggraver la situation.

@@ -1,0 +1,16 @@
+type: application
+title: Ce qui s'est passé au démarrage
+summary: Reconstituer un incident de démarrage avec journalctl, en faisant la part entre un service qui a échoué et un service qui s'est plaint.
+competences: [l4-journal]
+hints:
+  - level: comprehension
+    text: "Qu'est-ce qui distingue, dans le journal, un service qui s'est arrêté en erreur d'un service qui a seulement écrit un message d'erreur ? Qui écrit chacune de ces lignes, le programme ou systemd ?"
+  - level: demarche
+    text: "As-tu d'abord listé tous les messages de priorité err depuis le démarrage, avec le nom de l'unité ? Puis, pour chaque unité concernée, son journal complet ?"
+  - level: zone
+    text: "Dans le journal du service en échec, compte les lignes « Main process exited » écrites par systemd : combien en vois-tu, et quel status donnent-elles ? Et quelle ligne, écrite par le programme, précède chacune d'elles ?"
+  - level: concept
+    text: "Quelles options de journalctl filtrent par démarrage, par priorité et par unité ? Quel format de sortie montre l'unité de chaque ligne (essaie `-o verbose` sur une ligne) ?"
+review:
+  - "Combien de temps le service de paiement a-t-il été indisponible au démarrage ? Comment le mesurerais-tu avec le journal ?"
+  - "Si le serveur avait redémarré entre l'incident et ton enquête, qu'aurais-tu pu retrouver ?"

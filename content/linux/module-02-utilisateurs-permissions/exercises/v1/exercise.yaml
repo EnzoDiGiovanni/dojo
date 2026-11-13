@@ -1,0 +1,8 @@
+type: validation
+title: Validation — la cuisine du traiteur
+summary: Un exercice inédit, sans indice. Tout ce que tu as appris dans ce module est mobilisé.
+competences: [l2-comptes, l2-droits, l2-partage, l2-sudo]
+justifications:
+  - "Explique, droit par droit, pourquoi un fichier créé par paul dans `recettes/` est modifiable par ines. Que se passerait-il si on retirait chacun des éléments de ta solution ?"
+  - "Pour les factures, pourquoi ces propriétaires et ces droits ? Comment as-tu vérifié que lea pouvait lire mais pas modifier, et que les cuisiniers ne pouvaient rien lire ?"
+  - "Montre ta règle sudo et explique pourquoi ines ne peut pas s'en servir pour obtenir un shell root. Quelle variante, en apparence équivalente, l'aurait permis ?"

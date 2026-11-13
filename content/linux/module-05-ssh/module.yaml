@@ -1,0 +1,9 @@
+title: SSH et sécurisation des accès
+competences:
+  - id: l5-cles
+    text: Je sais créer une paire de clés, déposer la clé publique et me connecter (ssh, scp, fichier ~/.ssh/config).
+  - id: l5-sshd
+    text: Je sais durcir sshd (pas de root, pas de mot de passe, liste des comptes autorisés) en validant la configuration avant de recharger, sans m'enfermer dehors.
+  - id: l5-surveillance
+    text: Je sais lire les tentatives de connexion dans les journaux et bannir automatiquement les attaquants avec fail2ban.
+exercises: [a1, a2, a3, i1, i2, d1, v1]

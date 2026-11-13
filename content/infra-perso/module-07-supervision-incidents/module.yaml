@@ -1,0 +1,8 @@
+title: Supervision, logs et incidents
+competences:
+  - id: p7-supervision
+    text: Je sais superviser disponibilité et ressources (sondes HTTP, métriques, seuils) et recevoir une alerte avant les utilisateurs.
+  - id: p7-logs
+    text: Je sais centraliser et interroger les logs de l'hôte, de Nginx et des conteneurs pour reconstituer un incident.
+  - id: p7-incident
+    text: Je sais conduire un incident jusqu'au bout (rétablir, comprendre, corriger la cause, rédiger le post-mortem).

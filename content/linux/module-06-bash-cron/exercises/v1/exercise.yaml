@@ -1,0 +1,8 @@
+type: validation
+title: Validation — l'archivage des exports
+summary: Un exercice inédit, sans indice. Tout ce que tu as appris dans ce module est mobilisé.
+competences: [l6-bash, l6-cron, l6-exploitation]
+justifications:
+  - "Montre comment ton script choisit les fichiers à archiver et leur dossier de destination. Quel fichier de test aurait cassé une version plus naïve, et pourquoi ?"
+  - "Que se passe-t-il si le serveur s'éteint pendant l'archivage d'un fichier ? Peut-on perdre un export ? Montre la partie du script qui l'empêche."
+  - "Montre ta ligne de cron et explique chaque élément. Comment as-tu vérifié qu'elle fonctionnerait à 3 h 15, sans attendre 3 h 15 ?"

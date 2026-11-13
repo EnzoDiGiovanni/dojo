@@ -1,0 +1,33 @@
+questions:
+  - id: c-start-enable
+    type: prediction
+    prompt: "Tu viens de créer `wiki.service`. Après ces commandes, tu redémarres le serveur. Le wiki tourne-t-il ?"
+    code: |
+      sudo systemctl daemon-reload
+      sudo systemctl start wiki
+    options:
+      - text: "Non : il a été démarré, mais pas activé au démarrage."
+        correct: true
+      - text: "Oui : systemd relance au démarrage les services qui tournaient."
+        relance: "Où systemd lit-il, au démarrage, la liste des services à lancer ? Quelle commande y inscrit un service ?"
+      - text: "Oui, si l'unit contient `Restart=on-failure`."
+        relance: "Restart= concerne-t-il le démarrage du serveur, ou la mort du processus pendant que le service tourne ?"
+  - id: c-sigterm
+    type: qcm
+    prompt: "Un processus ne réagit pas à `kill 4321`. Que faut-il en conclure en premier ?"
+    options:
+      - text: "Il ignore ou intercepte SIGTERM ; on peut attendre, regarder ce qu'il fait, puis envoyer SIGKILL."
+        correct: true
+      - text: "La commande kill n'a pas fonctionné, il faut la relancer avec sudo."
+        relance: "Si kill avait manqué de droits, aurait-il affiché un message ? Qu'envoie kill sans option, et qui décide de ce que le processus en fait ?"
+      - text: "Le processus est déjà mort, c'est un zombie."
+        relance: "Comment vérifierais-tu l'état d'un processus avant de conclure ? Quelle lettre de STAT désigne un zombie ?"
+  - id: c-execstart
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : `ExecStart=cd /opt/wiki && node server.js` démarre le wiki depuis /opt/wiki."
+    options:
+      - text: Vrai
+        relance: "Qui interprète `cd` et `&&` dans un terminal ? systemd lance-t-il un shell pour exécuter ExecStart ?"
+      - text: Faux
+        correct: true

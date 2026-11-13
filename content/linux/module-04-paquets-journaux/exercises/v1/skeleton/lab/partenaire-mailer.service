@@ -1,0 +1,13 @@
+[Unit]
+Description=Partenaire Mailer - envoi des newsletters
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/partenaire-mailer
+StateDirectory=partenaire-mailer
+LogsDirectory=mailer
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

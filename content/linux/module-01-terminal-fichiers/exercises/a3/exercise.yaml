@@ -1,0 +1,16 @@
+type: application
+title: Les meilleurs clients du site
+summary: Écrire une commande réutilisable qui extrait d'un journal web les adresses les plus actives.
+competences: [l1-texte]
+hints:
+  - level: comprehension
+    text: "Sur une ligne du journal, où se trouve l'adresse du client ? Que faut-il faire de toutes ces adresses pour obtenir un classement ?"
+  - level: demarche
+    text: "As-tu construit ton pipeline une commande à la fois, en regardant la sortie avec `| head` à chaque étape ? À quelle étape la sortie cesse-t-elle de ressembler à ce que tu attends ?"
+  - level: zone
+    text: "Regarde les compteurs que tu obtiens pour une même adresse : apparaît-elle plusieurs fois avec des compteurs différents ? Et ton classement met-il bien 98 après 120 ?"
+  - level: concept
+    text: "Que fait `uniq` des lignes identiques qui ne se suivent pas ? Comment `sort` compare-t-il des nombres sans option ? Et que devient `$1` sans guillemets quand le chemin contient un espace ?"
+review:
+  - "Ton script donne-t-il le même résultat si le journal contient des adresses IPv6 ? Pourquoi ?"
+  - "Que se passe-t-il si on appelle ton script sans argument ? Qu'aimerais-tu qu'il fasse ?"

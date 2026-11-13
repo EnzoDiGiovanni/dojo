@@ -1,0 +1,17 @@
+type: defi
+title: Le service de réservation
+summary: Une unit écrite par un prestataire qui n'a jamais tourné. Chaque correction révèle le problème suivant.
+competences: [l3-units, l3-systemctl, l3-processus]
+hints:
+  - level: comprehension
+    text: "Que doit faire systemd, étape par étape, pour lancer ce service : quel fichier lire, quel compte prendre, quel répertoire, quelle commande ? À quelle étape s'arrête-t-il aujourd'hui ?"
+  - level: demarche
+    text: "Après chaque tentative, qu'affichent `systemctl status reservation` et `journalctl -u reservation -n 30` ? Notes-tu le message exact avant de modifier l'unit ?"
+  - level: zone
+    text: "Le dernier message parle-t-il d'un fichier introuvable, d'un délai dépassé, d'une permission ? Si le service tourne mais qu'une réservation renvoie une erreur, où l'application essaie-t-elle d'écrire, et sous quel compte ?"
+  - level: concept
+    text: "Que dit le cours sur ExecStart et le répertoire courant, sur Type=forking, sur les dossiers d'état d'un service, et sur la section [Install] ?"
+review:
+  - "Dans quel ordre les problèmes sont-ils apparus ? Pourquoi n'était-il pas possible de tous les voir dès le départ ?"
+  - "Quelle commande aurait détecté certains de ces problèmes sans démarrer le service ?"
+  - "Après tes corrections, que se passe-t-il si `/etc/reservation/reservation.env` est supprimé par erreur ? Est-ce le comportement que tu veux ?"

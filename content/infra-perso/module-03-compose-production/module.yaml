@@ -1,0 +1,8 @@
+title: Docker Compose en production derrière Nginx
+competences:
+  - id: p3-stack
+    text: Je sais faire tourner plusieurs applications Laravel avec MySQL et Redis en Docker Compose de façon durable (volumes, restart, healthchecks, ressources).
+  - id: p3-proxy
+    text: Je sais exposer ces applications derrière un Nginx reverse proxy, avec un domaine ou un sous-domaine par application.
+  - id: p3-https
+    text: Je sais servir tous les domaines en HTTPS avec des certificats renouvelés automatiquement.

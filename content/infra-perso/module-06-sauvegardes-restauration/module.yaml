@@ -1,0 +1,8 @@
+title: Sauvegardes et restauration
+competences:
+  - id: p6-sauvegarde
+    text: Je sais sauvegarder automatiquement bases MySQL, fichiers et volumes, avec rotation et copie hors du serveur.
+  - id: p6-restauration
+    text: Je sais restaurer une base de données ou une application complète en suivant une procédure testée, et mesurer le temps que ça prend.
+  - id: p6-verification
+    text: Je sais vérifier qu'une sauvegarde est exploitable plutôt que de supposer qu'elle l'est.

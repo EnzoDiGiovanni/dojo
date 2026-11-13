@@ -1,0 +1,6 @@
+title: Pare-feu avec UFW
+competences:
+  - id: r4-politique
+    text: Je sais définir une politique par défaut (tout refuser en entrée) et n'ouvrir que les services nécessaires, sans couper ma propre session SSH.
+  - id: r4-regles
+    text: Je sais écrire, ordonner et supprimer des règles UFW par port, protocole et source, et vérifier leur effet depuis l'extérieur.

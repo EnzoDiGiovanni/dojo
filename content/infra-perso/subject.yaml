@@ -1,0 +1,11 @@
+title: T4 · Infrastructure personnelle
+description: Le projet de l'année — concevoir, sécuriser, déployer, sauvegarder et superviser ta propre infrastructure multi-applications Laravel sur un VPS Ubuntu.
+modules:
+  - module-01-architecture
+  - module-02-socle-securise
+  - module-03-compose-production
+  - module-04-secrets-configuration
+  - module-05-gitlab-ci-cd
+  - module-06-sauvegardes-restauration
+  - module-07-supervision-incidents
+  - module-08-projet-final

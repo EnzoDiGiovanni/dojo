@@ -1,0 +1,11 @@
+[Unit]
+Description=Service de réservation des ateliers
+After=network.target
+
+[Service]
+Type=forking
+User=reservation
+EnvironmentFile=/etc/reservation.env
+ExecStart=/usr/bin/python3 app.py
+Restart=on-failure
+TimeoutStartSec=15

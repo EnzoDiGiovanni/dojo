@@ -1,0 +1,30 @@
+questions:
+  - id: c-traverser
+    type: qcm
+    prompt: "`/srv/rh` a les droits `drwxr--r-- root rh`. `/srv/rh/charte.pdf` a les droits `-rw-r--r-- root rh`. Paul, membre du groupe `rh`, tape `cat /srv/rh/charte.pdf`. Que se passe-t-il ?"
+    options:
+      - text: "Permission refusée : le groupe ne peut pas traverser /srv/rh."
+        correct: true
+      - text: "Il lit le fichier, puisque le groupe a `r` sur le dossier et sur le fichier."
+        relance: "Sur un dossier, quel droit permet de lister les noms, et lequel permet d'atteindre un fichier qu'il contient ?"
+      - text: "Il lit le fichier, car les autres ont `r` sur le fichier."
+        relance: "Paul relève-t-il de la catégorie « autres » ou « groupe » ? Et quelle que soit la catégorie, peut-il atteindre le fichier sans passer par le dossier ?"
+  - id: c-supprimer
+    type: prediction
+    prompt: "Dans `/srv/echange` (`drwxrwxr-x root equipe`), le fichier `plan.txt` appartient à `marie` avec les droits `-r--------`. `jules`, membre de `equipe`, tape `rm -f plan.txt`. Que se passe-t-il ?"
+    options:
+      - text: "Le fichier est supprimé."
+        correct: true
+      - text: "Refusé : jules n'a aucun droit sur plan.txt."
+        relance: "Supprimer un fichier, est-ce modifier le fichier, ou modifier la liste des noms que contient le dossier ? Qui a `w` sur ce dossier ?"
+      - text: "Refusé : seul le propriétaire d'un fichier peut le supprimer."
+        relance: "Quel droit spécial, absent ici, donnerait exactement ce comportement ? Comment le reconnaît-on dans `ls -ld` ?"
+  - id: c-usermod
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : si `id alice` affiche les groupes `alice,compta,web`, alors après `sudo usermod -G devs alice`, alice est membre de `compta`, `web` et `devs`."
+    options:
+      - text: Vrai
+        relance: "Que dit `man usermod` de l'option -G utilisée seule ? Quelle option change ce comportement ?"
+      - text: Faux
+        correct: true

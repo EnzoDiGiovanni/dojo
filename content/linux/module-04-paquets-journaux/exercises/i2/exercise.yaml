@@ -1,0 +1,16 @@
+type: intermediaire
+title: Un journal qui survit aux redémarrages
+summary: Rendre le journal système persistant, en bornant sa taille et sa durée de conservation, par une configuration propre.
+competences: [l4-rotation, l4-journal]
+hints:
+  - level: comprehension
+    text: "Aujourd'hui, où le journal est-il stocké, et que lui arrive-t-il au redémarrage ? Qu'est-ce qui décide de cet emplacement ?"
+  - level: demarche
+    text: "Un repère écrit avec `logger -t essai …` avant un redémarrage (`sudo reboot`, puis `sh vps.sh console`) se retrouve-t-il ensuite avec `journalctl -t essai` ? Que montre `journalctl --disk-usage` ?"
+  - level: zone
+    text: "Ta configuration est-elle bien lue par journald ? Que montre `systemd-analyze cat-config systemd/journald.conf`, as-tu redémarré `systemd-journald` ? Juste après, journald écrit-il déjà sur le disque, ou encore en mémoire ?"
+  - level: concept
+    text: "Quelles directives de `journald.conf` règlent le stockage, la place maximale et la durée de conservation ? Où le cours dit-il de les écrire ?"
+review:
+  - "Pourquoi borner la taille du journal, alors que le disque est grand ? Que se passe-t-il le jour où un service s'emballe et écrit 1 000 lignes par seconde ?"
+  - "Quelle différence fais-tu entre la rotation de journald et celle de logrotate ? Laquelle s'applique à /var/log/syslog ?"

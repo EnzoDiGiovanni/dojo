@@ -1,0 +1,16 @@
+type: intermediaire
+title: Adapter le service d'un paquet
+summary: Changer le compte, la configuration et la politique de relance d'un service installé par un paquet, sans toucher à son fichier.
+competences: [l3-units, l3-systemctl]
+hints:
+  - level: comprehension
+    text: "Qui a écrit le fichier `/usr/lib/systemd/system/imprimerie.service` ? Que lui arrivera-t-il à la prochaine version du paquet ?"
+  - level: demarche
+    text: "Que montre `systemctl cat imprimerie` après ta modification : le fichier du paquet, et quoi d'autre ? Le service a-t-il été redémarré depuis ?"
+  - level: zone
+    text: "Le service tourne-t-il encore en root (`curl` sur le serveur, ou `ps`) ? Le format est-il resté « Lettre » ? Où as-tu écrit tes réglages, et sont-ils dans la bonne section ?"
+  - level: concept
+    text: "Quelle commande du cours crée un fichier de surcharge à côté de l'unit d'un paquet ? Quelles directives fixent le compte, une variable d'environnement et la relance ?"
+review:
+  - "Pourquoi ne pas avoir copié tout le fichier dans /etc/systemd/system ? Qu'est-ce que tu aurais perdu à la prochaine mise à jour ?"
+  - "Comment retrouverais-tu, dans six mois, toutes les personnalisations faites sur les services de ce serveur ?"

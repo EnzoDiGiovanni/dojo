@@ -1,0 +1,16 @@
+type: application
+title: Ta première clé SSH
+summary: Créer une paire de clés protégée, l'autoriser sur un compte du serveur, et s'y connecter.
+competences: [l5-cles]
+hints:
+  - level: comprehension
+    text: "Quel fichier de la paire reste sur ta machine, lequel va sur le serveur, et dans quel fichier exact du compte deploy ?"
+  - level: demarche
+    text: "Ta connexion est refusée : qu'en dit le serveur ? As-tu regardé `sudo journalctl -t sshd -n 20` depuis la console pendant que tu essayais, et `ssh -v` de ton côté ?"
+  - level: zone
+    text: "Que donnent `ls -la /home/deploy/.ssh` et `ls -ld /home/deploy` : à qui appartiennent ces fichiers, et qui peut y écrire ? La ligne de ta clé est-elle entière, sur une seule ligne ?"
+  - level: concept
+    text: "Que dit le cours des droits attendus par sshd (StrictModes) ? Et quelle option de ssh-keygen choisit le fichier de sortie ?"
+review:
+  - "Si ton portable était volé demain, que pourrait faire le voleur avec ta clé ? Que ferais-tu, côté serveur, pour couper son accès ?"
+  - "Comment aurais-tu installé la clé sans la console, avec seulement le mot de passe de deploy ?"

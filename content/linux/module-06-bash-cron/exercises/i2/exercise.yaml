@@ -1,0 +1,16 @@
+type: intermediaire
+title: Des comptes à la chaîne
+summary: Créer des comptes à partir d'un fichier fourni par les RH, en traitant les lignes invalides et en pouvant relancer sans risque.
+competences: [l6-bash, l6-exploitation]
+hints:
+  - level: comprehension
+    text: "Pour une ligne du fichier, quelles décisions ton script doit-il prendre, dans quel ordre : l'ignorer, la refuser, créer le compte, compléter ses groupes ?"
+  - level: demarche
+    text: "As-tu lancé ton script deux fois de suite sur le même fichier ? Qu'affiche-t-il la seconde fois, et avec quel code de retour ? Et sur un fichier qui contient une ligne mal formée au milieu ?"
+  - level: zone
+    text: "Comment ta boucle lit-elle chaque ligne : les espaces et les accents du nom complet arrivent-ils intacts dans `useradd` ? Comment sais-tu à quelle ligne du fichier tu en es ?"
+  - level: concept
+    text: "Quelle forme de boucle du cours lit un fichier ligne à ligne en découpant sur un séparateur ? Comment tester qu'un compte ou un groupe existe déjà (`getent`) ?"
+review:
+  - "Si une ligne contient le login `root`, que fait ton script ? Que devrait-il faire ?"
+  - "Ton script retire-t-il un compte de groupes qui ne figurent plus dans le fichier ? Faut-il qu'il le fasse ?"

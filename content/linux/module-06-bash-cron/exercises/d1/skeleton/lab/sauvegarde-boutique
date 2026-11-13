@@ -1,0 +1,8 @@
+#!/bin/bash
+# Sauvegarde des données de la boutique.
+set -euo pipefail
+dest=/var/backups/boutique
+mkdir -p "$dest"
+archive="$dest/boutique-$(date +%Y%m%d-%H%M%S).tar.gz"
+tar -czf "$archive" -C "$BOUTIQUE_DIR" .
+echo "sauvegarde terminée : $archive ($(du -h "$archive" | cut -f1))"

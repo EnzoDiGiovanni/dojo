@@ -1,0 +1,16 @@
+type: application
+title: Un service pour la météo
+summary: Écrire une unit systemd pour un petit programme, de façon qu'il tourne sous son propre compte, démarre au boot et se relève seul.
+competences: [l3-units, l3-systemctl]
+hints:
+  - level: comprehension
+    text: "Quand tu lances le programme à la main, quelle commande exacte tapes-tu, avec quelles variables, sous quel compte ? Chaque élément doit trouver sa place dans l'unit : lequel va où ?"
+  - level: demarche
+    text: "Que disent `systemctl status meteo` et `journalctl -u meteo -n 20` après ton démarrage ? As-tu essayé `systemd-analyze verify /etc/systemd/system/meteo.service` ?"
+  - level: zone
+    text: "Le programme démarre-t-il puis s'arrête-t-il aussitôt ? Quelle variable lui manque-t-il, et sous quel compte tourne-t-il (`ps -o user= -p <PID>`) ?"
+  - level: concept
+    text: "Quelles directives du cours fixent le compte, les variables d'environnement, la politique de relance ? Et quelle section rend `enable` possible ?"
+review:
+  - "Pourquoi un compte système dédié plutôt que `ubuntu` ou root pour ce service ?"
+  - "Si la ville changeait souvent, où la mettrais-tu pour ne pas toucher à l'unit à chaque fois ?"

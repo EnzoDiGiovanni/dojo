@@ -1,0 +1,16 @@
+type: application
+title: Un raccourci et des transferts
+summary: Décrire une connexion dans un fichier de configuration SSH, y installer sa clé, puis copier des fichiers dans les deux sens.
+competences: [l5-cles]
+hints:
+  - level: comprehension
+    text: "Quelles informations tapes-tu aujourd'hui à chaque connexion (compte, adresse, port, clé) ? Chacune correspond à une directive du fichier de configuration : lesquelles ?"
+  - level: demarche
+    text: "Que montre `ssh -G -F ssh_config fabrique` : le compte, le port, la clé sont-ils ceux que tu attends ? Et que fait `ssh -v -F ssh_config fabrique` au moment de proposer les clés ?"
+  - level: zone
+    text: "Ton IdentityFile est-il un chemin que ssh peut retrouver quel que soit le dossier d'où tu lances la commande ? Pour scp, sous quelle forme écris-tu un chemin distant ?"
+  - level: concept
+    text: "Quelle commande du cours installe une clé publique en s'authentifiant une dernière fois par mot de passe, et accepte-t-elle un autre fichier de configuration que le tien ?"
+review:
+  - "Pourquoi `IdentitiesOnly yes` ? Que se passerait-il avec un agent qui contient dix clés ?"
+  - "Le mot de passe de deploy est toujours actif après ton exercice. Que faudrait-il faire, et dans quel ordre, pour l'interdire sans risque ?"
