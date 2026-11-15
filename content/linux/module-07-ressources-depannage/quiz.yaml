@@ -1,0 +1,84 @@
+questions:
+  - id: q-available
+    type: qcm
+    prompt: "`free -h` affiche `free 120Mi` et `available 5,1Gi` sur un serveur de 8 Go. Qu'en conclus-tu ?"
+    options:
+      - text: "La mémoire va bien : l'essentiel sert de cache disque, récupérable à tout moment."
+        correct: true
+      - text: "Le serveur manque de mémoire, il ne reste que 120 Mio."
+        relance: "Que fait Linux de la mémoire inutilisée ? Laquelle des deux colonnes dit ce qu'une application peut encore obtenir ?"
+      - text: "Il y a une fuite de mémoire dans le noyau."
+        relance: "Quelle mesure, répétée dans le temps, montrerait une fuite ? Une photo unique de free suffit-elle ?"
+      - text: "Il faut vider le cache avec drop_caches pour libérer la mémoire."
+        relance: "Le cache empêche-t-il une application d'obtenir de la mémoire quand elle en a besoin ?"
+  - id: q-empilement
+    type: qcm
+    prompt: "La charge monte d'heure en heure, et `pgrep -c -f export-stats` répond 37. La tâche est planifiée toutes les minutes. Quelle est la bonne correction ?"
+    options:
+      - text: "Ajouter un verrou pour qu'une exécution ne démarre pas tant que la précédente tourne, puis arrêter les instances en trop."
+        correct: true
+      - text: "Tuer les 37 processus."
+        relance: "Combien d'instances y aura-t-il dans une heure, si la tâche reste planifiée telle quelle ?"
+      - text: "Passer la tâche en nice 19."
+        relance: "Une priorité basse empêche-t-elle les instances de s'empiler ? Que deviennent-elles si elles vont encore plus lentement ?"
+      - text: "Redémarrer le serveur chaque nuit."
+        relance: "Qu'est-ce qui recommence à s'empiler dès le premier passage de cron après le redémarrage ?"
+  - id: q-du-df
+    type: qcm
+    prompt: "`df -h /var` indique 95 %, mais `du -xsh /var` totalise beaucoup moins que la taille occupée. Quelle commande confirme l'explication la plus probable ?"
+    options:
+      - text: "sudo lsof +L1"
+        correct: true
+      - text: "df -i /var"
+        relance: "Un manque d'inodes expliquerait-il un écart entre df et du sur la place occupée ?"
+      - text: "free -h"
+        relance: "La mémoire vive intervient-elle dans ce que mesurent df et du ?"
+      - text: "du -sh /var --apparent-size"
+        relance: "Que mesure --apparent-size ? Les fichiers supprimés mais ouverts apparaissent-ils dans une arborescence que du peut parcourir ?"
+  - id: q-memorymax-swap
+    type: prediction
+    prompt: "Un service fuit et dépasse sa limite. Le serveur a du swap. Que se passe-t-il avec ce drop-in ?"
+    code: |
+      [Service]
+      MemoryMax=200M
+      Restart=on-failure
+    options:
+      - text: "Le service reste à 200 Mo de mémoire vive et déborde dans le swap, de plus en plus lent, sans être tué."
+        correct: true
+      - text: "Le noyau le tue dès qu'il atteint 200 Mo, et systemd le relance."
+        relance: "MemoryMax limite-t-il la mémoire vive seule, ou aussi le swap ? Quelle directive du cours borne le swap d'un service ?"
+      - text: "systemd refuse de démarrer le service, la limite est trop basse."
+        relance: "La limite est-elle vérifiée au démarrage, ou appliquée pendant que le service tourne ?"
+  - id: q-cpuquota
+    type: qcm
+    prompt: "Que signifie `CPUQuota=150%` pour un service ?"
+    options:
+      - text: "Il peut utiliser au plus l'équivalent d'un processeur et demi."
+        correct: true
+      - text: "Il reçoit 50 % de processeur en plus que les autres services."
+        relance: "CPUQuota exprime-t-il une priorité relative ou un plafond ? Quelle directive règle plutôt une priorité ?"
+      - text: "C'est une erreur, un pourcentage ne peut pas dépasser 100 %."
+        relance: "Sur un serveur à 4 cœurs, combien de pourcents représente la totalité de la puissance ?"
+      - text: "Il peut utiliser 150 % de ce qu'il utilisait au démarrage."
+        relance: "systemd mesure-t-il une consommation de référence au démarrage ? À quelle unité le pourcentage se rapporte-t-il ?"
+  - id: q-boot
+    type: qcm
+    prompt: "Une API démarre parfaitement avec `systemctl start api`, mais après chaque redémarrage du serveur elle est en échec. Le journal du démarrage montre « Connection refused » vers sa base. Que corriges-tu ?"
+    options:
+      - text: "L'ordre de démarrage : l'API doit démarrer après sa base (After=) et en dépendre, et pouvoir réessayer (Restart=)."
+        correct: true
+      - text: "Rien : il suffit de la relancer à la main après chaque redémarrage."
+        relance: "Qui le fera à 3 h du matin après une coupure de courant ? Le cours parle-t-il de corriger le symptôme ou la cause ?"
+      - text: "Le mot de passe de la base."
+        relance: "Le même mot de passe fonctionne-t-il quand tu démarres l'API à la main ? Que dit vraiment « Connection refused » ?"
+      - text: "Augmenter MemoryMax de l'API."
+        relance: "Le message parle-t-il de mémoire ? Qu'est-ce qui diffère entre un démarrage manuel et un démarrage au boot ?"
+  - id: q-mesurer
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : face à un serveur lent, le plus efficace est de le redémarrer d'abord, puis de chercher la cause si le problème revient."
+    options:
+      - text: Vrai
+        relance: "Que reste-t-il, après le redémarrage, des processus empilés, de la mémoire consommée et des journaux en mémoire ? Avec quoi chercheras-tu la cause ?"
+      - text: Faux
+        correct: true

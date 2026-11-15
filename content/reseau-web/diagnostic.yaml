@@ -1,0 +1,91 @@
+# Positioning questions: no feedback is ever shown. The first module whose question
+# is missed becomes the suggested starting point.
+questions:
+  - id: diag-ecoute
+    module: 1
+    type: qcm
+    prompt: "`ss -ltn` montre une application à l'écoute sur `127.0.0.1:3000`. Depuis un autre ordinateur, `curl http://IP-du-serveur:3000` échoue. Pourquoi ?"
+    options:
+      - text: L'application n'écoute que sur l'interface de bouclage, injoignable de l'extérieur.
+        correct: true
+      - text: Le port 3000 est réservé à l'usage local par le noyau.
+      - text: Il faut utiliser https pour un port supérieur à 1024.
+      - text: ss affiche toujours 127.0.0.1, l'application écoute en réalité partout.
+      - text: Je ne sais pas.
+  - id: diag-dns
+    module: 2
+    type: qcm
+    prompt: Tu viens de modifier l'enregistrement A de `boutique.exemple.fr`. Certains visiteurs arrivent encore sur l'ancien serveur une heure plus tard. Qu'est-ce qui l'explique ?
+    options:
+      - text: Des résolveurs ont encore l'ancienne réponse en cache, pour une durée liée au TTL.
+        correct: true
+      - text: Les enregistrements A ne sont pris en compte qu'après 24 h.
+      - text: Il faut aussi créer un CNAME pour que le changement s'applique.
+      - text: Les navigateurs ne relisent jamais le DNS après la première visite.
+      - text: Je ne sais pas.
+  - id: diag-http
+    module: 3
+    type: qcm
+    prompt: "`curl -I http://exemple.fr` renvoie `HTTP/1.1 301 Moved Permanently` et `Location: https://exemple.fr/`. Que s'est-il passé ?"
+    options:
+      - text: Le serveur répond correctement et demande au client d'aller sur la version HTTPS.
+        correct: true
+      - text: Le site est en panne et renvoie une erreur.
+      - text: curl a suivi la redirection et affiche la page finale.
+      - text: Le certificat HTTPS est invalide.
+      - text: Je ne sais pas.
+  - id: diag-ufw
+    module: 4
+    type: qcm
+    prompt: Sur un VPS distant où tu es connecté en SSH, tu tapes `ufw default deny incoming` puis `ufw enable` sans autre règle. Que se passe-t-il ?
+    options:
+      - text: Les nouvelles connexions SSH sont refusées, tu risques de perdre l'accès au serveur.
+        correct: true
+      - text: Rien, UFW autorise toujours SSH par défaut.
+      - text: Le serveur ne peut plus faire de requêtes sortantes.
+      - text: UFW refuse de s'activer tant qu'aucune règle n'existe.
+      - text: Je ne sais pas.
+  - id: diag-server-name
+    module: 5
+    type: qcm
+    prompt: "Nginx a deux server blocks sur le port 80 : `server_name a.fr` et `server_name b.fr`, aucun n'est `default_server`. Une requête arrive pour `c.fr`. Qui y répond ?"
+    options:
+      - text: Le premier server block défini pour ce port.
+        correct: true
+      - text: Aucun, Nginx renvoie 404.
+      - text: Nginx choisit au hasard.
+      - text: Le server block dont le nom est le plus proche alphabétiquement.
+      - text: Je ne sais pas.
+  - id: diag-502
+    module: 6
+    type: qcm
+    prompt: Nginx en reverse proxy renvoie `502 Bad Gateway`. Que t'indique ce code ?
+    options:
+      - text: Nginx n'a pas obtenu de réponse valide de l'application derrière lui.
+        correct: true
+      - text: Le client a envoyé une requête mal formée.
+      - text: La configuration Nginx contient une erreur de syntaxe.
+      - text: L'application a mis trop longtemps à répondre.
+      - text: Je ne sais pas.
+  - id: diag-laravel-root
+    module: 7
+    type: qcm
+    prompt: Pour une application Laravel, vers quel dossier doit pointer la directive `root` de Nginx ?
+    options:
+      - text: Le dossier public/ de l'application.
+        correct: true
+      - text: La racine de l'application, là où se trouve artisan.
+      - text: Le dossier storage/, qui contient les fichiers servis.
+      - text: Le dossier resources/views/.
+      - text: Je ne sais pas.
+  - id: diag-certbot
+    module: 8
+    type: qcm
+    prompt: Certbot (challenge HTTP-01) échoue à valider `api.exemple.fr`. Quelle condition est indispensable ?
+    options:
+      - text: Le domaine doit pointer vers ce serveur et le port 80 doit y être joignable depuis Internet.
+        correct: true
+      - text: Le port 443 doit déjà servir un certificat valide.
+      - text: Le serveur doit avoir une IP fixe déclarée à Let's Encrypt.
+      - text: Nginx doit être arrêté pendant toute la durée de vie du certificat.
+      - text: Je ne sais pas.

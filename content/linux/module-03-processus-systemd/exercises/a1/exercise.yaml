@@ -1,0 +1,16 @@
+type: application
+title: Le serveur qui rame
+summary: Identifier et calmer des processus gênants sans toucher à ceux qui travaillent.
+competences: [l3-processus]
+hints:
+  - level: comprehension
+    text: "Pour chacun des trois problèmes signalés, que faut-il obtenir : que le processus disparaisse, qu'il continue autrement, ou que quelque chose cesse d'écouter ?"
+  - level: demarche
+    text: "Quelles commandes te montrent, pour chaque processus, son PID, son utilisateur, sa consommation et sa priorité ? Et lesquelles te disent qui écoute sur un port ?"
+  - level: zone
+    text: "Après ton `kill` sur le processus du port 9000, que montre de nouveau `ss -ltnp` ? Le processus a-t-il reçu ton signal et choisi de l'ignorer ?"
+  - level: concept
+    text: "Quel signal un processus ne peut-il pas ignorer ? Quelle commande change la priorité d'un processus déjà lancé, sans l'arrêter ?"
+review:
+  - "Pourquoi n'avoir pas envoyé SIGKILL directement à tous les processus suspects ?"
+  - "Le processus de calcul reviendra-t-il au prochain redémarrage ? Comment le saurais-tu ?"

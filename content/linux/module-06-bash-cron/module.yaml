@@ -1,0 +1,9 @@
+title: Scripts Bash et tâches planifiées
+competences:
+  - id: l6-bash
+    text: Je sais écrire un script Bash robuste (arguments, conditions, boucles, fonctions, codes de retour, guillemets, set -euo pipefail).
+  - id: l6-cron
+    text: Je sais planifier une tâche avec cron (syntaxe, utilisateur, environnement, sortie) et diagnostiquer une tâche qui ne s'exécute pas.
+  - id: l6-exploitation
+    text: Je sais écrire un script d'exploitation idempotent (sauvegarde avec rotation, verrou contre les exécutions concurrentes, journalisation).
+exercises: [a1, a2, a3, i1, i2, d1, v1]

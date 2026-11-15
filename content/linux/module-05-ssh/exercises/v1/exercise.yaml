@@ -1,0 +1,8 @@
+type: validation
+title: Validation — le serveur du traiteur, côté accès
+summary: Un exercice inédit, sans indice. Tout ce que tu as appris dans ce module est mobilisé.
+competences: [l5-cles, l5-sshd, l5-surveillance]
+justifications:
+  - "Montre la configuration de sshd que tu as écrite et explique comment tu as vérifié qu'elle était réellement appliquée, méthode par méthode. Qu'est-ce qui, dans la configuration de l'hébergeur, aurait pu la contredire ?"
+  - "Comment as-tu obtenu le chiffre de `attaques.txt` ? Quelle commande plus simple aurait donné un résultat faux, et pourquoi ?"
+  - "Dans quel ordre as-tu fait les changements pour ne jamais risquer de perdre l'accès au serveur ? Qu'aurais-tu fait sans console de secours ?"

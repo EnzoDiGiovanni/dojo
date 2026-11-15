@@ -1,0 +1,16 @@
+type: application
+title: Des journaux qui ne remplissent plus le disque
+summary: Écrire une règle logrotate pour une application qui garde ses fichiers ouverts, et vérifier qu'elle écrit bien dans les nouveaux.
+competences: [l4-rotation]
+hints:
+  - level: comprehension
+    text: "Après une rotation, quel fichier doit grossir et quel fichier doit rester figé ? Comment l'application sait-elle dans quel fichier écrire ?"
+  - level: demarche
+    text: "As-tu simulé ta règle avec `logrotate -d`, puis forcé une rotation avec `-f` ? Juste après, mesure la taille de `app.log` et de `app.log.1` à quelques secondes d'intervalle : lequel grossit ?"
+  - level: zone
+    text: "Que montre `sudo lsof -p <PID de l'application>` après la rotation : quel fichier l'application a-t-elle ouvert ? Et si tu compresses tout de suite, que devient le fichier qu'elle écrit encore ?"
+  - level: concept
+    text: "Quelles sont les deux façons, vues en cours, de traiter un programme qui garde son journal ouvert ? Laquelle l'application permet-elle, d'après son `LISEZMOI` ?"
+review:
+  - "Pourquoi `delaycompress` est-il souvent associé à `postrotate` ? Qu'arriverait-il sans lui ?"
+  - "Ta règle est-elle sûre si le service est arrêté au moment de la rotation ?"

@@ -1,0 +1,16 @@
+type: application
+title: Faire le ménage avec find
+summary: Supprimer des fichiers temporaires périmés et archiver les gros fichiers d'un partage, sans toucher au reste.
+competences: [l1-recherche, l1-fichiers]
+hints:
+  - level: comprehension
+    text: "Pour chacune des deux tâches, quelles sont exactement les conditions qu'un fichier doit remplir pour être concerné ? Combien y en a-t-il ?"
+  - level: demarche
+    text: "Qu'affiche ta commande `find` si tu remplaces l'action par `-print` ? As-tu comparé cette liste, fichier par fichier, avec ce que la consigne demande ?"
+  - level: zone
+    text: "Parmi les entrées dont le nom finit par `.tmp`, y en a-t-il qui ne sont pas des fichiers ? Et que se passe-t-il quand un nom contient un espace dans ta commande de déplacement ?"
+  - level: concept
+    text: "Quel test de `find` restreint le type d'entrée, et quelle forme de `-exec` transmet les noms sans les découper ?"
+review:
+  - "Que ferait ta commande de nettoyage si on la planifiait chaque nuit et qu'un fichier `.tmp` était en cours d'écriture à ce moment-là ?"
+  - "Comment aurais-tu pu prouver, avant d'agir, que ta commande de déplacement ne touchait pas un fichier de 49 Mo ?"

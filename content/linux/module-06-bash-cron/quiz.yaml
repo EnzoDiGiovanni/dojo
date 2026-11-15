@@ -1,0 +1,82 @@
+questions:
+  - id: q-dollar-arobase
+    type: prediction
+    prompt: "Le script `copie.sh` est lancé avec `bash copie.sh \"mon rapport.pdf\" /tmp`. Combien d'arguments reçoit `cp` ?"
+    code: |
+      #!/bin/bash
+      cp $@
+    options:
+      - text: "Trois : « mon », « rapport.pdf » et « /tmp »."
+        correct: true
+      - text: "Deux : « mon rapport.pdf » et « /tmp »."
+        relance: "Que devient $@ sans guillemets ? Et \"$@\" avec ?"
+      - text: "Un seul : tous les arguments collés."
+        relance: "Quelle forme colle tous les arguments en un seul mot : $@ ou $* entre guillemets ?"
+  - id: q-set-e
+    type: qcm
+    prompt: "À quoi sert `set -e` en tête d'un script ?"
+    options:
+      - text: "À arrêter le script dès qu'une commande échoue, au lieu de continuer."
+        correct: true
+      - text: "À afficher chaque commande avant de l'exécuter."
+        relance: "Quelle option du cours sert au débogage en affichant les commandes ?"
+      - text: "À interdire les variables non définies."
+        relance: "Quelle lettre, dans set -euo pipefail, concerne les variables ?"
+      - text: "À exporter toutes les variables vers les programmes lancés."
+        relance: "Le cours associe-t-il -e à l'environnement des programmes, ou aux erreurs ?"
+  - id: q-cron-champs
+    type: qcm
+    prompt: "Quelle ligne de crontab lance une commande à 6 h 15, chaque lundi ?"
+    options:
+      - text: "15 6 * * 1 commande"
+        correct: true
+      - text: "6 15 * * 1 commande"
+        relance: "Dans quel ordre viennent la minute et l'heure dans une ligne de cron ?"
+      - text: "15 6 1 * * commande"
+        relance: "Le troisième champ est-il le jour de la semaine ou le jour du mois ?"
+      - text: "*/15 6 * * mon commande"
+        relance: "Que signifie */15 dans le champ des minutes ? Combien de lancements cela fait-il à 6 h ?"
+  - id: q-pourcent
+    type: prediction
+    prompt: "Dans une crontab, que reçoit réellement le shell avec cette ligne ?"
+    code: "0 2 * * * tar -czf /var/backups/site-$(date +%F).tgz /srv/site"
+    options:
+      - text: "`tar -czf /var/backups/site-$(date +` : le reste devient l'entrée standard, et la commande est cassée."
+        correct: true
+      - text: "La commande entière, la sauvegarde est datée du jour."
+        relance: "Que dit le cours du caractère % dans une ligne de cron ? Comment l'écrire pour qu'il reste un % ?"
+      - text: "La commande entière, mais date +%F renvoie une chaîne vide."
+        relance: "Le problème vient-il de date, ou de la façon dont cron découpe la ligne avant même de lancer le shell ?"
+  - id: q-flock
+    type: qcm
+    prompt: "Une sauvegarde planifiée toutes les heures dure parfois 70 minutes. Que fait `flock -n` dans le script ?"
+    options:
+      - text: "Il fait abandonner aussitôt l'exécution qui démarre pendant que la précédente tient encore le verrou."
+        correct: true
+      - text: "Il met la seconde exécution en attente jusqu'à la fin de la première."
+        relance: "Que signifie l'option -n de flock ? Que ferait flock sans elle ?"
+      - text: "Il tue l'exécution précédente pour laisser la place."
+        relance: "Un verrou agit-il sur le processus qui le détient, ou seulement sur ceux qui essaient de l'obtenir ?"
+      - text: "Il empêche cron de lancer la tâche pendant 70 minutes."
+        relance: "cron sait-il que le script utilise un verrou ? Qui vérifie le verrou ?"
+  - id: q-idempotent
+    type: qcm
+    prompt: "Qu'est-ce qu'un script idempotent ?"
+    options:
+      - text: "Un script qui, relancé, aboutit au même état sans erreur ni doublon."
+        correct: true
+      - text: "Un script qui ne peut être lancé qu'une seule fois."
+        relance: "Que se passe-t-il si une tâche planifiée est relancée par erreur ? Qu'attend-on d'elle ?"
+      - text: "Un script qui ne modifie rien sur le système."
+        relance: "Un script qui crée des comptes peut-il être idempotent ? Comment ?"
+      - text: "Un script qui s'exécute toujours en moins d'une minute."
+        relance: "Le mot parle-t-il de durée, ou du résultat de plusieurs exécutions ?"
+  - id: q-derniere-ligne
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : cron exécute la dernière ligne d'un fichier de /etc/cron.d même si le fichier ne se termine pas par un saut de ligne."
+    options:
+      - text: Vrai
+        relance: "Que dit le cours des exigences de cron sur les fichiers de /etc/cron.d ? Comment le vérifierais-tu avec `cat -A` ou `tail -c1` ?"
+      - text: Faux
+        correct: true

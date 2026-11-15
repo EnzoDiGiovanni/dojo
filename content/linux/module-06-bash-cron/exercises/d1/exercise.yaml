@@ -1,0 +1,17 @@
+type: defi
+title: La sauvegarde de nuit ne tourne pas
+summary: Une tâche planifiée qui n'a jamais rien produit, alors que le script fonctionne parfaitement quand on le lance à la main.
+competences: [l6-cron, l6-bash]
+hints:
+  - level: comprehension
+    text: "Entre « root tape la commande dans son terminal » et « cron lance la ligne à 2 h 30 », qu'est-ce qui change : le shell, le PATH, les variables, le dossier courant, la façon dont la ligne est lue ?"
+  - level: demarche
+    text: "Le journal de cron (`journalctl -u cron`) mentionne-t-il cette tâche quand tu changes l'heure pour qu'elle tourne dans deux minutes ? As-tu essayé de lancer la ligne exactement comme le cours décrit l'environnement de cron ?"
+  - level: zone
+    text: "Si cron ne mentionne même pas la tâche, qu'y a-t-il exactement à la fin du fichier, octet par octet ? Une fois la tâche lancée, que dit son propre journal, et d'où le script tire-t-il le dossier à sauvegarder ?"
+  - level: concept
+    text: "Quels sont les cinq pièges de cron listés dans le cours ? Lesquels expliquent qu'un script marche à la main ?"
+review:
+  - "Dans quel ordre les problèmes sont-ils apparus ? Lequel masquait tous les autres ?"
+  - "Pour BOUTIQUE_DIR, où as-tu mis la valeur et pourquoi pas dans .bashrc ? Que se passe-t-il si quelqu'un lance le script depuis un autre compte ?"
+  - "Comment serais-tu prévenu, la nuit prochaine, si la sauvegarde échouait de nouveau ?"

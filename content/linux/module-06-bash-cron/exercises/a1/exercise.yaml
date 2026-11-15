@@ -1,0 +1,16 @@
+type: application
+title: Un script qui se défend
+summary: Écrire un petit outil en Bash qui vérifie ses arguments, signale ses erreurs proprement, et ne détruit jamais l'existant.
+competences: [l6-bash]
+hints:
+  - level: comprehension
+    text: "Liste tous les cas d'appel possibles (aucun argument, deux, un nom bizarre, un site existant, un nouveau site) : pour chacun, qu'est-ce qui doit s'afficher, où, et avec quel code de retour ?"
+  - level: demarche
+    text: "Après chaque essai, as-tu affiché le code de retour avec `echo $?` ? As-tu séparé ce qui sort sur la sortie standard de ce qui sort sur la sortie d'erreur, par exemple avec `creer-site 2>/dev/null` ?"
+  - level: zone
+    text: "Le nom `../etc` passe-t-il ta validation ? Et un nom avec un espace ? Ton test d'existence a-t-il lieu avant toute création ?"
+  - level: concept
+    text: "Quelle construction de Bash teste une chaîne contre une expression régulière ? Comment écrire sur la sortie d'erreur, et où ranger un script pour qu'il se lance par son nom ?"
+review:
+  - "Que fait ton script si `/srv/sites` n'existe pas ? Est-ce le comportement que tu veux ?"
+  - "Pourquoi un code 2 pour l'usage et 1 pour un site existant, plutôt que 1 partout ? Qui en profite ?"

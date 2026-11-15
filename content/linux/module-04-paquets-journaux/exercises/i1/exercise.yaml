@@ -1,0 +1,16 @@
+type: intermediaire
+title: Le dépôt d'un éditeur
+summary: Installer un logiciel depuis un dépôt tiers en vérifiant ses signatures, sans donner à sa clé plus de pouvoir qu'il n'en faut.
+competences: [l4-depots, l4-apt]
+hints:
+  - level: comprehension
+    text: "Que garantit la signature d'un dépôt, et à qui fais-tu confiance en installant sa clé ? Pour combien de dépôts la documentation de l'éditeur fait-elle valoir cette confiance ?"
+  - level: demarche
+    text: "Après avoir déclaré le dépôt, que répond `sudo apt update` ? Que montre `apt policy fabrique-outils` : de quel dépôt viendrait le paquet ?"
+  - level: zone
+    text: "Où la clé est-elle rangée, et qu'est-ce qui, dans ta déclaration du dépôt, relie ce dépôt précis à cette clé précise ?"
+  - level: concept
+    text: "Dans le cours, quelles sont les deux pratiques à ne plus suivre, et quel champ du format deb822 les remplace ?"
+review:
+  - "Si l'éditeur change de clé l'an prochain, que devras-tu modifier, et qu'est-ce qui restera inchangé ?"
+  - "Comment vérifierais-tu que la clé reçue est bien celle de l'éditeur, et pas une clé substituée en chemin ?"

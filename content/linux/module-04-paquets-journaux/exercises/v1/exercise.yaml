@@ -1,0 +1,8 @@
+type: validation
+title: Validation — le mailer du partenaire
+summary: Un exercice inédit, sans indice. Tout ce que tu as appris dans ce module est mobilisé.
+competences: [l4-apt, l4-depots, l4-journal, l4-rotation]
+justifications:
+  - "Montre comment tu as déclaré le dépôt du partenaire. Pourquoi pas la ligne proposée dans son LISEZMOI ? Comment as-tu vérifié que sa clé ne vaut que pour son dépôt ?"
+  - "Quelles commandes journalctl t'ont donné le relais et le code de sortie ? Qui a écrit chacune des deux lignes que tu as utilisées, le programme ou systemd ?"
+  - "Explique ta règle logrotate ligne par ligne. Que se passerait-il après une rotation si tu retirais l'une des lignes qui concernent le redémarrage de l'écriture ou la compression ?"

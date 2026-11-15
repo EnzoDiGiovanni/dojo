@@ -1,0 +1,17 @@
+type: defi
+title: Le script de déploiement
+summary: Un script de mise en production hérité d'un prestataire, qui affirme que tout va bien… et met le site hors ligne.
+competences: [l1-fichiers, l1-arborescence, l1-recherche, l1-texte]
+hints:
+  - level: comprehension
+    text: "Après un déploiement réussi, à quoi doit ressembler `/srv/atelier` (versions présentes, cible de `current`, contenu de `config/`) ? Peux-tu le dessiner avant de lancer quoi que ce soit ?"
+  - level: demarche
+    text: "Comment exécuter le script sur une copie de l'installation plutôt que sur la production ? Après une exécution, qu'affichent `ls -la` sur chaque dossier concerné et `readlink -f current` ?"
+  - level: zone
+    text: "Pour chacune des quatre étapes numérotées du script, le résultat observé correspond-il à ce que dit le commentaire ? Et que contient la liste parcourue par la boucle de nettoyage, avant toute suppression ?"
+  - level: concept
+    text: "Le cours liste plusieurs pièges dans sa dernière partie. Lesquels concernent les archives, les jokers, les liens vers des dossiers et le tri de numéros de version ?"
+review:
+  - "Quel bug aurait été le plus grave en production, et pourquoi ? Dans quel ordre les as-tu découverts ?"
+  - "Comment le script pourrait-il vérifier lui-même, avant de basculer `current`, que la nouvelle version est complète ?"
+  - "Si deux personnes lancent le script en même temps, que peut-il se passer ?"

@@ -1,0 +1,16 @@
+type: intermediaire
+title: Un export tous les quarts d'heure
+summary: Planifier une tâche avec un timer systemd, sous un compte dédié, en s'assurant qu'elle réussit vraiment.
+competences: [l3-units, l3-systemctl]
+hints:
+  - level: comprehension
+    text: "Combien d'units faut-il ici, de quel type, et laquelle est activée ? Qu'est-ce qui relie le timer au service qu'il déclenche ?"
+  - level: demarche
+    text: "As-tu lancé le service toi-même avec `systemctl start` avant d'attendre le timer ? Que dit `journalctl -u export.service` de cette exécution ? Et `systemd-analyze calendar` de ton expression ?"
+  - level: zone
+    text: "Le script s'exécute-t-il avec le bon compte ? Ce compte a-t-il le droit d'écrire là où le script écrit ?"
+  - level: concept
+    text: "Quel Type de service convient à une tâche qui se termine ? Quelle directive du cours crée un dossier d'état appartenant au compte du service ? Quelle option rattrape une exécution manquée ?"
+review:
+  - "Qu'apporte un timer par rapport à une ligne de crontab pour cette tâche ? Et qu'est-ce que tu perds ?"
+  - "Si l'export prenait 20 minutes, que se passerait-il au déclenchement suivant ?"

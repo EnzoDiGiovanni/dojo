@@ -1,0 +1,31 @@
+questions:
+  - id: c-guillemets
+    type: prediction
+    prompt: "`fichier` vaut `Bilan 2026.pdf`. Que fait cette commande ?"
+    code: "rm $fichier"
+    options:
+      - text: "Elle tente de supprimer deux fichiers, « Bilan » et « 2026.pdf »."
+        correct: true
+      - text: "Elle supprime « Bilan 2026.pdf »."
+        relance: "Que fait le shell d'une variable non protégée par des guillemets avant de lancer la commande ? Combien d'arguments rm reçoit-il ?"
+      - text: "Elle échoue avec une erreur de syntaxe."
+        relance: "Le shell signale-t-il une erreur de syntaxe pour un espace dans la valeur d'une variable ? Que reçoit rm exactement ?"
+  - id: c-pipefail
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : sans `set -o pipefail`, `grep motif fichier-absent | wc -l` a un code de retour non nul."
+    options:
+      - text: Vrai
+        relance: "Sans pipefail, le code de retour d'un pipeline est celui de quelle commande ? wc -l échoue-t-il ici ?"
+      - text: Faux
+        correct: true
+  - id: c-cron-path
+    type: qcm
+    prompt: "La ligne `0 3 * * * root purge-miniatures 30` est dans /etc/cron.d/galerie. Le script est dans /usr/local/sbin et fonctionne quand root le lance à la main. Que se passe-t-il à 3 h ?"
+    options:
+      - text: "La commande est introuvable : /usr/local/sbin n'est pas dans le PATH de cron."
+        correct: true
+      - text: "Le script s'exécute normalement."
+        relance: "Quel PATH cron donne-t-il aux commandes qu'il lance ? Et quel PATH root a-t-il dans son terminal ?"
+      - text: "cron refuse la ligne car root ne peut pas lancer de tâche."
+        relance: "Que représente le sixième champ dans un fichier de /etc/cron.d ? root y est-il interdit ?"

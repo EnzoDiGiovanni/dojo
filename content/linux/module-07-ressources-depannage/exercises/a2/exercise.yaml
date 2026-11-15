@@ -1,0 +1,16 @@
+type: application
+title: Plus de place, vraiment ?
+summary: Comprendre pourquoi un disque à moitié vide refuse de nouveaux fichiers, réparer, et empêcher la panne de revenir.
+competences: [l7-mesure]
+hints:
+  - level: comprehension
+    text: "Que dit exactement l'erreur de la boutique dans son journal ? Que mesure `df -h`, et quelle autre ressource d'un système de fichiers peut manquer ?"
+  - level: demarche
+    text: "As-tu comparé `df -h` et `df -i` sur `/var/spool/sessions` ? Combien de fichiers y a-t-il, et combien ont plus d'un jour (`find … -mtime +0 | wc -l`) ?"
+  - level: zone
+    text: "Après ton nettoyage, qu'est-ce qui empêche le dossier de se remplir de nouveau dans quelques jours ? Quel mécanisme du système nettoie des dossiers temporaires selon l'âge des fichiers ?"
+  - level: concept
+    text: "Que dit le cours de systemd-tmpfiles : où écrire la règle, quel type de ligne pour un dossier, quel champ pour l'âge, et comment l'appliquer tout de suite ?"
+review:
+  - "Pourquoi l'âge d'un jour ? Qu'arriverait-il à un client dont la session aurait été supprimée trop tôt ?"
+  - "À quel moment aurais-tu pu voir venir cette panne ? Que faudrait-il surveiller ?"

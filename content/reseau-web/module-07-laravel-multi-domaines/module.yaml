@@ -1,0 +1,8 @@
+title: Héberger plusieurs applications Laravel
+competences:
+  - id: r7-laravel
+    text: Je sais déployer une application Laravel derrière Nginx et PHP-FPM (racine public/, try_files, .env, droits sur storage et bootstrap/cache).
+  - id: r7-isolation
+    text: Je sais isoler plusieurs applications sur un même serveur (un utilisateur et un pool FPM par application, un server block par domaine).
+  - id: r7-taches
+    text: Je sais faire tourner le scheduler et les workers de queue d'une application Laravel comme des services.

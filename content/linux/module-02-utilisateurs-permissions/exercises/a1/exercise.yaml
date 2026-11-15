@@ -1,0 +1,16 @@
+type: application
+title: Les comptes de l'équipe
+summary: Créer un compte développeur, un groupe, un compte de service, et fermer un compte sans rien perdre.
+competences: [l2-comptes]
+hints:
+  - level: comprehension
+    text: "Pour chaque ligne de la demande, quel fichier du système (`/etc/passwd`, `/etc/group`, `/etc/shadow`) doit changer, et quel champ ?"
+  - level: demarche
+    text: "Après chaque commande, qu'affichent `getent passwd <compte>`, `id <compte>` et `sudo passwd -S <compte>` ? Correspondent-ils à la demande, champ par champ ?"
+  - level: zone
+    text: "Compare `id lea` avant et après ton travail : a-t-elle gagné un groupe, ou en a-t-elle aussi perdu un ?"
+  - level: concept
+    text: "Que fait `usermod -G` sans `-a` ? Quelles options de `useradd` créent le dossier personnel, choisissent le shell, font un compte système ?"
+review:
+  - "Comment aurais-tu réagi si on t'avait demandé de supprimer le compte `stagiaire` au lieu de le verrouiller ? Qu'aurais-tu vérifié avant ?"
+  - "Pourquoi un service comme la vitrine ne doit-il pas tourner avec le compte d'un développeur ?"

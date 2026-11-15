@@ -1,0 +1,8 @@
+title: Variables, secrets et configuration
+competences:
+  - id: p4-separation
+    text: Je sais séparer code, configuration et secrets, et décider où vit chaque valeur (dépôt, serveur, CI).
+  - id: p4-secrets
+    text: Je sais stocker et injecter des secrets sans qu'ils apparaissent dans le dépôt, les images, les logs ou l'historique du shell.
+  - id: p4-rotation
+    text: Je sais faire tourner un secret compromis sans interruption de service.

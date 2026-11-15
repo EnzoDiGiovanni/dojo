@@ -1,0 +1,15 @@
+Editions Outils — installation de fabrique-outils sur Ubuntu
+=============================================================
+
+Le dépôt est disponible sur votre serveur à l'adresse file:/srv/depot-outils
+(suite « stable », composant « main »). Sa clé de signature est fournie dans
+cle-editeur.asc.
+
+Installation rapide :
+
+    echo "deb [trusted=yes] file:/srv/depot-outils stable main" | sudo tee /etc/apt/sources.list.d/outils.list
+    sudo apt-get update && sudo apt-get install fabrique-outils
+
+Si vous préférez vérifier la signature :
+
+    sudo apt-key add cle-editeur.asc

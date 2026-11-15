@@ -1,0 +1,35 @@
+questions:
+  - id: c-quelle-cle
+    type: qcm
+    prompt: "Pour te connecter par clé au compte `deploy` d'un serveur, que dois-tu déposer sur ce serveur ?"
+    options:
+      - text: "Ta clé publique, dans /home/deploy/.ssh/authorized_keys."
+        correct: true
+      - text: "Ta clé privée, dans /home/deploy/.ssh/."
+        relance: "Que pourrait faire l'administrateur de ce serveur, ou un attaquant qui le compromet, avec ta clé privée ?"
+      - text: "Les deux clés, pour que le serveur puisse vérifier."
+        relance: "Pour vérifier qu'une signature vient bien de toi, le serveur a-t-il besoin de pouvoir signer lui-même ?"
+  - id: c-premiere-valeur
+    type: prediction
+    prompt: "Quelle est la valeur effective de PasswordAuthentication avec ces deux fichiers ?"
+    code: |
+      # /etc/ssh/sshd_config.d/50-cloud-init.conf
+      PasswordAuthentication yes
+      # /etc/ssh/sshd_config.d/90-securite.conf
+      PasswordAuthentication no
+    options:
+      - text: "yes"
+        correct: true
+      - text: "no"
+        relance: "Dans quel ordre sshd lit-il ces fichiers ? Pour cette directive, est-ce la première ou la dernière valeur lue qui l'emporte ?"
+      - text: "sshd refuse de démarrer à cause de la contradiction."
+        relance: "Que t'afficherait `sshd -t` ici ? Une directive répétée est-elle une erreur de syntaxe ?"
+  - id: c-allowgroups
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : ajouter `AllowGroups devs` dans la configuration de sshd laisse les autres comptes se connecter comme avant, et donne simplement un accès garanti au groupe devs."
+    options:
+      - text: Vrai
+        relance: "Une liste « Allow » est-elle un ajout, ou une liste blanche qui exclut tout le reste ? Que devient la connexion de ton propre compte s'il n'est pas dans devs ?"
+      - text: Faux
+        correct: true

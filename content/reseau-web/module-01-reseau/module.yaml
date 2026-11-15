@@ -1,0 +1,8 @@
+title: Fondamentaux réseau
+competences:
+  - id: r1-adressage
+    text: Je sais lire une configuration IP (adresse, masque, passerelle, routes) et distinguer adresses privées, publiques et de bouclage.
+  - id: r1-ports
+    text: Je sais ce qu'est un port, distinguer TCP et UDP, et trouver quel processus écoute sur quelle interface (ss, ip).
+  - id: r1-outils
+    text: Je sais localiser une panne de connectivité couche par couche avec ping, traceroute, nc et curl.

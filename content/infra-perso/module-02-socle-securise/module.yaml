@@ -1,0 +1,8 @@
+title: Socle Ubuntu sécurisé
+competences:
+  - id: p2-installation
+    text: Je sais installer et préparer un Ubuntu Server de façon reproductible (compte d'administration, fuseau, swap, paquets de base).
+  - id: p2-durcissement
+    text: Je sais durcir les accès (SSH par clés, pare-feu, fail2ban, comptes de service sans shell) et vérifier la surface exposée.
+  - id: p2-mises-a-jour
+    text: Je sais appliquer les mises à jour système, y compris automatiques (unattended-upgrades), et planifier les redémarrages nécessaires.

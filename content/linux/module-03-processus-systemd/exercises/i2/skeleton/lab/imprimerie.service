@@ -1,0 +1,10 @@
+[Unit]
+Description=Imprimerie - serveur de devis PDF
+Documentation=man:imprimerie(8)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/imprimerie
+
+[Install]
+WantedBy=multi-user.target

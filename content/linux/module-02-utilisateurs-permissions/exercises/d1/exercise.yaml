@@ -1,0 +1,16 @@
+type: defi
+title: Le dossier des clients
+summary: Un dossier d'équipe qui « marchait avant » cumule les refus d'accès… et laisse lire ce qui devrait être secret.
+competences: [l2-droits, l2-partage, l2-comptes]
+hints:
+  - level: comprehension
+    text: "Pour chaque plainte, qui essaie de faire quoi, sur quel chemin exact ? Peux-tu reproduire chacune d'elles toi-même avant de chercher une cause ?"
+  - level: demarche
+    text: "Pour un accès refusé, as-tu inspecté chaque élément du chemin avec `namei -l` ? Pour un fichier qu'un collègue ne peut pas modifier, as-tu regardé ses droits et son groupe juste après sa création ?"
+  - level: zone
+    text: "Deux plaintes se ressemblent mais n'ont pas la même cause : dans un dossier, le fichier créé a le bon groupe et de mauvais droits ; dans l'autre, c'est l'inverse. Qu'est-ce qui, hors de `/srv/clients`, décide des droits d'un fichier à sa création ?"
+  - level: concept
+    text: "Que signifie un nombre à la place d'un nom dans `ls -l` ? Que faut-il sur chaque dossier d'un chemin pour atteindre un fichier ? Où sont les réglages appliqués à toutes les sessions de connexion ?"
+review:
+  - "Pour l'umask, as-tu supprimé le réglage de l'audit ou l'as-tu adapté ? Qu'est-ce que l'audit cherchait à empêcher, et ta solution l'empêche-t-elle toujours ?"
+  - "Lequel de ces problèmes aurait pu être évité au moment de la suppression de l'ancien compte ? Quelle procédure mettrais-tu en place ?"

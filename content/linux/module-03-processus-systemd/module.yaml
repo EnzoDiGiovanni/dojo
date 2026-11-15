@@ -1,0 +1,9 @@
+title: Processus et services systemd
+competences:
+  - id: l3-processus
+    text: Je sais observer et piloter des processus (ps, top, pgrep, signaux, kill, nice) et trouver qui écoute sur un port.
+  - id: l3-systemctl
+    text: Je sais piloter un service avec systemctl (start, stop, restart, reload, enable, disable, mask, status) et distinguer « démarré » de « activé ».
+  - id: l3-units
+    text: Je sais écrire une unit de service (ExecStart, User, WorkingDirectory, Environment, Restart, WantedBy) et une unit timer.
+exercises: [a1, a2, a3, i1, i2, d1, v1]

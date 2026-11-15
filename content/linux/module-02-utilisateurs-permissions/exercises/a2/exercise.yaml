@@ -1,0 +1,16 @@
+type: application
+title: Les droits du dossier comptable
+summary: Poser propriétaires et droits pour que chacun accède exactement à ce dont il a besoin, et à rien d'autre.
+competences: [l2-droits]
+hints:
+  - level: comprehension
+    text: "Pour chaque fichier et chaque dossier, qui doit pouvoir lire, écrire, exécuter ou traverser ? As-tu fait un tableau, utilisateur par utilisateur, avant de taper un `chmod` ?"
+  - level: demarche
+    text: "Comment tester un accès comme le ferait un autre utilisateur, sans te connecter avec son mot de passe ? As-tu essayé `sudo -u nina cat …` et `sudo -u hugo ls …` ?"
+  - level: zone
+    text: "Quand un accès est refusé alors que les droits du fichier semblent bons, as-tu regardé les droits de chaque dossier du chemin avec `namei -l <chemin>` ?"
+  - level: concept
+    text: "Que signifie `x` sur un dossier ? Et quelle catégorie (propriétaire, groupe, autres) s'applique à `lea` pour un fichier qui lui appartient ?"
+review:
+  - "As-tu utilisé la notation symbolique ou octale ? Laquelle t'a semblé la plus sûre pour retirer un droit sans toucher aux autres ?"
+  - "Que se passera-t-il quand nina créera un nouveau fichier dans `/srv/compta` ? Sera-t-il lisible par lea ?"

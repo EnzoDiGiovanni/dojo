@@ -1,0 +1,11 @@
+title: T2 · Réseau, Nginx et hébergement
+description: Comprendre le chemin d'une requête web de bout en bout et héberger plusieurs applications sur un même VPS — réseau, DNS, HTTP, pare-feu, Nginx, PHP-FPM, Laravel et HTTPS.
+modules:
+  - module-01-reseau
+  - module-02-dns
+  - module-03-http-tls
+  - module-04-pare-feu
+  - module-05-nginx-server-blocks
+  - module-06-reverse-proxy-php-fpm
+  - module-07-laravel-multi-domaines
+  - module-08-certbot-diagnostic

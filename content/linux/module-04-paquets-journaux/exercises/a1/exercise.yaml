@@ -1,0 +1,16 @@
+type: application
+title: Installer, retenir, purger
+summary: Gérer les logiciels du serveur avec APT, en distinguant suppression et purge, et en gelant une version validée.
+competences: [l4-apt]
+hints:
+  - level: comprehension
+    text: "Pour chacune des trois demandes, qu'est-ce qui doit avoir changé sur le disque une fois la commande passée : des fichiers ajoutés, des fichiers retirés, une marque posée sur un paquet ?"
+  - level: demarche
+    text: "Que répond `apt install` sur un serveur dont tu n'as jamais mis à jour la liste des paquets ? Après ta suppression, que montre `dpkg -l screen`, et `/etc/screenrc` existe-t-il encore ?"
+  - level: zone
+    text: "Que signifie l'état `rc` dans la première colonne de `dpkg -l` ? Et que montre `apt-mark showhold` ?"
+  - level: concept
+    text: "Quelle différence le cours fait-il entre remove et purge ? Quelle sous-commande d'apt-mark gèle un paquet ?"
+review:
+  - "Si tu dois mettre à jour curl dans trois mois, quelles commandes taperas-tu, dans quel ordre ?"
+  - "Comment aurais-tu vérifié, avant de purger screen, quels fichiers de configuration allaient disparaître ?"

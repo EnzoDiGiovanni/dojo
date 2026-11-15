@@ -1,0 +1,16 @@
+type: application
+title: Le disque est plein
+summary: Retrouver ce qui remplit une partition, y compris ce que `du` ne voit pas, et libérer la place sans toucher aux données de production.
+competences: [l7-mesure]
+hints:
+  - level: comprehension
+    text: "Que mesure `df`, que mesure `du`, et pourquoi pourraient-ils ne pas donner le même total sur `/srv/donnees` ?"
+  - level: demarche
+    text: "As-tu comparé `df -h /srv/donnees` et `du -xsh /srv/donnees` ? Après avoir supprimé ce qui pouvait l'être, de combien `df` a-t-il baissé, et est-ce ce que tu attendais ?"
+  - level: zone
+    text: "Si l'écart persiste, quel processus garde ouvert un fichier qui n'a plus de nom ? Quelle commande du cours les liste ?"
+  - level: concept
+    text: "Quand l'espace d'un fichier supprimé est-il réellement libéré ? Que faut-il faire du processus qui le tient, sans perdre son travail ?"
+review:
+  - "Comment éviter que ce fichier temporaire de rapport recommence à remplir le disque ?"
+  - "Pourquoi ne pas avoir supprimé des fichiers de `clients/` pour gagner de la place rapidement ?"

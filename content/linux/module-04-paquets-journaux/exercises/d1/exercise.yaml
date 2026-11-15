@@ -1,0 +1,16 @@
+type: defi
+title: APT ne veut plus rien installer
+summary: Un serveur où chaque commande APT se termine en erreur, pour des raisons qui s'additionnent.
+competences: [l4-apt, l4-depots]
+hints:
+  - level: comprehension
+    text: "Combien de messages d'erreur ou d'avertissement différents vois-tu, entre `apt update` et `apt install jq` ? Pour chacun, quel fichier, quel paquet ou quel dépôt est désigné ?"
+  - level: demarche
+    text: "As-tu traité les messages un par un, en relançant la même commande après chaque correction ? Que dit `dpkg --audit` ? Et `apt policy` sur le paquet dont jq a besoin ?"
+  - level: zone
+    text: "Un paquet n'arrive pas à se configurer : quel message son script d'installation affiche-t-il, et où te renvoie-t-il ? Un autre paquet est refusé alors que rien n'est retenu par apt-mark : quelles autres règles d'APT peuvent interdire un paquet ?"
+  - level: concept
+    text: "Le tableau « Quand APT est bloqué » du cours associe chaque message à une cause. Lesquels retrouves-tu ici, et que dit-il de `--fix-broken` ?"
+review:
+  - "Quel problème as-tu résolu en premier, et pourquoi celui-là ? Aurais-tu pu gagner du temps en lisant les messages autrement ?"
+  - "La préférence sur libjq1 avait été posée après un incident. L'as-tu supprimée sans autre forme de procès ? Qu'aurais-tu dû vérifier ou demander ?"

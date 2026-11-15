@@ -1,0 +1,8 @@
+title: DNS et résolution de noms
+competences:
+  - id: r2-enregistrements
+    text: Je sais lire et choisir les enregistrements DNS (A, AAAA, CNAME, MX, TXT, NS) et comprendre le rôle du TTL.
+  - id: r2-dig
+    text: Je sais interroger un serveur DNS précis avec dig et suivre une résolution de bout en bout.
+  - id: r2-resolution-locale
+    text: Je sais comment le serveur résout un nom (/etc/hosts, resolv.conf, systemd-resolved) et diagnostiquer une résolution incohérente.

@@ -1,0 +1,83 @@
+questions:
+  - id: q-strictmodes
+    type: qcm
+    prompt: "La clé d'alice est bien dans `/home/alice/.ssh/authorized_keys`, mais le serveur la refuse. Le journal indique « Authentication refused: bad ownership or modes for directory /home/alice ». Que faut-il corriger ?"
+    options:
+      - text: "Les droits de /home/alice, modifiable par d'autres que alice."
+        correct: true
+      - text: "La clé d'alice, qui doit être régénérée."
+        relance: "Le message parle-t-il de la clé, ou d'un dossier ? Lequel ?"
+      - text: "Le fichier authorized_keys, qui doit être en 777 pour que sshd puisse le lire."
+        relance: "sshd tourne-t-il en root ? A-t-il besoin que d'autres comptes puissent écrire dans ce fichier pour le lire ?"
+      - text: "Rien, il suffit de redémarrer ssh."
+        relance: "Un redémarrage change-t-il les droits du dossier mentionné dans le message ?"
+  - id: q-test-avant
+    type: qcm
+    prompt: "Tu viens d'écrire `PasswordAuthentication no` et `PermitRootLogin no`. Quelle est la séquence la plus sûre ?"
+    options:
+      - text: "sshd -t, recharger ssh, puis ouvrir une nouvelle connexion dans un autre terminal en gardant la session actuelle ouverte."
+        correct: true
+      - text: "Recharger ssh, se déconnecter, puis se reconnecter pour tester."
+        relance: "Si la nouvelle configuration t'empêche de te connecter, par où reviens-tu sur le serveur une fois déconnecté ?"
+      - text: "Redémarrer le serveur pour que la configuration soit prise en compte partout."
+        relance: "Que se passe-t-il si sshd refuse de démarrer à cause d'une erreur de syntaxe, sur un serveur dont tu n'as pas la console ?"
+      - text: "Recharger ssh : si la commande ne renvoie pas d'erreur, la configuration est bonne."
+        relance: "Une configuration valide garantit-elle qu'elle fait ce que tu voulais ? Comment vérifierais-tu la valeur réellement appliquée ?"
+  - id: q-scp-port
+    type: prediction
+    prompt: "Le serveur écoute en SSH sur le port 2222. Que fait cette commande ?"
+    code: "scp -p 2222 rapport.pdf alice@wiki.example:/tmp/"
+    options:
+      - text: "Elle essaie de copier un fichier local nommé 2222 et rapport.pdf vers le port 22 du serveur, en préservant les dates."
+        correct: true
+      - text: "Elle copie rapport.pdf vers /tmp/ du serveur, par le port 2222."
+        relance: "Pour scp, l'option du port est-elle -p ou -P ? Que fait l'autre ?"
+      - text: "Elle échoue immédiatement : -p n'existe pas pour scp."
+        relance: "Que dit `man scp` de l'option -p minuscule ?"
+  - id: q-agent
+    type: qcm
+    prompt: "À quoi sert ssh-agent ?"
+    options:
+      - text: "À garder en mémoire une clé déverrouillée, pour ne pas retaper sa phrase de passe à chaque connexion."
+        correct: true
+      - text: "À générer des paires de clés."
+        relance: "Quelle commande du cours génère une paire de clés ?"
+      - text: "À copier ta clé publique sur le serveur."
+        relance: "Quelle commande ajoute ta clé publique dans authorized_keys d'un serveur distant ?"
+      - text: "À remplacer la phrase de passe, qui devient inutile."
+        relance: "Que se passe-t-il si quelqu'un copie ton fichier de clé privée sans phrase de passe ? L'agent protège-t-il ce fichier sur le disque ?"
+  - id: q-methodes
+    type: prediction
+    prompt: "Après durcissement, que doit répondre le serveur à cette commande ?"
+    code: "ssh -o PreferredAuthentications=none bob@wiki.example"
+    options:
+      - text: "Permission denied (publickey)."
+        correct: true
+      - text: "Permission denied (publickey,password)."
+        relance: "Que signifie la présence de password dans cette liste ? Est-ce ce que tu voulais obtenir ?"
+      - text: "Une demande de mot de passe."
+        relance: "Avec PreferredAuthentications=none, le client essaie-t-il une méthode ? Que lui renvoie alors le serveur ?"
+  - id: q-fail2ban-ignore
+    type: qcm
+    prompt: "Pourquoi renseigner `ignoreip` dans la configuration de fail2ban ?"
+    options:
+      - text: "Pour qu'une série d'erreurs depuis tes propres adresses ne te bannisse pas de ton serveur."
+        correct: true
+      - text: "Pour que fail2ban ignore les adresses déjà bannies."
+        relance: "Que se passe-t-il pour une adresse déjà bannie ? A-t-elle encore besoin d'être ignorée ?"
+      - text: "Pour lister les adresses à bannir définitivement."
+        relance: "Le mot ignore évoque-t-il une liste noire ou une liste d'exceptions ?"
+      - text: "C'est obligatoire, fail2ban refuse de démarrer sans."
+        relance: "Le cours présente-t-il ignoreip comme une exigence technique ou comme une précaution ?"
+  - id: q-auth-log
+    type: qcm
+    prompt: "Dans /var/log/auth.log, que t'apprend la ligne « Invalid user oracle from 203.0.113.50 » ?"
+    options:
+      - text: "Quelqu'un depuis 203.0.113.50 a tenté de se connecter avec un compte qui n'existe pas sur le serveur."
+        correct: true
+      - text: "Le compte oracle existe mais son mot de passe est invalide."
+        relance: "Quelle forme prend la ligne quand le compte existe et que le mot de passe est faux ?"
+      - text: "Le serveur 203.0.113.50 a refusé une connexion sortante."
+        relance: "Ce journal décrit-il les connexions qui arrivent sur le serveur, ou celles qu'il initie ?"
+      - text: "203.0.113.50 a été banni par fail2ban."
+        relance: "Quel programme écrit cette ligne : sshd ou fail2ban ? Où fail2ban journalise-t-il ses bannissements ?"

@@ -1,0 +1,8 @@
+title: Reverse proxy et PHP-FPM
+competences:
+  - id: r6-proxy
+    text: Je sais placer Nginx en reverse proxy devant une application (proxy_pass, en-têtes X-Forwarded-*, timeouts).
+  - id: r6-fpm
+    text: Je sais brancher Nginx sur PHP-FPM (fastcgi_pass, socket ou TCP, pool, utilisateur) et lire les erreurs de la chaîne.
+  - id: r6-upstream
+    text: Je sais répartir la charge sur plusieurs instances avec un bloc upstream.

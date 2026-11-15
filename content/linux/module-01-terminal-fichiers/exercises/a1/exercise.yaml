@@ -1,0 +1,16 @@
+type: application
+title: Une arborescence de déploiement
+summary: Installer deux versions d'un site livrées en archives, et désigner la version en ligne par un lien symbolique.
+competences: [l1-arborescence, l1-fichiers]
+hints:
+  - level: comprehension
+    text: "Pour un serveur web qui servira `/srv/vitrine/current`, quel chemin exact doit mener à la page d'accueil de la version 1.1 ?"
+  - level: demarche
+    text: "Avant d'extraire une archive, quelle commande te montre les chemins qu'elle contient ? Qu'as-tu obtenu dans `releases/` après ta première extraction, avec `ls -la` ?"
+  - level: zone
+    text: "Compare `tar -tzf` de l'archive et le contenu de ton dossier de version : y a-t-il un niveau de dossier en trop, ou un fichier qui manque ?"
+  - level: concept
+    text: "Dans le cours, quelles sont les deux façons de se débarrasser d'un dossier de premier niveau à l'extraction ? Et quels fichiers le joker `*` laisse-t-il de côté ?"
+review:
+  - "Ton lien `current` est-il absolu ou relatif ? Que deviendrait-il si on déplaçait tout `/srv/vitrine` vers `/srv/sites/vitrine` ?"
+  - "Comment basculerais-tu `current` vers la version 1.0 en une seule commande, si la 1.1 posait problème ?"

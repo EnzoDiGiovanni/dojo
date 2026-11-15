@@ -1,0 +1,16 @@
+type: intermediaire
+title: Le dossier de l'équipe
+summary: Monter un dossier de projet où chaque développeur peut reprendre le travail des autres, et un dépôt ouvert mais sans risque.
+competences: [l2-partage, l2-droits]
+hints:
+  - level: comprehension
+    text: "Quand hugo crée un fichier dans le dossier du projet, de quoi dépendent son propriétaire, son groupe et ses droits ? Lequel de ces trois éléments empêche lea de le modifier ?"
+  - level: demarche
+    text: "As-tu fait l'essai à deux : `sudo -iu lea` crée un fichier, puis `sudo -iu hugo` tente de le modifier ? Qu'affiche `ls -l` sur ce fichier, juste après sa création ?"
+  - level: zone
+    text: "Le fichier créé a-t-il le bon groupe mais pas `w` pour le groupe, ou le bon droit mais pas le bon groupe ? Et dans un sous-dossier créé avant ton intervention, est-ce pareil ?"
+  - level: concept
+    text: "Quel droit spécial sur un dossier fait hériter du groupe ? Qu'est-ce qui décide des droits d'un fichier à sa création, et où le règle-t-on pour les connexions d'un utilisateur ? Quel droit spécial protège les fichiers des autres dans un dossier ouvert à tous ?"
+review:
+  - "Ta solution pour les droits de groupe à la création s'applique-t-elle aussi aux fichiers déposés par un service (un serveur web, par exemple), qui ne passe pas par une connexion ? Comment le vérifierais-tu ?"
+  - "Un nouveau développeur arrive : quelles commandes faut-il taper pour qu'il ait accès au projet, et seulement ça ?"

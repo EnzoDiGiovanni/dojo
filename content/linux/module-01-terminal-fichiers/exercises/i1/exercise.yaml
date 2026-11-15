@@ -1,0 +1,16 @@
+type: intermediaire
+title: Archiver les journaux du mois
+summary: Regrouper les journaux d'octobre dans une archive compressée propre, puis libérer la place, sans perdre une ligne.
+competences: [l1-recherche, l1-fichiers, l1-arborescence]
+hints:
+  - level: comprehension
+    text: "Si un collègue extrait ton archive dans un dossier vide, quels chemins doit-il obtenir ? Lesquels obtient-il avec ton archive actuelle (`tar -tzf`) ?"
+  - level: demarche
+    text: "As-tu listé les journaux d'octobre avec `find` avant de les archiver ? Combien en trouves-tu, et combien en compte `tar -tzf` dans ton archive ?"
+  - level: zone
+    text: "Regarde le premier chemin que liste `tar -tzf` : commence-t-il par `var/log/vitrine/` ? Et dans ta liste de fichiers, que devient un nom qui contient un espace ?"
+  - level: concept
+    text: "Quelle option de tar change le répertoire de travail avant d'archiver ? Comment donner à tar une liste de fichiers sans passer par une substitution `$(...)` qui découpe sur les espaces ?"
+review:
+  - "Dans quel ordre as-tu archivé puis supprimé ? Que se serait-il passé si l'archive avait été incomplète et que tu avais supprimé quand même ?"
+  - "Comment vérifierais-tu, sans l'extraire, qu'une archive contient bien un fichier précis avec le bon contenu ?"

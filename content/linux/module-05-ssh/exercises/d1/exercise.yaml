@@ -1,0 +1,17 @@
+type: defi
+title: La CI ne passe plus
+summary: Un compte de déploiement inaccessible pour plusieurs raisons qui se masquent l'une l'autre, et un durcissement qui n'en est pas un.
+competences: [l5-sshd, l5-cles, l5-surveillance]
+hints:
+  - level: comprehension
+    text: "Quand une connexion par clé échoue, le client n'en dit presque rien. Qui sait pourquoi elle a été refusée, et où l'écrit-il ?"
+  - level: demarche
+    text: "As-tu suivi le journal de sshd en direct (`sudo journalctl -t sshd -f`) pendant une tentative avec `cles/deploy` ? Après chaque correction, le message change-t-il ?"
+  - level: zone
+    text: "Quand le journal ne dit plus rien de précis, regarde la clé elle-même dans `authorized_keys` : combien de lignes occupe-t-elle ? Et pour les mots de passe, que dit `sudo sshd -T | grep -i passwordauth`, comparé à ce qu'affirme `60-durcissement.conf` ?"
+  - level: concept
+    text: "Que dit le cours sur StrictModes, sur le format d'une ligne d'authorized_keys, sur les listes AllowUsers et sur l'ordre de lecture de sshd_config.d ?"
+review:
+  - "Lequel de ces problèmes aurait pu être détecté automatiquement au moment où il a été introduit ? Comment ?"
+  - "Pourquoi ne pas avoir désactivé StrictModes, qui faisait disparaître un des refus ?"
+  - "Comment éviter qu'un fichier de l'hébergeur annule de nouveau ton durcissement ?"

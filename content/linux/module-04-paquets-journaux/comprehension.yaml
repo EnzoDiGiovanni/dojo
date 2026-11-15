@@ -1,0 +1,30 @@
+questions:
+  - id: c-update
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : après `sudo apt update`, les logiciels du serveur sont à jour."
+    options:
+      - text: Vrai
+        relance: "Qu'est-ce qu'apt update télécharge exactement : des paquets, ou des listes de paquets ? Quelle commande installe ensuite les nouvelles versions ?"
+      - text: Faux
+        correct: true
+  - id: c-signed-by
+    type: qcm
+    prompt: "Pourquoi déclarer la clé d'un éditeur avec `Signed-By` plutôt que de la copier dans `/etc/apt/trusted.gpg.d/` ?"
+    options:
+      - text: "Pour que cette clé ne serve qu'à vérifier le dépôt de cet éditeur, et pas tous les autres."
+        correct: true
+      - text: "Parce que trusted.gpg.d n'est plus lu par APT."
+        relance: "Si trusted.gpg.d n'était plus lu, que deviendraient les clés déjà présentes dans ce dossier ? Le cours parle-t-il d'un risque ou d'un dysfonctionnement ?"
+      - text: "Parce que Signed-By chiffre les paquets téléchargés."
+        relance: "Une signature sert-elle à cacher un contenu, ou à prouver qui l'a produit ?"
+  - id: c-priorite
+    type: prediction
+    prompt: "Un service a écrit des messages de priorité info, warning et err. Lesquels affiche `journalctl -u app -p warning` ?"
+    options:
+      - text: "Les messages warning et err."
+        correct: true
+      - text: "Seulement les messages warning."
+        relance: "Le cours dit-il que -p filtre une priorité exacte, ou un seuil ? Dans quel sens ?"
+      - text: "Les messages info et warning."
+        relance: "Dans l'échelle des priorités, info est-il plus grave ou moins grave que warning ?"

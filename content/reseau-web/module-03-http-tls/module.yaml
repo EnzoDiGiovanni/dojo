@@ -1,0 +1,6 @@
+title: HTTP, HTTPS et TLS
+competences:
+  - id: r3-http
+    text: Je sais décomposer un échange HTTP (méthode, statut, en-têtes, corps, redirections) et le rejouer avec curl.
+  - id: r3-tls
+    text: Je sais ce que garantit TLS, lire un certificat (sujet, SAN, émetteur, validité, chaîne) avec openssl et diagnostiquer une erreur de certificat.

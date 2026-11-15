@@ -1,0 +1,83 @@
+questions:
+  - id: q-disable
+    type: qcm
+    prompt: "Tu tapes `sudo systemctl disable rapport`. Le service tournait. Quel est son état juste après ?"
+    options:
+      - text: "Il tourne toujours, mais ne démarrera plus au prochain boot."
+        correct: true
+      - text: "Il est arrêté et ne démarrera plus au prochain boot."
+        relance: "disable agit-il sur le processus en cours, ou seulement sur les liens de démarrage ? Quelle commande ferait les deux ?"
+      - text: "Il est arrêté, mais redémarrera au prochain boot."
+        relance: "Que retire disable exactement ? Que reste-t-il pour le faire démarrer au boot ?"
+      - text: "Il ne peut plus du tout être démarré, même à la main."
+        relance: "Quelle commande, différente de disable, interdit tout démarrage d'une unit ?"
+  - id: q-timer-revient
+    type: qcm
+    prompt: "Tu as arrêté et désactivé `nettoyage.service`, mais il se relance tout seul toutes les heures. Quelle est l'explication la plus probable ?"
+    options:
+      - text: "Un timer `nettoyage.timer`, toujours actif, le déclenche."
+        correct: true
+      - text: "`Restart=always` le relance."
+        relance: "Restart= agit-il après un `systemctl stop` volontaire ? Et pourquoi la relance serait-elle horaire ?"
+      - text: "systemd réactive automatiquement les services désactivés."
+        relance: "Quelle commande te montrerait ce qui a déclenché le service à chaque fois ?"
+      - text: "Le service est toujours activé, disable ne fonctionne pas sur les services système."
+        relance: "Que t'afficherait `systemctl is-enabled nettoyage` ? Quelle autre unit pourrait être en jeu ?"
+  - id: q-forking
+    type: prediction
+    prompt: "`server.js` reste au premier plan et ne se détache jamais. Que se passe-t-il au `systemctl start` avec cette unit ?"
+    code: |
+      [Service]
+      Type=forking
+      ExecStart=/usr/bin/node /opt/wiki/server.js
+    options:
+      - text: "systemd attend que la commande se termine, n'y parvient pas, et finit par déclarer un échec de démarrage."
+        correct: true
+      - text: "Le service démarre normalement, Type n'a d'effet qu'à l'arrêt."
+        relance: "Avec Type=forking, quel événement systemd attend-il pour considérer le démarrage réussi ? Cet événement arrive-t-il ici ?"
+      - text: "systemd lance deux copies du serveur."
+        relance: "Forking décrit-il ce que fait systemd, ou ce que fait le programme lancé ?"
+  - id: q-dropin
+    type: qcm
+    prompt: "Tu veux que le service `nginx` du paquet redémarre automatiquement s'il plante. Quelle est la bonne approche ?"
+    options:
+      - text: "`sudo systemctl edit nginx`, puis `Restart=on-failure` dans la section [Service] du drop-in."
+        correct: true
+      - text: "Ajouter `Restart=on-failure` dans /usr/lib/systemd/system/nginx.service."
+        relance: "Que devient ce fichier à la prochaine mise à jour du paquet nginx ?"
+      - text: "Copier tout le fichier dans /etc/systemd/system/nginx.service et le modifier."
+        relance: "Ça marche, mais que se passe-t-il quand le paquet corrige son propre fichier d'unit dans une nouvelle version ?"
+      - text: "Ajouter une tâche cron qui relance nginx toutes les minutes."
+        relance: "Quel composant du système surveille déjà nginx et sait le relancer à l'instant où il meurt ?"
+  - id: q-nice
+    type: qcm
+    prompt: "Une compression longue ralentit le site. Tu la passes en `nice 19`. Qu'obtiens-tu ?"
+    options:
+      - text: "Le site passe en priorité quand le processeur est disputé ; la compression utilise ce qui reste."
+        correct: true
+      - text: "La compression est limitée à 19 % du processeur."
+        relance: "La valeur nice exprime-t-elle un plafond de consommation, ou un ordre de priorité ?"
+      - text: "La compression s'arrête tant que le site est actif."
+        relance: "Un processus de priorité minimale reçoit-il du temps processeur quand le reste est inactif ?"
+      - text: "Rien, seul root peut changer une priorité."
+        relance: "Que peut faire un utilisateur ordinaire avec la priorité de ses propres processus, et que ne peut-il pas faire ?"
+  - id: q-ecoute
+    type: prediction
+    prompt: "Que t'apprend cette ligne de `ss -ltnp` ?"
+    code: "LISTEN 0 4096 127.0.0.1:6379 0.0.0.0:* users:((\"redis-server\",pid=812,fd=6))"
+    options:
+      - text: "redis-server, PID 812, écoute sur le port 6379 et n'accepte que les connexions venant du serveur lui-même."
+        correct: true
+      - text: "redis-server accepte les connexions de n'importe quelle adresse sur le port 6379."
+        relance: "Quelle colonne est l'adresse locale d'écoute, et laquelle décrit les pairs acceptés ? Que représente 127.0.0.1 ?"
+      - text: "Un client local est connecté à redis sur le port 6379."
+        relance: "L'état LISTEN décrit-il une connexion établie ou une attente de connexions ?"
+  - id: q-execstart-vide
+    type: vrai-faux
+    justify: true
+    prompt: "Vrai ou faux : dans un drop-in, écrire seulement `ExecStart=/usr/bin/autre-commande` remplace la commande de démarrage du paquet."
+    options:
+      - text: Vrai
+        relance: "ExecStart peut-il apparaître plusieurs fois dans une unit ? Que fait le cours pour remplacer plutôt qu'ajouter ?"
+      - text: Faux
+        correct: true
